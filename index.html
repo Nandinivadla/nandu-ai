@@ -4,9 +4,14 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>NANDU AI | Personal AI With Memory</title>
+<title>NANDU AI — Personal AI With Memory</title>
 
 <style>
+
+/* =========================
+   RESET
+========================= */
+
 * {
     margin: 0;
     padding: 0;
@@ -18,353 +23,703 @@ html {
 }
 
 body {
-    background: #050505;
-    color: #ffffff;
+    background:
+        radial-gradient(circle at 50% 0%, #3b0000 0%, #090909 35%, #000 75%);
+    color: white;
     font-family: Arial, Helvetica, sans-serif;
     overflow-x: hidden;
 }
 
-/* SPIDER WEB BACKGROUND */
+
+/* =========================
+   SPIDER WEB BACKGROUND
+========================= */
 
 body::before {
     content: "";
     position: fixed;
     inset: 0;
     pointer-events: none;
-    opacity: 0.12;
+    z-index: -2;
+
     background-image:
-        linear-gradient(30deg, transparent 48%, #ff1a1a 49%, transparent 50%),
-        linear-gradient(150deg, transparent 48%, #ff1a1a 49%, transparent 50%),
-        linear-gradient(90deg, transparent 48%, #ff1a1a 49%, transparent 50%);
-    background-size: 140px 140px;
-    z-index: -1;
+        radial-gradient(circle at center,
+            transparent 0 58px,
+            rgba(255, 0, 0, 0.18) 59px,
+            transparent 61px),
+
+        linear-gradient(30deg,
+            transparent 49.2%,
+            rgba(255, 0, 0, 0.16) 49.5%,
+            transparent 50.5%),
+
+        linear-gradient(150deg,
+            transparent 49.2%,
+            rgba(255, 0, 0, 0.16) 49.5%,
+            transparent 50.5%),
+
+        linear-gradient(90deg,
+            transparent 49.2%,
+            rgba(255, 0, 0, 0.10) 49.5%,
+            transparent 50.5%);
+
+    background-size:
+        140px 140px,
+        140px 140px,
+        140px 140px,
+        140px 140px;
+
+    opacity: .65;
 }
+
 
 /* RED GLOW */
 
 body::after {
     content: "";
     position: fixed;
-    width: 600px;
-    height: 600px;
+    width: 700px;
+    height: 700px;
+    border-radius: 50%;
     background: #e50914;
-    filter: blur(180px);
-    opacity: 0.08;
-    top: -200px;
-    right: -200px;
+    filter: blur(220px);
+    opacity: .09;
+    top: -300px;
+    right: -250px;
     pointer-events: none;
+    z-index: -1;
 }
 
-/* NAVIGATION */
+
+/* =========================
+   NAVBAR
+========================= */
 
 nav {
     position: sticky;
     top: 0;
     z-index: 100;
-    background: rgba(5,5,5,0.92);
-    backdrop-filter: blur(15px);
-    border-bottom: 1px solid #300000;
+
     padding: 18px 7%;
+
     display: flex;
     justify-content: space-between;
     align-items: center;
+
+    background: rgba(0,0,0,.88);
+    backdrop-filter: blur(15px);
+
+    border-bottom: 1px solid #650000;
+
+    box-shadow:
+        0 5px 30px rgba(180,0,0,.15);
 }
 
 .logo {
     font-size: 24px;
     font-weight: 900;
-    color: #fff;
+    letter-spacing: 2px;
 }
 
 .logo span {
-    color: #e50914;
+    color: #ff1717;
 }
 
 nav a {
-    color: #ccc;
+    color: #aaa;
     text-decoration: none;
     margin-left: 25px;
     font-size: 14px;
+    transition: .2s;
 }
 
 nav a:hover {
-    color: #ff1a1a;
+    color: #ff2020;
 }
 
-/* HERO */
+
+/* =========================
+   HERO
+========================= */
 
 .hero {
-    min-height: 92vh;
+    min-height: 94vh;
+
     display: flex;
     justify-content: center;
     align-items: center;
+
     text-align: center;
-    padding: 70px 20px;
+
+    padding: 80px 20px;
+
     position: relative;
 }
 
-.hero-content {
-    max-width: 900px;
+
+/* HERO WEB CIRCLE */
+
+.hero::before {
+    content: "";
+
+    position: absolute;
+
+    width: 650px;
+    height: 650px;
+
+    border-radius: 50%;
+
+    border:
+        1px solid rgba(255,0,0,.15);
+
+    box-shadow:
+        0 0 0 60px rgba(255,0,0,.025),
+        0 0 0 120px rgba(255,0,0,.018),
+        0 0 100px rgba(255,0,0,.12);
+
+    pointer-events: none;
 }
+
+
+.hero-content {
+    max-width: 1000px;
+    position: relative;
+    z-index: 2;
+}
+
 
 .badge {
     display: inline-block;
-    border: 1px solid #e50914;
-    color: #ff3333;
-    padding: 8px 18px;
+
+    padding: 9px 20px;
+
+    border: 1px solid #ff1717;
+
     border-radius: 30px;
-    font-size: 13px;
+
+    color: #ff3030;
+
+    background: rgba(100,0,0,.15);
+
+    font-size: 12px;
+
+    letter-spacing: 2px;
+
     margin-bottom: 25px;
+
+    box-shadow:
+        0 0 20px rgba(255,0,0,.12);
 }
 
+
 .hero h1 {
-    font-size: clamp(55px, 10vw, 120px);
-    font-weight: 900;
-    letter-spacing: -5px;
+    font-size: clamp(60px, 11vw, 140px);
+
+    font-weight: 1000;
+
+    letter-spacing: -7px;
+
+    text-transform: uppercase;
+
+    text-shadow:
+        0 0 15px rgba(255,0,0,.2);
 }
 
 .hero h1 span {
     color: #e50914;
+
+    text-shadow:
+        0 0 25px rgba(255,0,0,.5);
 }
+
 
 .hero p {
-    margin-top: 20px;
+    margin-top: 25px;
+
     color: #aaa;
-    font-size: 21px;
+
+    font-size: 20px;
+
+    line-height: 1.6;
 }
 
+
+/* =========================
+   BUTTONS
+========================= */
+
 .hero-buttons {
-    margin-top: 35px;
+    margin-top: 38px;
 }
 
 .btn {
     display: inline-block;
-    padding: 15px 28px;
-    border-radius: 30px;
+
+    padding: 15px 30px;
+
+    border-radius: 5px;
+
     text-decoration: none;
+
     font-weight: bold;
+
     margin: 7px;
+
     cursor: pointer;
-    border: none;
+
+    transition: .25s;
 }
+
 
 .btn-red {
     background: #e50914;
+
     color: white;
+
+    border: 1px solid #ff2929;
+
+    box-shadow:
+        0 0 25px rgba(229,9,20,.25);
 }
 
 .btn-red:hover {
-    background: #ff1a1a;
-    transform: translateY(-2px);
+    background: #ff1717;
+
+    transform: translateY(-3px);
+
+    box-shadow:
+        0 0 35px rgba(255,0,0,.45);
 }
+
 
 .btn-dark {
-    border: 1px solid #555;
+    background: #090909;
+
     color: white;
-    background: #111;
+
+    border: 1px solid #555;
 }
 
-/* SECTIONS */
+.btn-dark:hover {
+    border-color: #ff1717;
+
+    color: #ff3030;
+}
+
+
+/* =========================
+   SECTIONS
+========================= */
 
 section {
-    padding: 90px 8%;
     max-width: 1300px;
+
     margin: auto;
+
+    padding: 100px 8%;
 }
 
+
 .section-title {
-    font-size: 42px;
-    margin-bottom: 15px;
+    font-size: 43px;
+
+    margin-bottom: 18px;
 }
 
 .section-title span {
     color: #e50914;
 }
 
+
 .section-subtitle {
     color: #888;
-    margin-bottom: 40px;
-    line-height: 1.7;
+
+    line-height: 1.8;
+
+    margin-bottom: 45px;
+
+    max-width: 850px;
 }
 
-/* CARDS */
+
+/* =========================
+   CARDS
+========================= */
 
 .grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 20px;
+
+    grid-template-columns:
+        repeat(auto-fit, minmax(250px, 1fr));
+
+    gap: 22px;
 }
+
 
 .card {
-    background: linear-gradient(145deg, #111, #080808);
-    border: 1px solid #2a2a2a;
-    border-radius: 18px;
-    padding: 28px;
-    transition: 0.3s;
+    position: relative;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(45,0,0,.65),
+            rgba(8,8,8,.95)
+        );
+
+    border: 1px solid #330000;
+
+    border-radius: 12px;
+
+    padding: 30px;
+
+    overflow: hidden;
+
+    transition: .3s;
 }
+
+
+.card::before {
+    content: "";
+
+    position: absolute;
+
+    top: 0;
+    left: 0;
+
+    width: 100%;
+    height: 2px;
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            #e50914,
+            transparent
+        );
+}
+
 
 .card:hover {
+    transform: translateY(-6px);
+
     border-color: #e50914;
-    transform: translateY(-5px);
-    box-shadow: 0 15px 40px rgba(229,9,20,0.12);
+
+    box-shadow:
+        0 15px 45px rgba(229,9,20,.15);
 }
 
+
 .card h3 {
-    color: #fff;
-    margin-bottom: 12px;
+    margin-bottom: 13px;
+
+    color: white;
 }
+
 
 .card p,
 .card li {
     color: #aaa;
-    line-height: 1.7;
+
+    line-height: 1.75;
 }
+
 
 .card ul {
     padding-left: 20px;
 }
 
-/* TECH */
+
+/* =========================
+   TECHNOLOGIES
+========================= */
 
 .tech {
     display: flex;
+
     flex-wrap: wrap;
+
     gap: 12px;
 }
 
+
 .tech span {
-    background: #120000;
-    border: 1px solid #500000;
-    color: #ff4444;
-    padding: 10px 16px;
-    border-radius: 20px;
+    padding: 11px 18px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #250000,
+            #090909
+        );
+
+    border: 1px solid #650000;
+
+    border-radius: 5px;
+
+    color: #ff3030;
+
+    box-shadow:
+        inset 0 0 15px rgba(255,0,0,.04);
 }
 
-/* ARCHITECTURE */
+
+/* =========================
+   ARCHITECTURE
+========================= */
 
 .flow {
     display: flex;
+
     flex-wrap: wrap;
+
     justify-content: center;
+
     align-items: center;
+
     gap: 15px;
 }
 
+
 .flow-box {
-    padding: 20px;
     min-width: 160px;
+
+    padding: 22px;
+
     text-align: center;
-    background: #0d0d0d;
-    border: 1px solid #e50914;
-    border-radius: 12px;
+
+    background: #090909;
+
+    border: 1px solid #780000;
+
+    border-radius: 8px;
+
+    box-shadow:
+        0 0 20px rgba(255,0,0,.06);
 }
 
+
 .arrow {
-    color: #e50914;
+    color: #ff1717;
+
     font-size: 25px;
 }
 
-/* ASK NANDU */
+
+/* =========================
+   ASK NANDU
+========================= */
 
 .ask-box {
-    background: linear-gradient(145deg, #120000, #080808);
-    border: 1px solid #600000;
-    border-radius: 22px;
-    padding: 35px;
-    max-width: 850px;
+    max-width: 900px;
+
     margin: auto;
+
+    padding: 40px;
+
+    background:
+        linear-gradient(
+            145deg,
+            #230000,
+            #070707
+        );
+
+    border: 1px solid #700000;
+
+    border-radius: 15px;
+
+    box-shadow:
+        0 20px 70px rgba(255,0,0,.10);
 }
+
 
 .ask-buttons {
     display: flex;
+
     flex-wrap: wrap;
+
     gap: 10px;
-    margin-bottom: 20px;
+
+    margin-bottom: 25px;
 }
+
 
 .ask-buttons button {
-    background: #111;
-    color: white;
-    border: 1px solid #555;
+    background: #080808;
+
+    color: #ccc;
+
+    border: 1px solid #4a4a4a;
+
     padding: 12px 18px;
-    border-radius: 20px;
+
+    border-radius: 5px;
+
     cursor: pointer;
+
+    transition: .2s;
 }
 
+
 .ask-buttons button:hover {
-    border-color: #e50914;
-    color: #ff3333;
+    color: white;
+
+    border-color: #ff1717;
+
+    background: #180000;
 }
+
 
 .question-area {
     display: flex;
+
     gap: 10px;
 }
 
+
 .question-area input {
     flex: 1;
+
     background: #050505;
+
     border: 1px solid #444;
+
     color: white;
-    padding: 15px;
-    border-radius: 10px;
+
+    padding: 16px;
+
+    border-radius: 5px;
+
     outline: none;
 }
 
+
 .question-area input:focus {
     border-color: #e50914;
+
+    box-shadow:
+        0 0 15px rgba(255,0,0,.12);
 }
+
 
 .answer {
     margin-top: 25px;
-    padding: 20px;
+
+    padding: 22px;
+
     background: #050505;
+
     border-left: 3px solid #e50914;
-    border-radius: 8px;
+
     color: #ccc;
-    line-height: 1.7;
-    min-height: 60px;
+
+    line-height: 1.8;
+
+    min-height: 70px;
+
+    border-radius: 4px;
 }
 
-/* TIMELINE */
+
+/* =========================
+   TIMELINE
+========================= */
 
 .timeline {
     border-left: 2px solid #e50914;
-    padding-left: 25px;
+
+    padding-left: 28px;
 }
+
 
 .timeline-item {
-    margin-bottom: 30px;
+    margin-bottom: 35px;
+
+    position: relative;
 }
 
-.timeline-item h3 {
-    color: #ff3333;
+
+.timeline-item::before {
+    content: "";
+
+    position: absolute;
+
+    left: -36px;
+
+    top: 4px;
+
+    width: 12px;
+
+    height: 12px;
+
+    border-radius: 50%;
+
+    background: #e50914;
+
+    box-shadow:
+        0 0 15px #e50914;
 }
+
+
+.timeline-item h3 {
+    color: #ff3030;
+}
+
 
 .timeline-item p {
     color: #aaa;
+
     margin-top: 8px;
+
     line-height: 1.7;
 }
 
-/* FOOTER */
+
+/* =========================
+   PROJECT JOURNEY
+========================= */
+
+.project-number {
+    color: #e50914;
+
+    font-size: 13px;
+
+    letter-spacing: 2px;
+
+    margin-bottom: 8px;
+}
+
+
+/* =========================
+   FOOTER
+========================= */
 
 footer {
     text-align: center;
-    padding: 50px 20px;
-    border-top: 1px solid #222;
+
+    padding: 60px 20px;
+
+    border-top: 1px solid #250000;
+
+    background: #030303;
+
     color: #666;
 }
+
 
 footer strong {
     color: #e50914;
 }
 
-/* MOBILE */
+
+/* =========================
+   MOBILE
+========================= */
 
 @media(max-width:700px) {
+
     nav {
         flex-direction: column;
+
         gap: 15px;
     }
 
@@ -373,54 +728,93 @@ footer strong {
     }
 
     .hero h1 {
-        letter-spacing: -3px;
+        letter-spacing: -4px;
     }
 
     section {
-        padding: 65px 6%;
+        padding: 70px 6%;
     }
 
     .question-area {
         flex-direction: column;
     }
+
+    .hero::before {
+        width: 400px;
+        height: 400px;
+    }
+
 }
+
 </style>
 </head>
 
+
 <body>
 
-<!-- NAVIGATION -->
+
+<!-- =========================
+     NAVIGATION
+========================= -->
 
 <nav>
-    <div class="logo">NANDU<span> AI</span></div>
+
+    <div class="logo">
+        NANDU<span> AI</span>
+    </div>
 
     <div>
+
         <a href="#about">About</a>
+
         <a href="#build">Build</a>
+
         <a href="#learning">Learning</a>
+
         <a href="#ask">Ask Nandu</a>
+
     </div>
+
 </nav>
 
 
-<!-- HERO -->
+<!-- =========================
+     HERO
+========================= -->
 
 <div class="hero">
 
     <div class="hero-content">
 
-        <div class="badge">PERSONAL AI PROJECT • 2026</div>
+        <div class="badge">
+            PERSONAL AI PROJECT • 2026
+        </div>
 
-        <h1>NANDU <span>AI</span></h1>
+        <h1>
+            NANDU <span>AI</span>
+        </h1>
 
         <p>
-            A personal AI assistant built with Python,
-            Ollama, Llama 3.2 and persistent memory.
+            A personal AI assistant built with
+            Python, Ollama, Llama 3.2 and memory.
         </p>
 
         <div class="hero-buttons">
-            <a class="btn btn-red" href="#about">Explore NANDU</a>
-            <a class="btn btn-dark" href="#ask">Ask Nandu</a>
+
+            <a
+                class="btn btn-red"
+                href="#about"
+            >
+                Explore NANDU
+            </a>
+
+            <a
+                class="btn btn-dark"
+                href="#ask"
+            >
+                Ask Nandu
+            </a>
+
         </div>
 
     </div>
@@ -428,7 +822,9 @@ footer strong {
 </div>
 
 
-<!-- ABOUT -->
+<!-- =========================
+     ABOUT
+========================= -->
 
 <section id="about">
 
@@ -437,55 +833,85 @@ footer strong {
     </h2>
 
     <p class="section-subtitle">
-        NANDU AI is a personal AI assistant that I built from scratch
-        to understand conversations, remember information about me,
-        and respond using a locally running language model.
+
+        NANDU AI is a personal AI assistant that I built
+        to explore how local artificial intelligence,
+        programming and memory can work together.
+
     </p>
+
 
     <div class="grid">
 
-        <div class="card">
-            <h3>🧠 Personal Memory</h3>
-            <p>
-                NANDU AI uses structured JSON files to store information
-                about my interests, personality, preferences and other
-                non-private information.
-            </p>
-        </div>
 
         <div class="card">
-            <h3>🤖 Local AI</h3>
+
+            <h3>🤖 Personal AI</h3>
+
             <p>
-                The project uses Ollama to communicate with a locally
-                running Llama 3.2 model instead of depending completely
-                on a cloud AI service.
+
+                I built a Python-based conversational AI
+                that communicates with a locally running
+                Llama 3.2 model through Ollama.
+
             </p>
+
         </div>
 
+
         <div class="card">
+
+            <h3>🧠 Memory System</h3>
+
+            <p>
+
+                I created JSON files containing structured
+                information so NANDU AI can receive public
+                information about me.
+
+            </p>
+
+        </div>
+
+
+        <div class="card">
+
             <h3>💬 Conversation</h3>
+
             <p>
-                The Python program maintains a conversation history and
-                sends the conversation to the AI model so responses can
-                remain connected to previous messages.
+
+                The application keeps conversation messages
+                so the model can understand the context of
+                the current conversation.
+
             </p>
+
         </div>
 
+
         <div class="card">
-            <h3>🌐 Public Interface</h3>
+
+            <h3>🌐 Web Interface</h3>
+
             <p>
-                This website presents the project, explains how it works,
-                and allows visitors to learn about me through public
-                questions.
+
+                I created this public website using HTML,
+                CSS and JavaScript and deployed it with
+                GitHub Pages.
+
             </p>
+
         </div>
+
 
     </div>
 
 </section>
 
 
-<!-- WHAT I USED -->
+<!-- =========================
+     TECHNOLOGY
+========================= -->
 
 <section id="build">
 
@@ -494,72 +920,93 @@ footer strong {
     </h2>
 
     <p class="section-subtitle">
-        The main technologies and concepts used to build NANDU AI.
+
+        Technologies and concepts I used while building
+        NANDU AI.
+
     </p>
 
+
     <div class="tech">
+
         <span>Python</span>
+
         <span>Ollama</span>
+
         <span>Llama 3.2</span>
+
         <span>JSON</span>
+
         <span>Python Virtual Environment</span>
+
         <span>HTML</span>
+
         <span>CSS</span>
+
         <span>JavaScript</span>
+
         <span>Git</span>
+
         <span>GitHub</span>
+
         <span>GitHub Pages</span>
+
     </div>
 
 </section>
 
 
-<!-- HOW IT WORKS -->
+<!-- =========================
+     ARCHITECTURE
+========================= -->
 
 <section>
 
     <h2 class="section-title">
-        How NANDU AI <span>Works</span>
+        How It <span>Works</span>
     </h2>
 
     <p class="section-subtitle">
-        The project connects a Python application, memory files and
-        a local language model.
+
+        The basic architecture of my NANDU AI project.
+
     </p>
+
 
     <div class="flow">
 
         <div class="flow-box">
-            👤<br>
-            User Question
+            USER
         </div>
 
         <div class="arrow">→</div>
 
         <div class="flow-box">
-            🐍<br>
-            Python
+            PYTHON
         </div>
 
         <div class="arrow">→</div>
 
         <div class="flow-box">
-            🗂️<br>
-            JSON Memory
+            JSON MEMORY
         </div>
 
         <div class="arrow">→</div>
 
         <div class="flow-box">
-            🦙<br>
-            Llama 3.2
+            OLLAMA
         </div>
 
         <div class="arrow">→</div>
 
         <div class="flow-box">
-            💬<br>
-            AI Response
+            LLAMA 3.2
+        </div>
+
+        <div class="arrow">→</div>
+
+        <div class="flow-box">
+            RESPONSE
         </div>
 
     </div>
@@ -567,7 +1014,9 @@ footer strong {
 </section>
 
 
-<!-- WHAT I BUILT -->
+<!-- =========================
+     WHAT I BUILT
+========================= -->
 
 <section>
 
@@ -575,101 +1024,188 @@ footer strong {
         What I <span>Built</span>
     </h2>
 
+
     <div class="grid">
 
-        <div class="card">
-            <h3>01 — AI Assistant</h3>
-            <p>
-                I created a Python-based conversational AI application
-                that accepts questions and generates responses using
-                Llama 3.2 through Ollama.
-            </p>
-        </div>
 
         <div class="card">
-            <h3>02 — Memory System</h3>
+
+            <div class="project-number">
+                01 / AI ASSISTANT
+            </div>
+
+            <h3>
+                Python AI Application
+            </h3>
+
             <p>
-                I created JSON-based profile and memory files so the AI
-                can receive structured information about me when
-                generating responses.
+
+                I created a Python program that accepts
+                questions from the user and sends them
+                to Llama 3.2 through Ollama.
+
             </p>
+
         </div>
 
-        <div class="card">
-            <h3>03 — Conversation History</h3>
-            <p>
-                I implemented message history so the AI can maintain
-                context during the current conversation.
-            </p>
-        </div>
 
         <div class="card">
-            <h3>04 — Web Interface</h3>
+
+            <div class="project-number">
+                02 / MEMORY
+            </div>
+
+            <h3>
+                Personal Memory
+            </h3>
+
             <p>
-                I created this website using HTML, CSS and JavaScript
-                and deployed it using GitHub Pages.
+
+                I created profile and memory JSON files
+                containing structured information about
+                my public interests, preferences and
+                personality.
+
             </p>
+
         </div>
+
+
+        <div class="card">
+
+            <div class="project-number">
+                03 / CONTEXT
+            </div>
+
+            <h3>
+                Conversation History
+            </h3>
+
+            <p>
+
+                I implemented message history so the AI
+                can maintain context during a conversation.
+
+            </p>
+
+        </div>
+
+
+        <div class="card">
+
+            <div class="project-number">
+                04 / WEB
+            </div>
+
+            <h3>
+                Public Website
+            </h3>
+
+            <p>
+
+                I created a website to present the project,
+                explain what I learned and allow visitors
+                to ask public questions about me.
+
+            </p>
+
+        </div>
+
 
     </div>
 
 </section>
 
 
-<!-- MEMORY -->
+<!-- =========================
+     MEMORY
+========================= -->
 
 <section>
 
     <h2 class="section-title">
-        The <span>Memory</span>
+        NANDU AI <span>Memory</span>
     </h2>
 
-    <p class="section-subtitle">
-        NANDU AI's memory is structured rather than being a random
-        collection of text.
-    </p>
 
     <div class="grid">
 
-        <div class="card">
-            <h3>Profile</h3>
-            <p>
-                Basic public information such as my name, field of study,
-                interests and goals.
-            </p>
-        </div>
 
         <div class="card">
-            <h3>Preferences</h3>
+
+            <h3>
+                Profile
+            </h3>
+
             <p>
-                Music, weather, food, movies, nature, activities,
-                aesthetics and other things I enjoy.
+
+                Public information such as my name,
+                cybersecurity studies, interests and
+                professional goals.
+
             </p>
+
         </div>
 
-        <div class="card">
-            <h3>Personality</h3>
-            <p>
-                Public personality traits such as being more introverted,
-                becoming talkative with people I am close to, and valuing
-                love, respect and connection.
-            </p>
-        </div>
 
         <div class="card">
-            <h3>Boundaries</h3>
+
+            <h3>
+                Preferences
+            </h3>
+
             <p>
-                The public website does not expose private or sensitive
-                personal information.
+
+                Music, cloudy weather, Indian food,
+                thriller and horror movies, nature,
+                beaches, gym and boxing.
+
             </p>
+
         </div>
+
+
+        <div class="card">
+
+            <h3>
+                Personality
+            </h3>
+
+            <p>
+
+                Public personality characteristics,
+                interests and the things I value.
+
+            </p>
+
+        </div>
+
+
+        <div class="card">
+
+            <h3>
+                Privacy
+            </h3>
+
+            <p>
+
+                The public website only exposes
+                information intended to be shared.
+                Private information is not included.
+
+            </p>
+
+        </div>
+
 
     </div>
 
 </section>
 
 
-<!-- LEARNING -->
+<!-- =========================
+     LEARNING
+========================= -->
 
 <section id="learning">
 
@@ -677,122 +1213,246 @@ footer strong {
         What I <span>Learned</span>
     </h2>
 
+
     <div class="timeline">
 
-        <div class="timeline-item">
-            <h3>Python & AI Integration</h3>
-            <p>
-                I learned how a Python application can communicate with
-                an AI model and process the model's response.
-            </p>
-        </div>
 
         <div class="timeline-item">
-            <h3>Local LLMs</h3>
+
+            <h3>
+                Python + AI
+            </h3>
+
             <p>
-                I learned what a local large language model is and how
-                Ollama can be used to run and communicate with models
-                such as Llama 3.2 locally.
+
+                I learned how Python can communicate
+                with an AI model and process the model's
+                response.
+
             </p>
+
         </div>
 
-        <div class="timeline-item">
-            <h3>AI Memory</h3>
-            <p>
-                I learned that an AI does not automatically know personal
-                information. Information has to be provided through
-                prompts, conversation history or a memory system.
-            </p>
-        </div>
 
         <div class="timeline-item">
-            <h3>JSON Data</h3>
+
+            <h3>
+                Local LLMs
+            </h3>
+
             <p>
-                I learned how JSON can be used to organize structured
-                information that Python can load and provide to an AI.
+
+                I learned how Ollama can run local
+                language models and how an application
+                can communicate with them.
+
             </p>
+
         </div>
 
-        <div class="timeline-item">
-            <h3>Virtual Environments</h3>
-            <p>
-                I learned how Python virtual environments isolate project
-                dependencies and how packages such as the Ollama Python
-                library can be installed inside the environment.
-            </p>
-        </div>
 
         <div class="timeline-item">
-            <h3>GitHub & Deployment</h3>
+
+            <h3>
+                AI Memory
+            </h3>
+
             <p>
-                I learned how to upload a project to GitHub and deploy
-                a frontend website through GitHub Pages.
+
+                I learned that an AI does not automatically
+                know personal information. Information must
+                be supplied through memory, prompts or
+                conversation context.
+
             </p>
+
         </div>
+
+
+        <div class="timeline-item">
+
+            <h3>
+                JSON
+            </h3>
+
+            <p>
+
+                I learned how JSON can store structured
+                information that Python can load and use.
+
+            </p>
+
+        </div>
+
+
+        <div class="timeline-item">
+
+            <h3>
+                Virtual Environments
+            </h3>
+
+            <p>
+
+                I learned how Python virtual environments
+                isolate project dependencies and packages.
+
+            </p>
+
+        </div>
+
+
+        <div class="timeline-item">
+
+            <h3>
+                GitHub & Deployment
+            </h3>
+
+            <p>
+
+                I learned how to upload the project to
+                GitHub and deploy the website through
+                GitHub Pages.
+
+            </p>
+
+        </div>
+
 
     </div>
 
 </section>
 
 
-<!-- PROJECT JOURNEY -->
+<!-- =========================
+     PROJECT JOURNEY
+========================= -->
 
 <section>
 
     <h2 class="section-title">
-        My <span>Project Journey</span>
+        Project <span>Journey</span>
     </h2>
+
 
     <div class="grid">
 
-        <div class="card">
-            <h3>Step 1</h3>
-            <p>
-                Started with a simple Python AI assistant.
-            </p>
-        </div>
 
         <div class="card">
-            <h3>Step 2</h3>
+
+            <div class="project-number">
+                STEP 01
+            </div>
+
+            <h3>
+                Python Assistant
+            </h3>
+
             <p>
-                Connected the application to Ollama and Llama 3.2.
+                Started with a basic conversational
+                Python AI application.
             </p>
+
         </div>
 
-        <div class="card">
-            <h3>Step 3</h3>
-            <p>
-                Added personal profile and memory using JSON.
-            </p>
-        </div>
 
         <div class="card">
-            <h3>Step 4</h3>
+
+            <div class="project-number">
+                STEP 02
+            </div>
+
+            <h3>
+                Ollama
+            </h3>
+
             <p>
-                Tested questions about my preferences and personality.
+                Connected the application to Ollama
+                and Llama 3.2.
             </p>
+
         </div>
 
-        <div class="card">
-            <h3>Step 5</h3>
-            <p>
-                Built a public website to explain the project.
-            </p>
-        </div>
 
         <div class="card">
-            <h3>Step 6</h3>
+
+            <div class="project-number">
+                STEP 03
+            </div>
+
+            <h3>
+                Memory
+            </h3>
+
             <p>
-                Deployed the website using GitHub Pages.
+                Added structured JSON profile and
+                memory information.
             </p>
+
         </div>
+
+
+        <div class="card">
+
+            <div class="project-number">
+                STEP 04
+            </div>
+
+            <h3>
+                Testing
+            </h3>
+
+            <p>
+                Tested questions about my interests,
+                personality and preferences.
+            </p>
+
+        </div>
+
+
+        <div class="card">
+
+            <div class="project-number">
+                STEP 05
+            </div>
+
+            <h3>
+                Website
+            </h3>
+
+            <p>
+                Created a public website explaining
+                the project.
+            </p>
+
+        </div>
+
+
+        <div class="card">
+
+            <div class="project-number">
+                STEP 06
+            </div>
+
+            <h3>
+                GitHub Pages
+            </h3>
+
+            <p>
+                Deployed the website online through
+                GitHub Pages.
+            </p>
+
+        </div>
+
 
     </div>
 
 </section>
 
 
-<!-- ASK NANDU -->
+<!-- =========================
+     ASK NANDU
+========================= -->
 
 <section id="ask">
 
@@ -801,12 +1461,15 @@ footer strong {
     </h2>
 
     <p class="section-subtitle">
-        Ask questions about Nandu's public interests, personality,
-        hobbies and vibe. This section intentionally does not expose
-        private information.
+
+        Visitors can ask about Nandu's public interests,
+        personality, hobbies, preferences and vibe.
+
     </p>
 
+
     <div class="ask-box">
+
 
         <div class="ask-buttons">
 
@@ -814,27 +1477,28 @@ footer strong {
                 🎵 Music
             </button>
 
-            <button onclick="quickQuestion('What kind of weather does Nandu like?')">
-                🌧️ Weather
+            <button onclick="quickQuestion('What weather does Nandu like?')">
+                🌧 Weather
             </button>
 
             <button onclick="quickQuestion('What movies does Nandu like?')">
                 🎬 Movies
             </button>
 
-            <button onclick="quickQuestion('What are Nandu hobbies?')">
+            <button onclick="quickQuestion('What hobbies does Nandu have?')">
                 🥊 Hobbies
             </button>
 
             <button onclick="quickQuestion('What is Nandu vibe?')">
-                🕷️ Nandu Vibe
+                🕷 Nandu Vibe
             </button>
 
-            <button onclick="quickQuestion('Tell me about Nandu personality')">
+            <button onclick="quickQuestion('What is Nandu personality like?')">
                 👤 Personality
             </button>
 
         </div>
+
 
         <div class="question-area">
 
@@ -842,25 +1506,35 @@ footer strong {
                 id="question"
                 type="text"
                 placeholder="Ask something about Nandu..."
-                onkeydown="if(event.key==='Enter') askNandu()"
+                onkeydown="if(event.key === 'Enter') askNandu()"
             >
 
-            <button class="btn btn-red" onclick="askNandu()">
+            <button
+                class="btn btn-red"
+                onclick="askNandu()"
+            >
                 Ask
             </button>
 
         </div>
 
-        <div class="answer" id="answer">
+
+        <div
+            class="answer"
+            id="answer"
+        >
             Ask me something about Nandu...
         </div>
+
 
     </div>
 
 </section>
 
 
-<!-- PROJECT SUMMARY -->
+<!-- =========================
+     WHY I BUILT IT
+========================= -->
 
 <section>
 
@@ -868,22 +1542,35 @@ footer strong {
         Why I <span>Built It</span>
     </h2>
 
+
     <div class="card">
 
         <p>
-            I built NANDU AI as a practical way to learn how artificial
-            intelligence applications work instead of only studying
-            theory. The project combines programming, local language
-            models, structured data, memory, web development and
-            deployment into one project.
+
+            I built NANDU AI as a practical way to learn
+            how artificial intelligence applications work
+            instead of only studying theory.
+
         </p>
 
         <br>
 
         <p>
-            My goal is to continue developing it into a more capable
-            personal AI system while improving my skills in artificial
-            intelligence, machine learning, Python and cybersecurity.
+
+            The project combines Python, local language
+            models, structured data, memory, web development
+            and deployment into one project.
+
+        </p>
+
+        <br>
+
+        <p>
+
+            My goal is to continue developing NANDU AI while
+            improving my skills in artificial intelligence,
+            machine learning, Python and cybersecurity.
+
         </p>
 
     </div>
@@ -891,16 +1578,19 @@ footer strong {
 </section>
 
 
-<!-- FOOTER -->
+<!-- =========================
+     FOOTER
+========================= -->
 
 <footer>
 
     <p>
-        <strong>NANDU AI</strong> — Built by Nandu
+        <strong>NANDU AI</strong>
+        — Built by Nandu
     </p>
 
     <p style="margin-top:10px;">
-        Personal AI • Python • Ollama • Llama 3.2 • Memory
+        Python • Ollama • Llama 3.2 • JSON • AI Memory
     </p>
 
 </footer>
@@ -908,7 +1598,9 @@ footer strong {
 
 <script>
 
-/* PUBLIC NANDU INFORMATION */
+/* =====================================
+   PUBLIC NANDU INFORMATION
+===================================== */
 
 const nandu = {
 
@@ -934,23 +1626,23 @@ const nandu = {
         "Nandu is more introverted and tends to talk much more when comfortable and close to someone. Nandu values love, respect, trust, attachment and genuine connection.",
 
     vibe:
-        "Nandu's vibe is a mix of dark cloudy weather, bass-heavy music, gym energy, boxing, nature, water, thriller movies and strong emotions.",
+        "Nandu's vibe is cloudy weather, bass-heavy music, gym energy, boxing, nature, water, thriller movies and strong emotions.",
 
     likes:
         "Nandu likes music, cloudy weather, Indian food, thriller and horror movies, beaches, nature, water, athletic activities, gym and boxing.",
 
     dislikes:
-        "Nandu strongly dislikes dishonesty, broken trust, people giving hopes and not standing by them, feeling unappreciated and feeling like potential is being lost.",
+        "Nandu dislikes dishonesty, broken trust, people giving hopes and not standing by them, feeling unappreciated and feeling like potential is being lost.",
 
     happy:
-        "Things that can make Nandu feel good include music, nature, water, calls, hugs, kisses, closeness, gym, friends and feeling appreciated.",
+        "Things Nandu enjoys include music, nature, water, calls, hugs, kisses, closeness, gym, friends and feeling appreciated."
 
-    badday:
-        "When having a bad day, Nandu may sleep, go to the gym, listen to music or talk with friends."
 };
 
 
-/* ASK NANDU */
+/* =====================================
+   QUICK QUESTIONS
+===================================== */
 
 function quickQuestion(question) {
 
@@ -961,15 +1653,22 @@ function quickQuestion(question) {
 }
 
 
+/* =====================================
+   ASK NANDU
+===================================== */
+
 function askNandu() {
 
     const input =
-        document.getElementById("question").value
+        document
+        .getElementById("question")
+        .value
         .toLowerCase()
         .trim();
 
     const answer =
         document.getElementById("answer");
+
 
     if (!input) {
 
@@ -977,11 +1676,13 @@ function askNandu() {
             "Ask me something about Nandu.";
 
         return;
+
     }
 
 
     let response =
-        "I only answer questions about Nandu's public interests, personality, hobbies and vibe.";
+        "I can answer questions about Nandu's public interests, personality, hobbies, preferences and vibe.";
+
 
     if (
         input.includes("music") ||
@@ -1023,7 +1724,6 @@ function askNandu() {
 
     else if (
         input.includes("place") ||
-        input.includes("travel") ||
         input.includes("nature") ||
         input.includes("beach") ||
         input.includes("water")
@@ -1056,7 +1756,7 @@ function askNandu() {
     else if (
         input.includes("vibe") ||
         input.includes("style") ||
-        input.includes("what is nandu like")
+        input.includes("like")
     ) {
 
         response = nandu.vibe;
@@ -1064,19 +1764,8 @@ function askNandu() {
     }
 
     else if (
-        input.includes("like") ||
-        input.includes("favorite") ||
-        input.includes("favourite")
-    ) {
-
-        response = nandu.likes;
-
-    }
-
-    else if (
         input.includes("dislike") ||
-        input.includes("hate") ||
-        input.includes("sad")
+        input.includes("hate")
     ) {
 
         response = nandu.dislikes;
@@ -1092,14 +1781,6 @@ function askNandu() {
 
     }
 
-    else if (
-        input.includes("bad day") ||
-        input.includes("stress")
-    ) {
-
-        response = nandu.badday;
-
-    }
 
     answer.innerHTML = response;
 
