@@ -4,391 +4,453 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>NANDU AI | Cybersecurity & AI</title>
+<title>NANDU AI | Cybersecurity × AI</title>
 
 <style>
-
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    scroll-behavior: smooth;
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    scroll-behavior:smooth;
 }
 
-:root {
-    --red: #e50914;
-    --dark-red: #8b0000;
-    --black: #050505;
-    --card: #0d0d0d;
-    --white: #f5f5f5;
-    --gray: #999;
+:root{
+    --red:#e50914;
+    --bright:#ff1e2d;
+    --dark:#050505;
+    --card:#0d0d0f;
+    --white:#f5f5f5;
+    --grey:#aaa;
 }
 
-body {
-    background:
-        radial-gradient(circle at 50% 20%, rgba(229,9,20,0.16), transparent 35%),
-        #050505;
-    color: var(--white);
-    font-family: Arial, Helvetica, sans-serif;
-    overflow-x: hidden;
+body{
+    font-family:Arial,Helvetica,sans-serif;
+    background:#050505;
+    color:var(--white);
+    overflow-x:hidden;
 }
 
 /* WEB BACKGROUND */
 
-body::before {
-    content: "";
-    position: fixed;
-    inset: 0;
-    pointer-events: none;
-    opacity: 0.12;
+.web-bg{
+    position:fixed;
+    inset:0;
+    pointer-events:none;
+    z-index:-1;
+    opacity:.18;
     background-image:
-        linear-gradient(30deg, transparent 48%, #e50914 49%, transparent 51%),
-        linear-gradient(150deg, transparent 48%, #e50914 49%, transparent 51%);
-    background-size: 80px 80px;
-    z-index: -1;
+    linear-gradient(30deg, transparent 48%, #e50914 49%, transparent 50%),
+    linear-gradient(150deg, transparent 48%, #e50914 49%, transparent 50%),
+    radial-gradient(circle at center, transparent 0 12%, #e50914 13%, transparent 13.5%,
+    transparent 24%, #e50914 24.5%, transparent 25%,
+    transparent 37%, #e50914 37.5%, transparent 38%);
+    background-size:300px 300px;
+    animation:webmove 20s linear infinite;
 }
 
-/* NAVBAR */
-
-nav {
-    position: fixed;
-    top: 0;
-    width: 100%;
-    z-index: 1000;
-    padding: 18px 7%;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background: rgba(0,0,0,0.88);
-    backdrop-filter: blur(12px);
-    border-bottom: 1px solid rgba(229,9,20,0.35);
+@keyframes webmove{
+    from{transform:scale(1)}
+    50%{transform:scale(1.08)}
+    to{transform:scale(1)}
 }
 
-.logo {
-    font-size: 25px;
-    font-weight: 900;
-    letter-spacing: 3px;
-    color: white;
+/* NAVIGATION */
+
+nav{
+    position:fixed;
+    top:0;
+    width:100%;
+    z-index:100;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:20px 7%;
+    background:rgba(0,0,0,.85);
+    backdrop-filter:blur(12px);
+    border-bottom:1px solid rgba(229,9,20,.35);
 }
 
-.logo span {
-    color: var(--red);
+.logo{
+    font-size:22px;
+    font-weight:900;
+    letter-spacing:3px;
+    color:white;
 }
 
-nav a {
-    color: #ddd;
-    text-decoration: none;
-    margin-left: 25px;
-    font-size: 14px;
+.logo span{
+    color:var(--red);
 }
 
-nav a:hover {
-    color: var(--red);
+nav a{
+    color:#ddd;
+    text-decoration:none;
+    margin-left:25px;
+    font-size:14px;
+}
+
+nav a:hover{
+    color:var(--red);
 }
 
 /* HERO */
 
-.hero {
-    min-height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    padding: 100px 20px 50px;
+.hero{
+    min-height:100vh;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+    padding:100px 20px 50px;
 }
 
-.hero-content {
-    max-width: 900px;
+.hero-content{
+    max-width:950px;
 }
 
-.spider-symbol {
-    font-size: 70px;
-    margin-bottom: 20px;
-    filter: drop-shadow(0 0 20px rgba(229,9,20,0.6));
+.tag{
+    color:var(--red);
+    letter-spacing:5px;
+    font-size:13px;
+    font-weight:bold;
+    margin-bottom:20px;
 }
 
-.hero h1 {
-    font-size: clamp(55px, 10vw, 120px);
-    font-weight: 950;
-    letter-spacing: 8px;
-    line-height: 0.95;
+h1{
+    font-size:clamp(60px,11vw,150px);
+    font-weight:1000;
+    letter-spacing:-7px;
+    line-height:.85;
+    text-shadow:
+        0 0 15px rgba(229,9,20,.25),
+        5px 5px 0 #5e0006;
 }
 
-.hero h1 span {
-    color: var(--red);
+h1 span{
+    color:var(--red);
 }
 
-.hero h2 {
-    margin-top: 25px;
-    font-size: clamp(20px, 3vw, 34px);
-    color: #ddd;
+.hero p{
+    color:#aaa;
+    font-size:21px;
+    margin:35px auto;
+    max-width:700px;
+    line-height:1.6;
 }
 
-.hero p {
-    margin: 20px auto;
-    color: var(--gray);
-    font-size: 18px;
-    max-width: 650px;
-    line-height: 1.7;
+.btn{
+    display:inline-block;
+    padding:16px 30px;
+    margin:8px;
+    border:1px solid var(--red);
+    color:white;
+    text-decoration:none;
+    border-radius:4px;
+    background:#090909;
+    transition:.3s;
+    font-weight:bold;
 }
 
-.buttons {
-    margin-top: 35px;
+.btn:hover{
+    background:var(--red);
+    box-shadow:0 0 30px rgba(229,9,20,.5);
+    transform:translateY(-3px);
 }
 
-.btn {
-    display: inline-block;
-    padding: 15px 28px;
-    margin: 8px;
-    border: 1px solid var(--red);
-    border-radius: 30px;
-    color: white;
-    text-decoration: none;
-    font-weight: bold;
-    transition: 0.3s;
-    cursor: pointer;
-    background: transparent;
-}
-
-.btn:hover {
-    background: var(--red);
-    box-shadow: 0 0 25px rgba(229,9,20,0.5);
-    transform: translateY(-3px);
-}
-
-.btn-red {
-    background: var(--red);
+.btn.red{
+    background:var(--red);
 }
 
 /* SECTIONS */
 
-section {
-    padding: 100px 8%;
+section{
+    padding:110px 8%;
+    position:relative;
 }
 
-.section-title {
-    text-align: center;
-    font-size: 42px;
-    margin-bottom: 50px;
+.section-title{
+    font-size:42px;
+    margin-bottom:15px;
 }
 
-.section-title span {
-    color: var(--red);
+.section-title span{
+    color:var(--red);
 }
 
-/* CARDS */
-
-.grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-    gap: 22px;
-}
-
-.card {
-    background: rgba(13,13,13,0.9);
-    border: 1px solid #242424;
-    border-left: 3px solid var(--red);
-    border-radius: 14px;
-    padding: 28px;
-    transition: 0.3s;
-}
-
-.card:hover {
-    transform: translateY(-7px);
-    border-color: var(--red);
-    box-shadow: 0 15px 40px rgba(229,9,20,0.15);
-}
-
-.card h3 {
-    color: white;
-    margin-bottom: 15px;
-    font-size: 22px;
-}
-
-.card h3 span {
-    color: var(--red);
-}
-
-.card p,
-.card li {
-    color: #aaa;
-    line-height: 1.7;
-}
-
-.card ul {
-    padding-left: 20px;
+.section-subtitle{
+    color:#999;
+    margin-bottom:50px;
+    max-width:700px;
+    line-height:1.7;
 }
 
 /* ABOUT */
 
-.about {
-    max-width: 950px;
-    margin: auto;
-    text-align: center;
+.about{
+    max-width:1000px;
+    line-height:1.9;
+    color:#ccc;
+    font-size:18px;
 }
 
-.about p {
-    color: #aaa;
-    line-height: 1.9;
-    font-size: 18px;
+/* GRID */
+
+.grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+    gap:20px;
+}
+
+.card{
+    background:linear-gradient(145deg,#101010,#080808);
+    border:1px solid #272727;
+    padding:28px;
+    border-radius:10px;
+    transition:.3s;
+    position:relative;
+    overflow:hidden;
+}
+
+.card:before{
+    content:"";
+    position:absolute;
+    top:0;
+    left:0;
+    width:4px;
+    height:100%;
+    background:var(--red);
+}
+
+.card:hover{
+    transform:translateY(-7px);
+    border-color:var(--red);
+    box-shadow:0 15px 40px rgba(229,9,20,.15);
+}
+
+.card h3{
+    margin-bottom:12px;
+    font-size:22px;
+}
+
+.card p{
+    color:#999;
+    line-height:1.7;
+}
+
+.card .small{
+    color:var(--red);
+    font-size:12px;
+    letter-spacing:2px;
+    margin-bottom:10px;
+    font-weight:bold;
 }
 
 /* SKILLS */
 
-.skill {
-    margin-bottom: 18px;
+.skills{
+    display:flex;
+    flex-wrap:wrap;
+    gap:12px;
 }
 
-.skill-name {
-    display: flex;
-    justify-content: space-between;
-    margin-bottom: 7px;
+.skill{
+    border:1px solid #333;
+    padding:12px 18px;
+    border-radius:3px;
+    color:#ddd;
+    background:#0b0b0b;
 }
 
-.bar {
-    height: 8px;
-    background: #222;
-    border-radius: 20px;
-    overflow: hidden;
-}
-
-.bar span {
-    display: block;
-    height: 100%;
-    background: linear-gradient(90deg, #700000, #e50914);
-    border-radius: 20px;
+.skill:hover{
+    border-color:var(--red);
+    color:white;
 }
 
 /* PROJECTS */
 
-.project {
-    position: relative;
-    overflow: hidden;
+.project{
+    min-height:250px;
 }
 
-.project::after {
-    content: "PROJECT";
-    position: absolute;
-    right: -30px;
-    top: 15px;
-    transform: rotate(45deg);
-    background: var(--red);
-    color: white;
-    font-size: 10px;
-    padding: 5px 35px;
-    font-weight: bold;
+.project-number{
+    font-size:12px;
+    color:var(--red);
+    letter-spacing:3px;
+    margin-bottom:20px;
+}
+
+.project h3{
+    font-size:25px;
+    margin-bottom:15px;
+}
+
+.project ul{
+    padding-left:18px;
+    color:#999;
+    line-height:1.8;
 }
 
 /* ASK NANDU */
 
-.ask-section {
+.ask-section{
     background:
-        radial-gradient(circle at center, rgba(229,9,20,0.14), transparent 55%);
+    linear-gradient(rgba(229,9,20,.04),rgba(229,9,20,.01));
 }
 
-.ask-box {
-    max-width: 850px;
-    margin: auto;
-    background: #0b0b0b;
-    border: 1px solid #333;
-    border-radius: 20px;
-    padding: 35px;
-    box-shadow: 0 0 50px rgba(229,9,20,0.08);
+.ask-box{
+    max-width:900px;
+    margin:auto;
+    background:#090909;
+    border:1px solid #333;
+    border-radius:12px;
+    padding:35px;
+    box-shadow:0 0 60px rgba(229,9,20,.08);
 }
 
-.ask-buttons {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 10px;
-    margin-bottom: 30px;
+.ask-buttons{
+    display:flex;
+    flex-wrap:wrap;
+    gap:10px;
+    margin-bottom:25px;
 }
 
-.answer {
-    min-height: 130px;
-    padding: 25px;
-    border-radius: 12px;
-    background: #050505;
-    border: 1px solid #292929;
-    color: #bbb;
-    line-height: 1.8;
+.ask-buttons button{
+    background:#111;
+    color:white;
+    border:1px solid #333;
+    padding:12px 18px;
+    cursor:pointer;
+    border-radius:4px;
 }
 
-.answer strong {
-    color: var(--red);
+.ask-buttons button:hover{
+    background:var(--red);
+    border-color:var(--red);
 }
 
-/* CONTACT */
-
-.contact {
-    text-align: center;
+.question-row{
+    display:flex;
+    gap:10px;
 }
 
-.contact p {
-    color: #999;
-    margin: 15px;
+.question-row input{
+    flex:1;
+    padding:16px;
+    background:#050505;
+    color:white;
+    border:1px solid #333;
+    border-radius:4px;
+    outline:none;
+}
+
+.question-row input:focus{
+    border-color:var(--red);
+}
+
+.question-row button{
+    padding:0 25px;
+    background:var(--red);
+    color:white;
+    border:0;
+    border-radius:4px;
+    cursor:pointer;
+    font-weight:bold;
+}
+
+.answer{
+    margin-top:25px;
+    padding:22px;
+    background:#111;
+    border-left:3px solid var(--red);
+    color:#ccc;
+    line-height:1.8;
+    min-height:70px;
+}
+
+/* CAREER */
+
+.timeline{
+    border-left:2px solid var(--red);
+    padding-left:30px;
+    max-width:850px;
+}
+
+.timeline-item{
+    margin-bottom:40px;
+}
+
+.timeline-item h3{
+    font-size:22px;
+}
+
+.timeline-item p{
+    color:#999;
+    margin-top:8px;
+    line-height:1.7;
 }
 
 /* FOOTER */
 
-footer {
-    text-align: center;
-    padding: 40px 20px;
-    border-top: 1px solid #222;
-    color: #666;
+footer{
+    text-align:center;
+    padding:70px 20px;
+    border-top:1px solid #222;
+    color:#777;
 }
 
-footer span {
-    color: var(--red);
+footer strong{
+    color:white;
+}
+
+.red{
+    color:var(--red);
 }
 
 /* MOBILE */
 
-@media(max-width:700px) {
-
-    nav {
-        padding: 15px 20px;
+@media(max-width:700px){
+    nav div:last-child{
+        display:none;
     }
 
-    nav div:last-child {
-        display: none;
+    h1{
+        font-size:65px;
+        letter-spacing:-4px;
     }
 
-    section {
-        padding: 75px 20px;
+    .hero p{
+        font-size:17px;
     }
 
-    .hero h1 {
-        letter-spacing: 3px;
+    section{
+        padding:80px 6%;
     }
 
-    .section-title {
-        font-size: 32px;
+    .question-row{
+        flex-direction:column;
     }
 
+    .question-row button{
+        padding:15px;
+    }
 }
-
 </style>
 </head>
 
 <body>
 
-<!-- NAVIGATION -->
+<div class="web-bg"></div>
+
+<!-- NAV -->
 
 <nav>
-
-    <div class="logo">
-        NANDU<span> AI</span>
-    </div>
+    <div class="logo">NANDU<span>AI</span></div>
 
     <div>
-        <a href="#about">About</a>
-        <a href="#education">Education</a>
-        <a href="#skills">Skills</a>
-        <a href="#projects">Projects</a>
-        <a href="#ask">Ask Nandu</a>
+        <a href="#about">ABOUT</a>
+        <a href="#skills">SKILLS</a>
+        <a href="#projects">PROJECTS</a>
+        <a href="#ask">ASK NANDU</a>
     </div>
-
 </nav>
 
 
@@ -396,37 +458,22 @@ footer span {
 
 <section class="hero">
 
-    <div class="hero-content">
+<div class="hero-content">
 
-        <div class="spider-symbol">🕷️</div>
+<div class="tag">CYBERSECURITY × ARTIFICIAL INTELLIGENCE</div>
 
-        <h1>NANDU <span>AI</span></h1>
+<h1>NANDU <span>AI</span></h1>
 
-        <h2>Cybersecurity • AI • Data Science</h2>
+<p>
+A personal AI and cybersecurity portfolio documenting
+my journey, projects, skills, interests and ambitions.
+</p>
 
-        <p>
-            A personal AI project built around cybersecurity,
-            artificial intelligence, learning, creativity and the
-            personality behind Nandu.
-        </p>
+<a class="btn red" href="#about">ENTER THE WEB</a>
 
-        <div class="buttons">
+<a class="btn" href="#projects">VIEW PROJECTS</a>
 
-            <a href="#about" class="btn btn-red">
-                EXPLORE NANDU
-            </a>
-
-            <a href="#projects" class="btn">
-                VIEW PROJECTS
-            </a>
-
-            <a href="#ask" class="btn">
-                ASK NANDU
-            </a>
-
-        </div>
-
-    </div>
+</div>
 
 </section>
 
@@ -435,146 +482,636 @@ footer span {
 
 <section id="about">
 
-    <h2 class="section-title">
-        ABOUT <span>NANDU</span>
-    </h2>
+<h2 class="section-title">WHO IS <span>NANDU?</span></h2>
 
-    <div class="about">
+<p class="section-subtitle">
+A cybersecurity and data science student building practical skills
+across security, networking, Linux, AI and machine learning.
+</p>
 
-        <p>
-            Nandu is a cybersecurity and AI student passionate about
-            technology, artificial intelligence, machine learning,
-            networking, Linux and security.
-        </p>
+<div class="about">
 
-        <br>
+<p>
+I am currently pursuing an MSc in Cybersecurity and Data Science
+at ESAIP École d’Ingénieurs in Angers, France.
+</p>
 
-        <p>
-            The goal is to continuously learn, build real projects,
-            understand how systems work and develop strong practical
-            cybersecurity skills.
-        </p>
+<br>
 
-        <br>
+<p>
+My goal is to build strong practical cybersecurity skills while
+combining them with Artificial Intelligence and Machine Learning.
+I enjoy learning by building projects instead of only studying theory.
+</p>
 
-        <p>
-            Nandu is naturally more introverted but becomes very
-            talkative and expressive around people she feels close to.
-            She values honesty, trust, respect, love, consistency
-            and genuine connections.
-        </p>
+<br>
 
-    </div>
+<p>
+I am particularly interested in cybersecurity, SOC analysis,
+networking, Linux, cloud security, digital forensics,
+AI-powered security tools and machine learning.
+</p>
+
+</div>
 
 </section>
 
 
 <!-- EDUCATION -->
 
-<section id="education">
+<section>
 
-    <h2 class="section-title">
-        EDUCATION & <span>LEARNING</span>
-    </h2>
+<h2 class="section-title">THE <span>JOURNEY</span></h2>
 
-    <div class="grid">
+<div class="timeline">
 
-        <div class="card">
+<div class="timeline-item">
+<h3>MSc Cybersecurity & Data Science</h3>
+<p>
+ESAIP École d’Ingénieurs — Angers, France<br>
+2025 – 2027
+</p>
+</div>
 
-            <h3>🎓 Bachelor's Degree</h3>
+<div class="timeline-item">
+<h3>Bachelor in Computer Science</h3>
+<p>
+Computer Science studies with a foundation in programming,
+computing, networking and technology.
+</p>
+</div>
 
-            <p>
-                <strong>Computer Science</strong>
-            </p>
+<div class="timeline-item">
+<h3>Human Resources & Marketing</h3>
+<p>
+2021 – 2024
+</p>
+</div>
 
-            <p>
-                2017 – 2021
-            </p>
-
-            <br>
-
-            <ul>
-                <li>Programming fundamentals</li>
-                <li>Computer systems</li>
-                <li>Networking concepts</li>
-                <li>Databases</li>
-                <li>Software development</li>
-                <li>Computer science fundamentals</li>
-            </ul>
-
-        </div>
-
-
-        <div class="card">
-
-            <h3>📚 Human Resources & Marketing</h3>
-
-            <p>
-                2021 – 2024
-            </p>
-
-            <br>
-
-            <ul>
-                <li>Communication</li>
-                <li>Management</li>
-                <li>Business understanding</li>
-                <li>People skills</li>
-                <li>Marketing concepts</li>
-            </ul>
-
-        </div>
-
-
-        <div class="card">
-
-            <h3>🕷️ MSc Cybersecurity & Data Science</h3>
-
-            <p>
-                ESAIP École d'Ingénieurs
-            </p>
-
-            <p>
-                2025 – 2027
-            </p>
-
-            <br>
-
-            <ul>
-                <li>Cybersecurity</li>
-                <li>Data Science</li>
-                <li>Artificial Intelligence</li>
-                <li>Machine Learning</li>
-                <li>Security analysis</li>
-                <li>Networking</li>
-            </ul>
-
-        </div>
-
-    </div>
+</div>
 
 </section>
 
 
-<!-- SKILLS -->
+<!-- SUBJECTS -->
 
-<section id="skills">
+<section>
 
-    <h2 class="section-title">
-        TECHNICAL <span>SKILLS</span>
-    </h2>
+<h2 class="section-title">WHAT I <span>KNOW</span></h2>
 
-    <div class="grid">
+<p class="section-subtitle">
+Areas I have studied, practiced or am actively developing.
+</p>
 
-        <div class="card">
+<div class="skills">
 
-            <h3>Cybersecurity</h3>
+<div class="skill">Cybersecurity</div>
+<div class="skill">Networking</div>
+<div class="skill">TCP/IP</div>
+<div class="skill">OSI Model</div>
+<div class="skill">Linux</div>
+<div class="skill">Python</div>
+<div class="skill">Bash</div>
+<div class="skill">PowerShell</div>
+<div class="skill">SQL</div>
+<div class="skill">SOC Analysis</div>
+<div class="skill">Digital Forensics</div>
+<div class="skill">Cloud Security</div>
+<div class="skill">AI</div>
+<div class="skill">Machine Learning</div>
+<div class="skill">Random Forest</div>
+<div class="skill">Threat Detection</div>
+<div class="skill">Phishing Detection</div>
+<div class="skill">Wireshark</div>
+<div class="skill">Volatility</div>
+<div class="skill">Git</div>
+<div class="skill">Docker</div>
+<div class="skill">AWS</div>
 
-            <ul>
-                <li>SOC fundamentals</li>
-                <li>Security monitoring</li>
-                <li>Incident analysis</li>
-                <li>Digital forensics</li>
-                <li>Ethical hacking fundamentals</li>
-                <li>Security assessment</li>
-            </ul
+</div>
+
+</section>
+
+
+<!-- PROJECTS -->
+
+<section id="projects">
+
+<h2 class="section-title">MY <span>PROJECTS</span></h2>
+
+<p class="section-subtitle">
+Projects where I turn cybersecurity and AI concepts into practical work.
+</p>
+
+<div class="grid">
+
+
+<div class="card project">
+
+<div class="project-number">01 / CLOUD SECURITY</div>
+
+<h3>CloudSentinel AI</h3>
+
+<p>
+An AI-inspired cloud security scanner designed to identify
+common cloud security misconfigurations.
+</p>
+
+<br>
+
+<ul>
+<li>Public storage detection</li>
+<li>Unencrypted storage detection</li>
+<li>Public database detection</li>
+<li>Port exposure analysis</li>
+<li>Security findings reporting</li>
+</ul>
+
+</div>
+
+
+<div class="card project">
+
+<div class="project-number">02 / SOC</div>
+
+<h3>AI SOC Analyst</h3>
+
+<p>
+A project focused on using automation and AI concepts
+to analyze security logs and identify suspicious activity.
+</p>
+
+<br>
+
+<ul>
+<li>Security log analysis</li>
+<li>Detection logic</li>
+<li>Automated findings</li>
+<li>SOC workflow concepts</li>
+</ul>
+
+</div>
+
+
+<div class="card project">
+
+<div class="project-number">03 / FORENSICS</div>
+
+<h3>USB Investigation Lab</h3>
+
+<p>
+A digital-forensics learning project for investigating
+USB activity and file events.
+</p>
+
+<br>
+
+<ul>
+<li>USB event analysis</li>
+<li>File activity investigation</li>
+<li>Evidence analysis</li>
+<li>Forensic reporting</li>
+</ul>
+
+</div>
+
+
+<div class="card project">
+
+<div class="project-number">04 / AI SECURITY</div>
+
+<h3>AI Phishing Detector</h3>
+
+<p>
+A cybersecurity project exploring how AI and machine learning
+can help identify phishing activity.
+</p>
+
+<br>
+
+<ul>
+<li>Phishing detection</li>
+<li>Machine learning concepts</li>
+<li>Classification</li>
+<li>Security automation</li>
+</ul>
+
+</div>
+
+
+<div class="card project">
+
+<div class="project-number">05 / AUTOMATION</div>
+
+<h3>Security Log Automation</h3>
+
+<p>
+A Python-based security monitoring project designed to
+process logs and identify potential security events.
+</p>
+
+<br>
+
+<ul>
+<li>Log monitoring</li>
+<li>Alert generation</li>
+<li>Python automation</li>
+<li>Real-time monitoring concepts</li>
+</ul>
+
+</div>
+
+
+<div class="card project">
+
+<div class="project-number">06 / AI</div>
+
+<h3>AI Image Analyzer</h3>
+
+<p>
+An AI project exploring image analysis using Python
+and an AI model.
+</p>
+
+<br>
+
+<ul>
+<li>Python</li>
+<li>AI APIs</li>
+<li>Image analysis</li>
+<li>Virtual environments</li>
+</ul>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- STRENGTHS -->
+
+<section>
+
+<h2 class="section-title">MY <span>STRENGTHS</span></h2>
+
+<div class="grid">
+
+<div class="card">
+<h3>Curious</h3>
+<p>
+I like understanding how things work rather than simply
+memorizing them.
+</p>
+</div>
+
+<div class="card">
+<h3>Hands-on</h3>
+<p>
+I learn strongly through building projects, experimenting
+and solving problems.
+</p>
+</div>
+
+<div class="card">
+<h3>Adaptable</h3>
+<p>
+I am continuously learning new technologies and expanding
+my cybersecurity knowledge.
+</p>
+</div>
+
+<div class="card">
+<h3>Determined</h3>
+<p>
+My goal is to continuously improve my technical skills and
+build a strong cybersecurity career.
+</p>
+</div>
+
+</div>
+
+</section>
+
+
+<!-- CAREER -->
+
+<section>
+
+<h2 class="section-title">WHERE I'M <span>GOING</span></h2>
+
+<div class="grid">
+
+<div class="card">
+<h3>🎯 Internship</h3>
+<p>
+Looking for opportunities where I can gain practical
+cybersecurity experience and contribute to real projects.
+</p>
+</div>
+
+<div class="card">
+<h3>🛡️ Cybersecurity</h3>
+<p>
+Interested in SOC, security analysis, cloud security,
+network security and digital forensics.
+</p>
+</div>
+
+<div class="card">
+<h3>🤖 AI × Security</h3>
+<p>
+Long-term interest in combining artificial intelligence
+with cybersecurity.
+</p>
+</div>
+
+</div>
+
+</section>
+
+
+<!-- INTERESTS -->
+
+<section>
+
+<h2 class="section-title">THE <span>VIBE</span></h2>
+
+<p class="section-subtitle">
+Things that make Nandu, Nandu.
+</p>
+
+<div class="skills">
+
+<div class="skill">🎵 Bass-heavy music</div>
+<div class="skill">☁️ Cloudy weather</div>
+<div class="skill">🌧️ Dark skies</div>
+<div class="skill">🍛 Indian food</div>
+<div class="skill">🎬 Thriller movies</div>
+<div class="skill">👻 Horror</div>
+<div class="skill">🧩 Plot twists</div>
+<div class="skill">🌊 Beaches</div>
+<div class="skill">🌿 Nature</div>
+<div class="skill">🏋️ Gym</div>
+<div class="skill">🥊 Boxing</div>
+<div class="skill">🎨 Aesthetic things</div>
+<div class="skill">❤️ Love & emotions</div>
+
+</div>
+
+</section>
+
+
+<!-- ASK NANDU -->
+
+<section id="ask" class="ask-section">
+
+<h2 class="section-title">ASK <span>NANDU</span></h2>
+
+<p class="section-subtitle">
+Want to know about Nandu? Ask questions using the public
+information available on this website.
+</p>
+
+<div class="ask-box">
+
+<div class="ask-buttons">
+
+<button onclick="askPreset('life')">ASK NANDU LIFE</button>
+
+<button onclick="askPreset('vibe')">ASK NANDU VIBE</button>
+
+<button onclick="askPreset('tech')">ASK NANDU TECH</button>
+
+<button onclick="askPreset('projects')">ASK NANDU PROJECTS</button>
+
+</div>
+
+<div class="question-row">
+
+<input
+id="question"
+type="text"
+placeholder="Ask something about Nandu..."
+onkeydown="if(event.key==='Enter') askNandu()"
+>
+
+<button onclick="askNandu()">ASK</button>
+
+</div>
+
+<div id="answer" class="answer">
+Ask me something about Nandu.
+</div>
+
+</div>
+
+</section>
+
+
+<!-- FOOTER -->
+
+<footer>
+
+<p>
+<strong>NANDU<span class="red">AI</span></strong>
+</p>
+
+<p style="margin-top:12px;">
+Cybersecurity • AI • Data Science • Projects
+</p>
+
+<p style="margin-top:25px;">
+© 2026 Nandu AI
+</p>
+
+</footer>
+
+
+<script>
+
+/* PUBLIC NANDU INFORMATION */
+
+const nandu = {
+
+life: `
+Nandu is a cybersecurity and data science student currently
+studying in France. She enjoys learning, building technical
+projects and developing herself professionally.
+`,
+
+vibe: `
+Nandu likes bass-heavy music, cloudy and dark weather,
+Indian food, thriller and horror movies, plot twists,
+beaches, nature, water, aesthetic environments, gym and boxing.
+She is generally introverted but becomes very talkative and
+comfortable around people she is close to.
+`,
+
+tech: `
+Nandu is interested in cybersecurity, artificial intelligence
+and machine learning. Her learning areas include networking,
+TCP/IP, Linux, Python, Bash, PowerShell, SQL, SOC analysis,
+cloud security, digital forensics, threat detection,
+phishing detection and machine learning.
+`,
+
+projects: `
+Nandu has worked on projects including CloudSentinel AI,
+AI SOC Analyst, USB Investigation Lab, AI Phishing Detector,
+Security Log Automation and AI Image Analyzer.
+
+CloudSentinel AI focuses on identifying cloud security
+misconfigurations.
+
+AI SOC Analyst focuses on security log analysis and detection.
+
+USB Investigation Lab focuses on USB events and forensic
+investigation.
+
+AI Phishing Detector explores AI and machine learning
+for phishing detection.
+
+Security Log Automation focuses on monitoring and alerts.
+
+AI Image Analyzer explores AI-based image analysis using Python.
+`,
+
+education: `
+Nandu is currently pursuing an MSc in Cybersecurity and
+Data Science at ESAIP École d’Ingénieurs in Angers, France.
+
+She also has a background in Computer Science and has studied
+Human Resources and Marketing.
+`,
+
+career: `
+Nandu is interested in cybersecurity internships and jobs,
+especially opportunities involving SOC analysis, cybersecurity,
+network security, cloud security, digital forensics,
+AI and machine learning.
+`
+
+};
+
+
+/* ANSWER QUESTIONS */
+
+function askNandu(){
+
+    const input = document
+        .getElementById("question")
+        .value
+        .toLowerCase()
+        .trim();
+
+    if(!input){
+        document.getElementById("answer").innerText =
+        "Ask me something first.";
+        return;
+    }
+
+    let answer =
+    "I only know the public information Nandu has chosen to share on this website.";
+
+    if(
+        input.includes("like") ||
+        input.includes("hobby") ||
+        input.includes("music") ||
+        input.includes("weather") ||
+        input.includes("movie") ||
+        input.includes("food") ||
+        input.includes("vibe")
+    ){
+        answer = nandu.vibe;
+    }
+
+    else if(
+        input.includes("project") ||
+        input.includes("built") ||
+        input.includes("build") ||
+        input.includes("created")
+    ){
+        answer = nandu.projects;
+    }
+
+    else if(
+        input.includes("cyber") ||
+        input.includes("skill") ||
+        input.includes("python") ||
+        input.includes("linux") ||
+        input.includes("ai") ||
+        input.includes("machine learning") ||
+        input.includes("technical")
+    ){
+        answer = nandu.tech;
+    }
+
+    else if(
+        input.includes("study") ||
+        input.includes("education") ||
+        input.includes("degree") ||
+        input.includes("master") ||
+        input.includes("bachelor") ||
+        input.includes("esaip")
+    ){
+        answer = nandu.education;
+    }
+
+    else if(
+        input.includes("job") ||
+        input.includes("career") ||
+        input.includes("internship") ||
+        input.includes("looking for")
+    ){
+        answer = nandu.career;
+    }
+
+    else if(
+        input.includes("who is nandu") ||
+        input.includes("about nandu") ||
+        input.includes("tell me about")
+    ){
+        answer = nandu.life;
+    }
+
+    document.getElementById("answer").innerText = answer;
+}
+
+
+/* PRESET QUESTIONS */
+
+function askPreset(type){
+
+    let question = "";
+
+    if(type === "life"){
+        question = "Who is Nandu?";
+    }
+
+    if(type === "vibe"){
+        question = "What does Nandu like?";
+    }
+
+    if(type === "tech"){
+        question = "What technology does Nandu know?";
+    }
+
+    if(type === "projects"){
+        question = "What projects has Nandu built?";
+    }
+
+    document.getElementById("question").value = question;
+
+    askNandu();
+
+    document.getElementById("answer").scrollIntoView({
+        behavior:"smooth",
+        block:"center"
+    });
+}
+
+</script>
+
+</body>
+</html>
