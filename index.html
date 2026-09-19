@@ -1,62 +1,1096 @@
-
 <!DOCTYPE html>
-<html>
+<html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>NANDU AI</title>
 
     <style>
-        body {
+
+        * {
             margin: 0;
-            background: #080808;
-            color: white;
-            font-family: Arial, sans-serif;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
         }
+
+        body {
+            background: #050505;
+            color: white;
+            font-family: Arial, Helvetica, sans-serif;
+            overflow-x: hidden;
+        }
+
+        /* =========================
+           SPIDER WEB BACKGROUND
+        ========================== */
+
+        body::before {
+            content: "";
+            position: fixed;
+            inset: 0;
+
+            background-image:
+                radial-gradient(circle at center,
+                    transparent 0 80px,
+                    rgba(255, 0, 0, 0.08) 81px 82px,
+                    transparent 83px),
+                repeating-radial-gradient(
+                    circle at center,
+                    transparent 0 70px,
+                    rgba(255, 255, 255, 0.035) 71px 72px
+                );
+
+            pointer-events: none;
+            z-index: -2;
+        }
+
+        body::after {
+            content: "";
+            position: fixed;
+            inset: 0;
+
+            background:
+                linear-gradient(
+                    120deg,
+                    transparent 48%,
+                    rgba(255, 0, 0, 0.04) 49%,
+                    transparent 50%
+                );
+
+            background-size: 120px 120px;
+
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        /* =========================
+           NAVIGATION
+        ========================== */
+
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+
+            height: 75px;
+
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+
+            padding: 0 7%;
+
+            background: rgba(0, 0, 0, 0.85);
+            backdrop-filter: blur(15px);
+
+            border-bottom: 1px solid rgba(255, 0, 0, 0.3);
+
+            z-index: 1000;
+        }
+
+        .logo {
+            font-size: 25px;
+            font-weight: 900;
+            letter-spacing: 3px;
+            color: white;
+        }
+
+        .logo span {
+            color: #e50914;
+        }
+
+        .spider {
+            color: #e50914;
+            margin-right: 8px;
+        }
+
+        nav ul {
+            display: flex;
+            gap: 30px;
+            list-style: none;
+        }
+
+        nav a {
+            color: #ddd;
+            text-decoration: none;
+            font-size: 14px;
+            transition: 0.3s;
+        }
+
+        nav a:hover {
+            color: #e50914;
+        }
+
+        /* =========================
+           HERO
+        ========================== */
 
         .hero {
             min-height: 100vh;
+
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
+
             text-align: center;
+
+            padding: 100px 20px;
+
+            position: relative;
         }
 
-        h1 {
-            font-size: 70px;
-            margin: 0;
+        .hero-spider {
+            font-size: 75px;
+
+            animation: float 3s ease-in-out infinite;
+
+            filter:
+                drop-shadow(0 0 15px #e50914)
+                drop-shadow(0 0 30px rgba(229, 9, 20, 0.5));
         }
 
-        p {
-            color: #aaa;
+        @keyframes float {
+
+            0%, 100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-15px);
+            }
+
+        }
+
+        .hero h1 {
+            font-size: clamp(60px, 10vw, 130px);
+
+            font-weight: 900;
+
+            letter-spacing: 8px;
+
+            margin-top: 15px;
+
+            text-shadow:
+                0 0 10px rgba(255, 0, 0, 0.4),
+                0 0 30px rgba(255, 0, 0, 0.2);
+        }
+
+        .hero h1 span {
+            color: #e50914;
+        }
+
+        .hero p {
+            margin-top: 20px;
+
             font-size: 22px;
+
+            color: #aaa;
+
+            max-width: 650px;
+
+            line-height: 1.6;
         }
 
-        .button {
-            margin-top: 25px;
-            padding: 15px 30px;
-            border: 1px solid #555;
-            border-radius: 30px;
-            color: white;
-            text-decoration: none;
+        .buttons {
+            margin-top: 40px;
+
+            display: flex;
+            gap: 20px;
+
+            flex-wrap: wrap;
+
+            justify-content: center;
         }
+
+        .btn {
+            padding: 16px 32px;
+
+            border-radius: 30px;
+
+            text-decoration: none;
+
+            font-weight: bold;
+
+            transition: 0.3s;
+
+            cursor: pointer;
+        }
+
+        .primary {
+            background: #e50914;
+            color: white;
+
+            box-shadow:
+                0 0 15px rgba(229, 9, 20, 0.4);
+        }
+
+        .primary:hover {
+            transform: translateY(-4px);
+
+            background: #ff1622;
+
+            box-shadow:
+                0 0 30px rgba(229, 9, 20, 0.8);
+        }
+
+        .secondary {
+            border: 1px solid #444;
+            color: white;
+        }
+
+        .secondary:hover {
+            border-color: #e50914;
+            color: #e50914;
+        }
+
+        /* =========================
+           SECTIONS
+        ========================== */
+
+        section {
+            min-height: 100vh;
+
+            padding: 120px 8%;
+
+            display: flex;
+            flex-direction: column;
+
+            justify-content: center;
+        }
+
+        .section-title {
+            font-size: 55px;
+
+            margin-bottom: 20px;
+
+            font-weight: 900;
+        }
+
+        .section-title span {
+            color: #e50914;
+        }
+
+        .section-intro {
+            color: #999;
+
+            font-size: 18px;
+
+            max-width: 750px;
+
+            line-height: 1.7;
+
+            margin-bottom: 50px;
+        }
+
+        /* =========================
+           CARDS
+        ========================== */
+
+        .cards {
+            display: grid;
+
+            grid-template-columns:
+                repeat(auto-fit, minmax(240px, 1fr));
+
+            gap: 25px;
+        }
+
+        .card {
+            background:
+                linear-gradient(
+                    145deg,
+                    rgba(255, 0, 0, 0.08),
+                    rgba(255, 255, 255, 0.02)
+                );
+
+            border: 1px solid #292929;
+
+            border-radius: 18px;
+
+            padding: 30px;
+
+            transition: 0.3s;
+
+            position: relative;
+
+            overflow: hidden;
+        }
+
+        .card::before {
+            content: "";
+
+            position: absolute;
+
+            top: 0;
+            left: 0;
+
+            width: 100%;
+            height: 2px;
+
+            background: #e50914;
+
+            transform: scaleX(0);
+
+            transform-origin: left;
+
+            transition: 0.3s;
+        }
+
+        .card:hover {
+            transform: translateY(-8px);
+
+            border-color: #e50914;
+
+            box-shadow:
+                0 15px 40px rgba(229, 9, 20, 0.15);
+        }
+
+        .card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .card-icon {
+            font-size: 35px;
+
+            margin-bottom: 20px;
+
+            color: #e50914;
+        }
+
+        .card h3 {
+            font-size: 22px;
+
+            margin-bottom: 12px;
+        }
+
+        .card p {
+            color: #999;
+
+            line-height: 1.6;
+        }
+
+        /* =========================
+           MEMORY
+        ========================== */
+
+        .memory-box {
+            border-left: 3px solid #e50914;
+
+            background: rgba(255, 0, 0, 0.04);
+
+            padding: 35px;
+
+            border-radius: 0 15px 15px 0;
+
+            max-width: 900px;
+        }
+
+        .memory-box p {
+            color: #bbb;
+
+            line-height: 1.8;
+
+            font-size: 18px;
+        }
+
+        .memory-tag {
+            display: inline-block;
+
+            margin: 8px 5px 0 0;
+
+            padding: 8px 15px;
+
+            border-radius: 20px;
+
+            background: #150000;
+
+            border: 1px solid #4d1111;
+
+            color: #e50914;
+
+            font-size: 13px;
+        }
+
+        /* =========================
+           TECH
+        ========================== */
+
+        .tech-list {
+            display: flex;
+
+            flex-wrap: wrap;
+
+            gap: 15px;
+        }
+
+        .tech {
+            padding: 14px 22px;
+
+            border: 1px solid #333;
+
+            border-radius: 30px;
+
+            background: #0c0c0c;
+
+            color: #ddd;
+
+            transition: 0.3s;
+        }
+
+        .tech:hover {
+            border-color: #e50914;
+
+            color: #e50914;
+
+            transform: scale(1.05);
+        }
+
+        /* =========================
+           ARCHITECTURE
+        ========================== */
+
+        .architecture {
+            display: flex;
+
+            justify-content: center;
+
+            align-items: center;
+
+            gap: 20px;
+
+            flex-wrap: wrap;
+
+            margin-top: 30px;
+        }
+
+        .architecture-box {
+            padding: 25px;
+
+            min-width: 190px;
+
+            text-align: center;
+
+            border: 1px solid #333;
+
+            border-radius: 15px;
+
+            background: #0b0b0b;
+        }
+
+        .architecture-box strong {
+            display: block;
+
+            color: #e50914;
+
+            margin-bottom: 8px;
+        }
+
+        .arrow {
+            color: #e50914;
+
+            font-size: 25px;
+        }
+
+        /* =========================
+           CONTACT
+        ========================== */
+
+        .contact {
+            text-align: center;
+
+            align-items: center;
+        }
+
+        .contact p {
+            color: #999;
+
+            max-width: 600px;
+
+            line-height: 1.7;
+        }
+
+        /* =========================
+           FOOTER
+        ========================== */
+
+        footer {
+            padding: 40px;
+
+            text-align: center;
+
+            color: #666;
+
+            border-top: 1px solid #222;
+
+            background: #030303;
+        }
+
+        footer span {
+            color: #e50914;
+        }
+
+        /* =========================
+           RESPONSIVE
+        ========================== */
+
+        @media (max-width: 700px) {
+
+            nav {
+                padding: 0 20px;
+            }
+
+            nav ul {
+                display: none;
+            }
+
+            .hero h1 {
+                font-size: 55px;
+
+                letter-spacing: 3px;
+            }
+
+            .hero p {
+                font-size: 18px;
+            }
+
+            section {
+                padding: 100px 25px;
+            }
+
+            .section-title {
+                font-size: 42px;
+            }
+
+        }
+
     </style>
+
 </head>
+
 
 <body>
 
-    <div class="hero">
+    <!-- =========================
+         NAVIGATION
+    ========================== -->
 
-        <h1>🧠 NANDU AI</h1>
+    <nav>
 
-        <p>A personal AI with memory.</p>
+        <div class="logo">
+            <span class="spider">🕷</span>
+            NANDU<span>AI</span>
+        </div>
 
-        <a class="button" href="#about">
-            Explore NANDU
-        </a>
+        <ul>
 
-    </div>
+            <li>
+                <a href="#home">Home</a>
+            </li>
+
+            <li>
+                <a href="#about">About</a>
+            </li>
+
+            <li>
+                <a href="#memory">Memory</a>
+            </li>
+
+            <li>
+                <a href="#capabilities">Capabilities</a>
+            </li>
+
+            <li>
+                <a href="#technology">Technology</a>
+            </li>
+
+        </ul>
+
+    </nav>
+
+
+    <!-- =========================
+         HOME
+    ========================== -->
+
+    <section class="hero" id="home">
+
+        <div class="hero-spider">
+            🕷️
+        </div>
+
+        <h1>
+            NANDU <span>AI</span>
+        </h1>
+
+        <p>
+            A personal AI assistant built to learn,
+            remember and grow with Nandu.
+        </p>
+
+        <div class="buttons">
+
+            <a href="#about" class="btn primary">
+                Explore NANDU
+            </a>
+
+            <a href="#technology" class="btn secondary">
+                How it works
+            </a>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         ABOUT
+    ========================== -->
+
+    <section id="about">
+
+        <h2 class="section-title">
+            About <span>NANDU</span>
+        </h2>
+
+        <p class="section-intro">
+            NANDU AI is a personal artificial intelligence
+            assistant created as a learning project.
+            It runs locally using Ollama and Llama 3.2,
+            allowing the AI to interact without depending
+            on a paid cloud AI service.
+        </p>
+
+
+        <div class="cards">
+
+            <div class="card">
+
+                <div class="card-icon">🕷️</div>
+
+                <h3>Personal</h3>
+
+                <p>
+                    Designed around one person instead of
+                    being a generic assistant.
+                </p>
+
+            </div>
+
+
+            <div class="card">
+
+                <div class="card-icon">🧠</div>
+
+                <h3>Memory</h3>
+
+                <p>
+                    NANDU can use stored information
+                    about its user when generating responses.
+                </p>
+
+            </div>
+
+
+            <div class="card">
+
+                <div class="card-icon">⚡</div>
+
+                <h3>Local AI</h3>
+
+                <p>
+                    The underlying AI model runs locally
+                    through Ollama.
+                </p>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         MEMORY
+    ========================== -->
+
+    <section id="memory">
+
+        <h2 class="section-title">
+            NANDU <span>Memory</span>
+        </h2>
+
+        <p class="section-intro">
+            NANDU is designed to remember useful information
+            so conversations can become more personal over time.
+        </p>
+
+
+        <div class="memory-box">
+
+            <p>
+                The memory system stores structured information
+                about preferences, interests, personality and
+                goals. This information can then be included
+                in the AI's context when responding.
+            </p>
+
+            <br>
+
+            <span class="memory-tag">Preferences</span>
+
+            <span class="memory-tag">Interests</span>
+
+            <span class="memory-tag">Personality</span>
+
+            <span class="memory-tag">Goals</span>
+
+            <span class="memory-tag">Habits</span>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         CAPABILITIES
+    ========================== -->
+
+    <section id="capabilities">
+
+        <h2 class="section-title">
+            What NANDU <span>Can Do</span>
+        </h2>
+
+        <p class="section-intro">
+            The project can evolve beyond a simple chatbot
+            into a complete personal AI system.
+        </p>
+
+
+        <div class="cards">
+
+            <div class="card">
+
+                <div class="card-icon">💬</div>
+
+                <h3>Conversation</h3>
+
+                <p>
+                    Have natural conversations using
+                    a locally running LLM.
+                </p>
+
+            </div>
+
+
+            <div class="card">
+
+                <div class="card-icon">🧩</div>
+
+                <h3>Personal Context</h3>
+
+                <p>
+                    Use stored information to make
+                    responses more relevant.
+                </p>
+
+            </div>
+
+
+            <div class="card">
+
+                <div class="card-icon">🔎</div>
+
+                <h3>Knowledge</h3>
+
+                <p>
+                    Connect future versions to documents,
+                    files and external information.
+                </p>
+
+            </div>
+
+
+            <div class="card">
+
+                <div class="card-icon">⚙️</div>
+
+                <h3>Automation</h3>
+
+                <p>
+                    Eventually perform useful tasks
+                    instead of only answering questions.
+                </p>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         TECHNOLOGY
+    ========================== -->
+
+    <section id="technology">
+
+        <h2 class="section-title">
+            Built With <span>AI</span>
+        </h2>
+
+        <p class="section-intro">
+            The current version uses a simple architecture
+            that can be expanded as the project grows.
+        </p>
+
+
+        <div class="architecture">
+
+            <div class="architecture-box">
+
+                <strong>USER</strong>
+
+                Question
+
+            </div>
+
+
+            <div class="arrow">
+                →
+            </div>
+
+
+            <div class="architecture-box">
+
+                <strong>PYTHON</strong>
+
+                Application
+
+            </div>
+
+
+            <div class="arrow">
+                →
+            </div>
+
+
+            <div class="architecture-box">
+
+                <strong>MEMORY</strong>
+
+                Profile
+
+            </div>
+
+
+            <div class="arrow">
+                →
+            </div>
+
+
+            <div class="architecture-box">
+
+                <strong>OLLAMA</strong>
+
+                Local AI
+
+            </div>
+
+
+            <div class="arrow">
+                →
+            </div>
+
+
+            <div class="architecture-box">
+
+                <strong>LLAMA 3.2</strong>
+
+                LLM
+
+            </div>
+
+        </div>
+
+
+        <div class="tech-list" style="margin-top:50px;">
+
+            <div class="tech">
+                Python
+            </div>
+
+            <div class="tech">
+                Ollama
+            </div>
+
+            <div class="tech">
+                Llama 3.2
+            </div>
+
+            <div class="tech">
+                JSON
+            </div>
+
+            <div class="tech">
+                HTML
+            </div>
+
+            <div class="tech">
+                CSS
+            </div>
+
+            <div class="tech">
+                JavaScript
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         FUTURE
+    ========================== -->
+
+    <section id="future">
+
+        <h2 class="section-title">
+            The <span>Future</span>
+        </h2>
+
+        <p class="section-intro">
+            NANDU AI is not meant to remain a basic chatbot.
+            The project can gradually become a complete
+            personal AI platform.
+        </p>
+
+
+        <div class="cards">
+
+            <div class="card">
+
+                <div class="card-icon">🧠</div>
+
+                <h3>Better Memory</h3>
+
+                <p>
+                    Long-term memory with intelligent
+                    retrieval instead of simple JSON storage.
+                </p>
+
+            </div>
+
+
+            <div class="card">
+
+                <div class="card-icon">🎙️</div>
+
+                <h3>Voice</h3>
+
+                <p>
+                    Talk naturally with NANDU using
+                    speech recognition and voice output.
+                </p>
+
+            </div>
+
+
+            <div class="card">
+
+                <div class="card-icon">👁️</div>
+
+                <h3>Vision</h3>
+
+                <p>
+                    Allow NANDU to understand images,
+                    documents and visual information.
+                </p>
+
+            </div>
+
+
+            <div class="card">
+
+                <div class="card-icon">🤖</div>
+
+                <h3>AI Agent</h3>
+
+                <p>
+                    Give NANDU the ability to perform
+                    useful tasks and automate workflows.
+                </p>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         CONTACT
+    ========================== -->
+
+    <section class="contact" id="contact">
+
+        <div class="hero-spider">
+            🕷️
+        </div>
+
+        <h2 class="section-title">
+            Meet <span>NANDU AI</span>
+        </h2>
+
+        <p>
+            A personal AI project combining Python,
+            local LLMs, memory and cybersecurity/AI
+            learning into one evolving system.
+        </p>
+
+
+        <div class="buttons">
+
+            <a
+                href="https://github.com/Nandinivadla/nandu-ai"
+                target="_blank"
+                class="btn primary"
+            >
+                View on GitHub
+            </a>
+
+            <a
+                href="#home"
+                class="btn secondary"
+            >
+                Back to top
+            </a>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         FOOTER
+    ========================== -->
+
+    <footer>
+
+        🕷️ NANDU<span>AI</span>
+
+        <br><br>
+
+        Built with Python • Ollama • Llama 3.2
+
+    </footer>
+
 
 </body>
+
 </html>
