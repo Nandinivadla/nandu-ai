@@ -4,43 +4,50 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Nandini Vadla | Cybersecurity • Data • AI</title>
+<title>Nandini Vadla | Cybersecurity • Data Science • AI</title>
 
 <meta name="description"
-content="Nandini Vadla — Cybersecurity and Data Science Master's student specializing in cybersecurity, AI, data analytics and business analysis.">
+content="Nandini Vadla — Cybersecurity and Data Science Master's student interested in cybersecurity, artificial intelligence and data science.">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 
+
 <style>
 
 /* =========================================================
-   GLOBAL
+   COLORS
 ========================================================= */
 
 :root {
-    --forest: #07130e;
-    --forest2: #0b2117;
-    --forest3: #103522;
+
+    --forest-dark: #06100b;
+    --forest: #081a11;
+    --forest-light: #103522;
 
     --green: #48d58b;
-    --green2: #8affbd;
+    --green-light: #9affc5;
 
     --pink: #ff5fa2;
-    --pink2: #ff9ac5;
+    --pink-light: #ff9ac5;
 
-    --purple: #b96cff;
+    --peach: #ffc6a5;
+    --peach-light: #ffe0cf;
 
-    --white: #f5fff9;
-    --text: #d6e5dc;
-    --muted: #91a89b;
+    --text: #edf8f1;
+    --muted: #9cafA3;
 
-    --border: rgba(138,255,189,0.16);
+    --card: rgba(8, 27, 18, 0.78);
 
-    --card: rgba(8,26,18,0.76);
+    --border: rgba(154, 255, 197, 0.16);
 }
+
+
+/* =========================================================
+   RESET
+========================================================= */
 
 * {
     margin: 0;
@@ -53,10 +60,15 @@ html {
 }
 
 body {
-    background: var(--forest);
-    color: var(--white);
+
+    background: var(--forest-dark);
+
+    color: var(--text);
+
     font-family: "Inter", sans-serif;
+
     line-height: 1.6;
+
     overflow-x: hidden;
 }
 
@@ -72,80 +84,94 @@ a {
 
 
 /* =========================================================
-   FOREST BACKGROUND
+   BACKGROUND
 ========================================================= */
 
 .forest-background {
+
     position: fixed;
+
     inset: 0;
-    z-index: -10;
+
+    z-index: -20;
+
     overflow: hidden;
 
     background:
+
         radial-gradient(
-            circle at 20% 20%,
-            rgba(72,213,139,0.18),
+            circle at 15% 20%,
+            rgba(72, 213, 139, 0.20),
             transparent 30%
         ),
 
         radial-gradient(
-            circle at 80% 25%,
-            rgba(255,95,162,0.20),
-            transparent 30%
+            circle at 85% 25%,
+            rgba(255, 95, 162, 0.20),
+            transparent 32%
         ),
 
         radial-gradient(
-            circle at 50% 80%,
-            rgba(185,108,255,0.12),
-            transparent 35%
+            circle at 50% 70%,
+            rgba(255, 198, 165, 0.08),
+            transparent 30%
         ),
 
         linear-gradient(
             180deg,
-            #06110c 0%,
-            #07170f 45%,
-            #030a07 100%
+            #06100b 0%,
+            #081a11 45%,
+            #030806 100%
         );
 }
 
 
-/* glowing forest lights */
+/* =========================================================
+   GLOW
+========================================================= */
 
 .glow {
+
     position: absolute;
+
     border-radius: 50%;
-    filter: blur(50px);
-    opacity: .45;
+
+    filter: blur(70px);
+
+    pointer-events: none;
 }
 
 .glow.green {
-    width: 350px;
-    height: 350px;
 
-    background: rgba(72,213,139,.25);
+    width: 420px;
+    height: 420px;
 
-    left: -100px;
+    left: -160px;
     top: 100px;
+
+    background: rgba(72, 213, 139, 0.20);
 }
 
 .glow.pink {
-    width: 400px;
-    height: 400px;
 
-    background: rgba(255,95,162,.22);
+    width: 450px;
+    height: 450px;
 
-    right: -120px;
-    top: 200px;
+    right: -180px;
+    top: 180px;
+
+    background: rgba(255, 95, 162, 0.18);
 }
 
-.glow.purple {
-    width: 300px;
-    height: 300px;
+.glow.peach {
 
-    background: rgba(185,108,255,.18);
+    width: 350px;
+    height: 350px;
 
-    left: 45%;
-    bottom: -100px;
+    left: 40%;
+    bottom: -150px;
+
+    background: rgba(255, 198, 165, 0.10);
 }
 
 
@@ -154,92 +180,131 @@ a {
 ========================================================= */
 
 .tree-layer {
+
     position: absolute;
+
     bottom: 0;
+
     width: 100%;
+
     height: 35%;
-    opacity: .55;
+
+    opacity: .65;
 }
 
 .tree {
+
     position: absolute;
+
     bottom: 0;
+
     width: 0;
+
     height: 0;
 
-    border-left: 55px solid transparent;
-    border-right: 55px solid transparent;
-    border-bottom: 180px solid #06140d;
+    border-left: 65px solid transparent;
+
+    border-right: 65px solid transparent;
+
+    border-bottom: 210px solid #041009;
 }
 
 .tree::before {
+
     content: "";
+
     position: absolute;
 
-    left: -45px;
+    left: -52px;
+
     top: 55px;
 
-    border-left: 45px solid transparent;
-    border-right: 45px solid transparent;
-    border-bottom: 140px solid #081b12;
+    border-left: 52px solid transparent;
+
+    border-right: 52px solid transparent;
+
+    border-bottom: 160px solid #06150c;
 }
 
 .tree::after {
+
     content: "";
+
     position: absolute;
 
-    left: -35px;
-    top: 110px;
+    left: -40px;
 
-    border-left: 35px solid transparent;
-    border-right: 35px solid transparent;
-    border-bottom: 100px solid #0b2418;
+    top: 115px;
+
+    border-left: 40px solid transparent;
+
+    border-right: 40px solid transparent;
+
+    border-bottom: 120px solid #092017;
 }
 
 
 /* =========================================================
-   FIRE FLIES
+   FIRELIGHTS
 ========================================================= */
 
 .fireflies {
+
     position: absolute;
+
     inset: 0;
 }
 
 .firefly {
+
     position: absolute;
 
     width: 5px;
+
     height: 5px;
 
     border-radius: 50%;
 
-    background: var(--green2);
+    background: var(--green-light);
 
     box-shadow:
         0 0 10px var(--green),
-        0 0 20px var(--green);
+        0 0 22px var(--green);
 
-    animation: float 5s infinite ease-in-out;
+    animation: float 5s ease-in-out infinite;
 }
 
 .firefly.pink {
-    background: var(--pink2);
+
+    background: var(--pink-light);
 
     box-shadow:
         0 0 10px var(--pink),
-        0 0 20px var(--pink);
+        0 0 22px var(--pink);
+}
+
+.firefly.peach {
+
+    background: var(--peach);
+
+    box-shadow:
+        0 0 10px var(--peach),
+        0 0 22px var(--peach);
 }
 
 @keyframes float {
 
-    0%,100% {
+    0%, 100% {
+
         transform: translateY(0);
-        opacity: .3;
+
+        opacity: .25;
     }
 
     50% {
-        transform: translateY(-30px);
+
+        transform: translateY(-28px);
+
         opacity: 1;
     }
 }
@@ -250,22 +315,26 @@ a {
 ========================================================= */
 
 nav {
+
     position: fixed;
 
     top: 0;
+
     left: 0;
 
     width: 100%;
 
     z-index: 100;
 
-    padding: 18px 7%;
-
     display: flex;
-    justify-content: space-between;
+
     align-items: center;
 
-    background: rgba(4,15,10,.72);
+    justify-content: space-between;
+
+    padding: 18px 7%;
+
+    background: rgba(3, 12, 8, .76);
 
     backdrop-filter: blur(18px);
 
@@ -273,36 +342,37 @@ nav {
 }
 
 .logo {
+
     font-family: "JetBrains Mono", monospace;
 
     font-size: 18px;
 
     font-weight: 700;
 
-    color: var(--green2);
-}
-
-.logo span {
-    color: var(--pink);
+    color: var(--peach);
 }
 
 .nav-links {
+
     display: flex;
-    gap: 25px;
+
+    gap: 26px;
 
     list-style: none;
 }
 
 .nav-links a {
+
     color: var(--muted);
 
-    font-size: 14px;
+    font-size: 13px;
 
     transition: .3s;
 }
 
 .nav-links a:hover {
-    color: var(--pink2);
+
+    color: var(--peach);
 }
 
 
@@ -311,68 +381,77 @@ nav {
 ========================================================= */
 
 .hero {
+
     min-height: 100vh;
 
     display: flex;
+
     align-items: center;
+
     justify-content: center;
 
     text-align: center;
 
-    padding: 130px 20px 100px;
-
-    position: relative;
+    padding: 140px 20px 100px;
 }
 
 .hero-content {
-    max-width: 900px;
+
+    width: min(950px, 100%);
 }
 
 .hero-label {
+
+    margin-bottom: 25px;
+
+    color: var(--green-light);
+
     font-family: "JetBrains Mono", monospace;
 
-    color: var(--green2);
-
     font-size: 14px;
-
-    margin-bottom: 20px;
 }
 
 .hero-label span {
-    color: var(--pink);
+
+    color: var(--peach);
 }
 
 .hero h1 {
-    font-size: clamp(55px, 10vw, 110px);
 
-    line-height: .95;
+    font-size: clamp(50px, 9vw, 105px);
 
-    font-weight: 800;
+    line-height: 1;
 
     letter-spacing: -5px;
 
+    font-weight: 800;
+
     background:
+
         linear-gradient(
             90deg,
-            var(--green2),
-            white,
-            var(--pink2)
+            var(--green-light),
+            var(--peach),
+            var(--pink-light)
         );
 
     -webkit-background-clip: text;
+
     -webkit-text-fill-color: transparent;
 }
 
 .hero h2 {
+
     margin-top: 25px;
 
-    font-size: clamp(20px, 3vw, 32px);
+    font-size: clamp(20px, 3vw, 30px);
 
-    color: var(--white);
+    font-weight: 600;
 }
 
 .hero-description {
-    max-width: 720px;
+
+    max-width: 760px;
 
     margin: 25px auto;
 
@@ -382,13 +461,14 @@ nav {
 }
 
 .hero-buttons {
+
     display: flex;
 
     justify-content: center;
 
-    gap: 14px;
-
     flex-wrap: wrap;
+
+    gap: 13px;
 
     margin-top: 30px;
 }
@@ -399,9 +479,11 @@ nav {
 ========================================================= */
 
 .btn {
+
     display: inline-flex;
 
     align-items: center;
+
     justify-content: center;
 
     padding: 12px 22px;
@@ -410,9 +492,9 @@ nav {
 
     border: 1px solid var(--border);
 
-    background: rgba(255,255,255,.04);
+    background: rgba(255,255,255,.035);
 
-    color: var(--white);
+    color: var(--text);
 
     font-family: "JetBrains Mono", monospace;
 
@@ -422,18 +504,20 @@ nav {
 }
 
 .btn:hover {
+
     transform: translateY(-3px);
 
-    border-color: var(--pink);
+    border-color: var(--peach);
 
     box-shadow:
-        0 10px 30px rgba(255,95,162,.12);
+        0 10px 35px rgba(255,198,165,.10);
 }
 
 .btn.green {
+
     background: var(--green);
 
-    color: #031009;
+    color: #031008;
 
     border-color: var(--green);
 
@@ -441,6 +525,7 @@ nav {
 }
 
 .btn.pink {
+
     background: var(--pink);
 
     color: white;
@@ -450,45 +535,61 @@ nav {
     font-weight: 700;
 }
 
+.btn.peach {
 
-/* =========================================================
-   SECTIONS
-========================================================= */
+    background: var(--peach);
 
-.container {
-    width: min(1150px, 90%);
+    color: #21140f;
 
-    margin: auto;
+    border-color: var(--peach);
+
+    font-weight: 700;
 }
 
+
+/* =========================================================
+   GENERAL SECTIONS
+========================================================= */
+
 section {
+
     padding: 100px 0;
 
     position: relative;
 }
 
+.container {
+
+    width: min(1150px, 90%);
+
+    margin: auto;
+}
+
 .section-label {
-    font-family: "JetBrains Mono", monospace;
+
+    margin-bottom: 8px;
 
     color: var(--pink);
 
-    font-size: 13px;
+    font-family: "JetBrains Mono", monospace;
 
-    margin-bottom: 8px;
+    font-size: 13px;
 }
 
 .section-title {
-    font-size: 40px;
 
     margin-bottom: 15px;
+
+    font-size: 40px;
 }
 
 .section-description {
+
     max-width: 750px;
 
-    color: var(--muted);
-
     margin-bottom: 45px;
+
+    color: var(--muted);
 }
 
 
@@ -497,15 +598,17 @@ section {
 ========================================================= */
 
 .about-grid {
+
     display: grid;
 
     grid-template-columns:
         repeat(2, 1fr);
 
-    gap: 25px;
+    gap: 22px;
 }
 
 .card {
+
     padding: 30px;
 
     background: var(--card);
@@ -520,23 +623,21 @@ section {
 }
 
 .card:hover {
+
     transform: translateY(-5px);
 
-    border-color: rgba(255,95,162,.35);
-
-    box-shadow:
-        0 20px 60px rgba(0,0,0,.25);
+    border-color: rgba(255,198,165,.35);
 }
 
 .card h3 {
-    color: var(--green2);
 
     margin-bottom: 10px;
 
-    font-size: 19px;
+    color: var(--peach);
 }
 
 .card p {
+
     color: var(--muted);
 
     font-size: 15px;
@@ -548,26 +649,31 @@ section {
 ========================================================= */
 
 .timeline {
+
     border-left: 2px solid rgba(72,213,139,.25);
 
     padding-left: 30px;
 }
 
 .timeline-item {
+
     position: relative;
 
     margin-bottom: 40px;
 }
 
 .timeline-item::before {
+
     content: "";
 
     position: absolute;
 
     left: -39px;
+
     top: 5px;
 
     width: 14px;
+
     height: 14px;
 
     border-radius: 50%;
@@ -579,22 +685,25 @@ section {
 }
 
 .date {
-    font-family: "JetBrains Mono", monospace;
-
-    color: var(--pink2);
-
-    font-size: 13px;
 
     margin-bottom: 7px;
+
+    color: var(--peach);
+
+    font-family: "JetBrains Mono", monospace;
+
+    font-size: 13px;
 }
 
 .timeline-item h3 {
-    font-size: 21px;
 
     margin-bottom: 5px;
+
+    font-size: 21px;
 }
 
 .timeline-item p {
+
     color: var(--muted);
 }
 
@@ -604,6 +713,7 @@ section {
 ========================================================= */
 
 .skills-grid {
+
     display: grid;
 
     grid-template-columns:
@@ -613,6 +723,7 @@ section {
 }
 
 .skill {
+
     padding: 24px;
 
     background: var(--card);
@@ -623,14 +734,16 @@ section {
 }
 
 .skill h3 {
-    color: var(--green2);
-
-    font-size: 16px;
 
     margin-bottom: 12px;
+
+    color: var(--peach);
+
+    font-size: 16px;
 }
 
 .tags {
+
     display: flex;
 
     flex-wrap: wrap;
@@ -639,6 +752,7 @@ section {
 }
 
 .tag {
+
     padding: 5px 9px;
 
     border-radius: 5px;
@@ -660,6 +774,7 @@ section {
 ========================================================= */
 
 .projects {
+
     display: grid;
 
     grid-template-columns:
@@ -669,62 +784,69 @@ section {
 }
 
 .project {
+
     display: flex;
 
     flex-direction: column;
 
+    min-height: 315px;
+
     padding: 30px;
 
     background:
+
         linear-gradient(
             145deg,
-            rgba(12,42,27,.75),
-            rgba(20,10,22,.70)
+            rgba(12,42,27,.78),
+            rgba(42,13,27,.70)
         );
 
     border: 1px solid var(--border);
 
     border-radius: 18px;
 
-    min-height: 310px;
-
     transition: .3s;
 }
 
 .project:hover {
+
     transform: translateY(-7px);
 
-    border-color: rgba(255,95,162,.4);
+    border-color: rgba(255,198,165,.40);
 
     box-shadow:
-        0 20px 60px rgba(0,0,0,.3);
+        0 20px 60px rgba(0,0,0,.30);
 }
 
 .project-number {
-    font-family: "JetBrains Mono", monospace;
+
+    margin-bottom: 12px;
 
     color: var(--pink);
 
-    font-size: 12px;
+    font-family: "JetBrains Mono", monospace;
 
-    margin-bottom: 12px;
+    font-size: 12px;
 }
 
 .project h3 {
-    font-size: 21px;
 
     margin-bottom: 12px;
+
+    font-size: 21px;
 }
 
 .project p {
+
+    margin-bottom: 20px;
+
     color: var(--muted);
 
     font-size: 14px;
-
-    margin-bottom: 20px;
 }
 
 .project-tech {
+
     display: flex;
 
     flex-wrap: wrap;
@@ -735,23 +857,25 @@ section {
 }
 
 .project-tech span {
-    font-family: "JetBrains Mono", monospace;
-
-    font-size: 11px;
-
-    color: var(--green2);
 
     padding: 5px 8px;
 
     border: 1px solid rgba(72,213,139,.18);
 
     border-radius: 5px;
+
+    color: var(--green-light);
+
+    font-family: "JetBrains Mono", monospace;
+
+    font-size: 11px;
 }
 
 .project-link {
+
     margin-top: auto;
 
-    color: var(--pink2);
+    color: var(--peach);
 
     font-family: "JetBrains Mono", monospace;
 
@@ -759,7 +883,8 @@ section {
 }
 
 .project-link:hover {
-    color: white;
+
+    color: var(--pink-light);
 }
 
 
@@ -768,12 +893,14 @@ section {
 ========================================================= */
 
 .experience {
+
     display: grid;
 
     gap: 20px;
 }
 
 .experience-card {
+
     display: grid;
 
     grid-template-columns: 220px 1fr;
@@ -790,7 +917,8 @@ section {
 }
 
 .experience-date {
-    color: var(--pink2);
+
+    color: var(--peach);
 
     font-family: "JetBrains Mono", monospace;
 
@@ -798,63 +926,14 @@ section {
 }
 
 .experience-card h3 {
+
     margin-bottom: 5px;
 
-    color: var(--green2);
+    color: var(--green-light);
 }
 
 .experience-card p {
-    color: var(--muted);
 
-    font-size: 14px;
-}
-
-
-/* =========================================================
-   BUSINESS ANALYST
-========================================================= */
-
-.ba-section {
-    background:
-        radial-gradient(
-            circle at 20% 50%,
-            rgba(72,213,139,.08),
-            transparent 35%
-        ),
-
-        radial-gradient(
-            circle at 80% 50%,
-            rgba(255,95,162,.08),
-            transparent 35%
-        );
-}
-
-.ba-grid {
-    display: grid;
-
-    grid-template-columns:
-        repeat(3, 1fr);
-
-    gap: 20px;
-}
-
-.ba-card {
-    padding: 25px;
-
-    background: rgba(7,20,13,.72);
-
-    border: 1px solid var(--border);
-
-    border-radius: 15px;
-}
-
-.ba-card h3 {
-    color: var(--pink2);
-
-    margin-bottom: 10px;
-}
-
-.ba-card p {
     color: var(--muted);
 
     font-size: 14px;
@@ -866,53 +945,56 @@ section {
 ========================================================= */
 
 .contact {
+
     text-align: center;
 
     padding-bottom: 130px;
 }
 
 .contact-box {
+
     max-width: 800px;
 
     margin: auto;
 
-    padding: 50px 30px;
+    padding: 55px 30px;
 
     border-radius: 22px;
 
     background:
+
         linear-gradient(
             135deg,
-            rgba(14,53,34,.8),
-            rgba(44,12,29,.8)
+            rgba(14,53,34,.82),
+            rgba(50,14,31,.82)
         );
 
     border: 1px solid var(--border);
-
-    box-shadow:
-        0 30px 100px rgba(0,0,0,.3);
 }
 
 .contact-box h2 {
-    font-size: 40px;
 
     margin-bottom: 15px;
+
+    font-size: 40px;
 }
 
 .contact-box p {
-    color: var(--muted);
 
     margin-bottom: 25px;
+
+    color: var(--muted);
 }
 
 .contact-links {
+
     display: flex;
 
     justify-content: center;
 
-    gap: 12px;
-
     flex-wrap: wrap;
+
+    gap: 12px;
 }
 
 
@@ -921,11 +1003,12 @@ section {
 ========================================================= */
 
 footer {
-    text-align: center;
 
     padding: 30px;
 
     border-top: 1px solid var(--border);
+
+    text-align: center;
 
     color: var(--muted);
 
@@ -934,8 +1017,9 @@ footer {
     font-size: 12px;
 }
 
-footer span {
-    color: var(--pink);
+footer strong {
+
+    color: var(--peach);
 }
 
 
@@ -946,42 +1030,49 @@ footer span {
 @media (max-width: 850px) {
 
     .nav-links {
+
         display: none;
     }
 
     .skills-grid {
+
         grid-template-columns:
             repeat(2, 1fr);
     }
 
     .about-grid,
-    .projects,
-    .ba-grid {
+    .projects {
+
         grid-template-columns: 1fr;
     }
 
     .experience-card {
+
         grid-template-columns: 1fr;
+
         gap: 10px;
     }
 }
 
-
 @media (max-width: 550px) {
 
     .hero h1 {
+
         letter-spacing: -3px;
     }
 
     .skills-grid {
+
         grid-template-columns: 1fr;
     }
 
     .section-title {
+
         font-size: 32px;
     }
 
     section {
+
         padding: 75px 0;
     }
 }
@@ -993,113 +1084,183 @@ footer span {
 <body>
 
 
-<!-- ======================================================
-     BACKGROUND
-====================================================== -->
+<!-- =========================================================
+     FOREST BACKGROUND
+========================================================= -->
 
 <div class="forest-background">
 
     <div class="glow green"></div>
+
     <div class="glow pink"></div>
-    <div class="glow purple"></div>
+
+    <div class="glow peach"></div>
+
 
     <div class="fireflies">
 
-        <div class="firefly" style="left:10%;top:25%;"></div>
-        <div class="firefly pink" style="left:20%;top:60%;"></div>
-        <div class="firefly" style="left:35%;top:35%;"></div>
-        <div class="firefly pink" style="left:48%;top:20%;"></div>
-        <div class="firefly" style="left:60%;top:65%;"></div>
-        <div class="firefly pink" style="left:70%;top:40%;"></div>
-        <div class="firefly" style="left:82%;top:25%;"></div>
-        <div class="firefly pink" style="left:90%;top:65%;"></div>
+        <div class="firefly"
+             style="left:8%;top:25%;"></div>
+
+        <div class="firefly pink"
+             style="left:17%;top:60%;"></div>
+
+        <div class="firefly peach"
+             style="left:28%;top:32%;"></div>
+
+        <div class="firefly"
+             style="left:39%;top:72%;"></div>
+
+        <div class="firefly pink"
+             style="left:49%;top:22%;"></div>
+
+        <div class="firefly peach"
+             style="left:61%;top:52%;"></div>
+
+        <div class="firefly"
+             style="left:72%;top:28%;"></div>
+
+        <div class="firefly pink"
+             style="left:84%;top:62%;"></div>
+
+        <div class="firefly peach"
+             style="left:93%;top:30%;"></div>
 
     </div>
 
+
     <div class="tree-layer">
 
-        <div class="tree" style="left:3%;"></div>
-        <div class="tree" style="left:12%;transform:scale(.7);"></div>
-        <div class="tree" style="left:24%;transform:scale(.85);"></div>
-        <div class="tree" style="left:38%;transform:scale(.6);"></div>
-        <div class="tree" style="left:52%;transform:scale(.9);"></div>
-        <div class="tree" style="left:66%;transform:scale(.65);"></div>
-        <div class="tree" style="left:78%;transform:scale(.85);"></div>
-        <div class="tree" style="left:90%;transform:scale(.7);"></div>
+        <div class="tree"
+             style="left:2%;"></div>
+
+        <div class="tree"
+             style="left:12%;transform:scale(.65);"></div>
+
+        <div class="tree"
+             style="left:23%;transform:scale(.85);"></div>
+
+        <div class="tree"
+             style="left:36%;transform:scale(.60);"></div>
+
+        <div class="tree"
+             style="left:49%;transform:scale(.90);"></div>
+
+        <div class="tree"
+             style="left:63%;transform:scale(.65);"></div>
+
+        <div class="tree"
+             style="left:77%;transform:scale(.85);"></div>
+
+        <div class="tree"
+             style="left:90%;transform:scale(.70);"></div>
 
     </div>
 
 </div>
 
 
-<!-- ======================================================
+<!-- =========================================================
      NAVIGATION
-====================================================== -->
+========================================================= -->
 
 <nav>
 
     <div class="logo">
-        NANDU<span>.AI</span>
+        Nandini Vadla
     </div>
 
     <ul class="nav-links">
 
-        <li><a href="#about">About</a></li>
-        <li><a href="#education">Education</a></li>
-        <li><a href="#skills">Skills</a></li>
-        <li><a href="#projects">Projects</a></li>
-        <li><a href="#experience">Experience</a></li>
-        <li><a href="#contact">Contact</a></li>
+        <li>
+            <a href="#about">About</a>
+        </li>
+
+        <li>
+            <a href="#education">Education</a>
+        </li>
+
+        <li>
+            <a href="#skills">Skills</a>
+        </li>
+
+        <li>
+            <a href="#projects">Projects</a>
+        </li>
+
+        <li>
+            <a href="#experience">Experience</a>
+        </li>
+
+        <li>
+            <a href="#contact">Contact</a>
+        </li>
 
     </ul>
 
 </nav>
 
 
-<!-- ======================================================
+<!-- =========================================================
      HERO
-====================================================== -->
+========================================================= -->
 
 <header class="hero">
 
     <div class="hero-content">
 
         <div class="hero-label">
-            visitor@nandini-vadla:~$ <span>whoami</span>
+
+            Hello, I'm
+            <span>Nandini Vadla</span>
+
         </div>
 
+
         <h1>
-            NANDU
+            Nandini Vadla
         </h1>
 
+
         <h2>
-            Cybersecurity • Data Science • AI • Business Analytics
+            Cybersecurity • Data Science • AI
         </h2>
+
 
         <p class="hero-description">
 
-            I'm Nandini Vadla — an MSc Cybersecurity & Data Science
-            student building practical solutions across cybersecurity,
-            artificial intelligence, data analytics and business intelligence.
+            MSc Cybersecurity & Data Science student
+            passionate about cybersecurity, artificial intelligence,
+            machine learning and data-driven problem solving.
 
         </p>
 
+
         <div class="hero-buttons">
 
-            <a class="btn green" href="#projects">
-                Explore Projects
+            <a class="btn green"
+               href="#projects">
+
+                Explore My Projects
+
             </a>
 
-            <a class="btn pink"
+
+            <a class="btn peach"
                href="https://www.linkedin.com/in/nandini-vadla-9804b7389"
                target="_blank">
+
                 LinkedIn
+
             </a>
 
-            <a class="btn"
+
+            <a class="btn pink"
                href="https://github.com/Nandinivadla"
                target="_blank">
+
                 GitHub
+
             </a>
 
         </div>
@@ -1112,9 +1273,9 @@ footer span {
 <main>
 
 
-<!-- ======================================================
+<!-- =========================================================
      ABOUT
-====================================================== -->
+========================================================= -->
 
 <section id="about">
 
@@ -1125,29 +1286,30 @@ footer span {
     </div>
 
     <h2 class="section-title">
-        Who I Am
+        About Me
     </h2>
 
     <p class="section-description">
 
-        A technology-focused learner combining cybersecurity,
-        data science and business thinking.
+        Technology, cybersecurity, data and artificial intelligence —
+        with a focus on learning through practical projects.
 
     </p>
 
 
     <div class="about-grid">
 
+
         <div class="card">
 
             <h3>
-                What I'm Building Toward
+                Who I Am
             </h3>
 
             <p>
 
-                A career at the intersection of cybersecurity,
-                artificial intelligence, data and business analysis.
+                I am Nandini Vadla, an MSc Cybersecurity
+                and Data Science student based in France.
 
             </p>
 
@@ -1157,13 +1319,14 @@ footer span {
         <div class="card">
 
             <h3>
-                How I Work
+                What I Learn
             </h3>
 
             <p>
 
-                I learn by building. I create projects, test ideas,
-                investigate problems and document what I discover.
+                My studies and projects cover cybersecurity,
+                data science, artificial intelligence,
+                machine learning, networking and cloud technologies.
 
             </p>
 
@@ -1173,13 +1336,14 @@ footer span {
         <div class="card">
 
             <h3>
-                What Drives Me
+                How I Learn
             </h3>
 
             <p>
 
-                Understanding how systems work, identifying problems
-                and turning technical information into useful insights.
+                I learn by building practical projects,
+                experimenting with technologies,
+                analysing problems and documenting results.
 
             </p>
 
@@ -1189,17 +1353,18 @@ footer span {
         <div class="card">
 
             <h3>
-                What I'm Looking For
+                My Goal
             </h3>
 
             <p>
 
-                Internships and junior opportunities in Business Analysis,
-                Data Analytics, BI, Cybersecurity and AI.
+                To build strong technical skills and contribute
+                to real-world cybersecurity, data and AI projects.
 
             </p>
 
         </div>
+
 
     </div>
 
@@ -1208,9 +1373,9 @@ footer span {
 </section>
 
 
-<!-- ======================================================
+<!-- =========================================================
      EDUCATION
-====================================================== -->
+========================================================= -->
 
 <section id="education">
 
@@ -1221,7 +1386,7 @@ footer span {
     </div>
 
     <h2 class="section-title">
-        My Journey
+        Education
     </h2>
 
 
@@ -1239,12 +1404,12 @@ footer span {
             </h3>
 
             <p>
-                ESAIP École d'Ingénieurs — Angers, France
+                ESAIP École d'Ingénieurs — France
             </p>
 
             <p>
                 Cybersecurity, Data Science, Artificial Intelligence,
-                Machine Learning, Networking, Cloud and Big Data.
+                Machine Learning, Cloud, Networking and Big Data.
             </p>
 
         </div>
@@ -1261,7 +1426,7 @@ footer span {
             </h3>
 
             <p>
-                Business, management, communication and people-focused studies.
+                Business, communication and management studies.
             </p>
 
         </div>
@@ -1278,8 +1443,8 @@ footer span {
             </h3>
 
             <p>
-                Programming, computer science fundamentals,
-                networking and technology.
+                Computer Science, programming,
+                networking and technology fundamentals.
             </p>
 
         </div>
@@ -1292,9 +1457,9 @@ footer span {
 </section>
 
 
-<!-- ======================================================
+<!-- =========================================================
      SKILLS
-====================================================== -->
+========================================================= -->
 
 <section id="skills">
 
@@ -1305,7 +1470,7 @@ footer span {
     </div>
 
     <h2 class="section-title">
-        Technical Knowledge
+        Technical Skills
     </h2>
 
 
@@ -1321,10 +1486,15 @@ footer span {
             <div class="tags">
 
                 <span class="tag">SOC</span>
+
                 <span class="tag">Security Monitoring</span>
+
                 <span class="tag">Log Analysis</span>
-                <span class="tag">Forensics</span>
+
+                <span class="tag">Digital Forensics</span>
+
                 <span class="tag">OSINT</span>
+
                 <span class="tag">Cloud Security</span>
 
             </div>
@@ -1335,36 +1505,22 @@ footer span {
         <div class="skill">
 
             <h3>
-                Data Analytics
+                Data Science
             </h3>
 
             <div class="tags">
 
-                <span class="tag">Excel</span>
-                <span class="tag">SQL</span>
                 <span class="tag">Python</span>
+
                 <span class="tag">Pandas</span>
+
                 <span class="tag">NumPy</span>
+
+                <span class="tag">SQL</span>
+
                 <span class="tag">Statistics</span>
 
-            </div>
-
-        </div>
-
-
-        <div class="skill">
-
-            <h3>
-                Business Intelligence
-            </h3>
-
-            <div class="tags">
-
-                <span class="tag">Power BI</span>
-                <span class="tag">Dashboards</span>
-                <span class="tag">KPIs</span>
-                <span class="tag">Reporting</span>
-                <span class="tag">Power Query</span>
+                <span class="tag">Data Cleaning</span>
 
             </div>
 
@@ -1374,16 +1530,22 @@ footer span {
         <div class="skill">
 
             <h3>
-                AI / ML
+                Artificial Intelligence
             </h3>
 
             <div class="tags">
+
+                <span class="tag">Machine Learning</span>
 
                 <span class="tag">Scikit-learn</span>
-                <span class="tag">Machine Learning</span>
+
                 <span class="tag">LLMs</span>
+
                 <span class="tag">Ollama</span>
+
                 <span class="tag">Llama</span>
+
+                <span class="tag">AI APIs</span>
 
             </div>
 
@@ -1399,10 +1561,15 @@ footer span {
             <div class="tags">
 
                 <span class="tag">TCP/IP</span>
+
                 <span class="tag">DNS</span>
+
                 <span class="tag">DHCP</span>
+
                 <span class="tag">HTTP</span>
+
                 <span class="tag">SSH</span>
+
                 <span class="tag">Wireshark</span>
 
             </div>
@@ -1413,14 +1580,17 @@ footer span {
         <div class="skill">
 
             <h3>
-                Cloud / Big Data
+                Cloud & Big Data
             </h3>
 
             <div class="tags">
 
                 <span class="tag">Azure</span>
+
                 <span class="tag">Docker</span>
-                <span class="tag">Spark</span>
+
+                <span class="tag">Apache Spark</span>
+
                 <span class="tag">Big Data</span>
 
             </div>
@@ -1437,10 +1607,15 @@ footer span {
             <div class="tags">
 
                 <span class="tag">Python</span>
+
                 <span class="tag">SQL</span>
+
                 <span class="tag">Bash</span>
+
                 <span class="tag">HTML</span>
+
                 <span class="tag">CSS</span>
+
                 <span class="tag">Git</span>
 
             </div>
@@ -1451,16 +1626,43 @@ footer span {
         <div class="skill">
 
             <h3>
-                Agile / Business
+                Systems
             </h3>
 
             <div class="tags">
 
-                <span class="tag">Requirements</span>
-                <span class="tag">KPI Analysis</span>
-                <span class="tag">Process Mapping</span>
-                <span class="tag">Agile</span>
-                <span class="tag">Scrum</span>
+                <span class="tag">Linux</span>
+
+                <span class="tag">macOS</span>
+
+                <span class="tag">Docker</span>
+
+                <span class="tag">Git</span>
+
+                <span class="tag">Terminal</span>
+
+            </div>
+
+        </div>
+
+
+        <div class="skill">
+
+            <h3>
+                Security Tools
+            </h3>
+
+            <div class="tags">
+
+                <span class="tag">Wireshark</span>
+
+                <span class="tag">Nmap</span>
+
+                <span class="tag">Volatility</span>
+
+                <span class="tag">OSINT</span>
+
+                <span class="tag">Log Analysis</span>
 
             </div>
 
@@ -1474,9 +1676,9 @@ footer span {
 </section>
 
 
-<!-- ======================================================
+<!-- =========================================================
      PROJECTS
-====================================================== -->
+========================================================= -->
 
 <section id="projects">
 
@@ -1487,13 +1689,13 @@ footer span {
     </div>
 
     <h2 class="section-title">
-        Building & Learning
+        Projects
     </h2>
 
     <p class="section-description">
 
-        Practical projects combining cybersecurity,
-        artificial intelligence and data analytics.
+        Practical projects created while developing my
+        cybersecurity, data science and AI skills.
 
     </p>
 
@@ -1501,7 +1703,7 @@ footer span {
     <div class="projects">
 
 
-        <!-- 1 -->
+        <!-- PROJECT 1 -->
 
         <article class="project">
 
@@ -1515,59 +1717,22 @@ footer span {
 
             <p>
 
-                Python-based cloud security scanner that analyses
-                cloud configuration data and identifies findings
-                such as public storage, unencrypted storage and
-                publicly exposed databases.
+                A Python-based cloud security scanner that analyses
+                cloud configuration data and identifies security
+                findings such as public storage, unencrypted storage
+                and publicly accessible databases.
 
             </p>
 
             <div class="project-tech">
 
                 <span>Python</span>
+
                 <span>Cloud Security</span>
+
                 <span>JSON</span>
+
                 <span>Automation</span>
-
-            </div>
-
-            <a class="project-link"
-               href="https://github.com/Nandinivadla/CloudSentinel-AI"
-               target="_blank">
-
-                View GitHub →
-
-            </a>
-
-        </article>
-
-
-        <!-- 2 -->
-
-        <article class="project">
-
-            <div class="project-number">
-                PROJECT 02
-            </div>
-
-            <h3>
-                🎣 AI Phishing Detector
-            </h3>
-
-            <p>
-
-                Cybersecurity and machine-learning project exploring
-                automated identification of suspicious and phishing
-                content using Python-based analysis.
-
-            </p>
-
-            <div class="project-tech">
-
-                <span>Python</span>
-                <span>Machine Learning</span>
-                <span>Cybersecurity</span>
-                <span>NLP</span>
 
             </div>
 
@@ -1582,7 +1747,50 @@ footer span {
         </article>
 
 
-        <!-- 3 -->
+        <!-- PROJECT 2 -->
+
+        <article class="project">
+
+            <div class="project-number">
+                PROJECT 02
+            </div>
+
+            <h3>
+                🎣 AI Phishing Detector
+            </h3>
+
+            <p>
+
+                A cybersecurity and AI project exploring automated
+                detection of potentially malicious phishing content
+                using Python and machine-learning concepts.
+
+            </p>
+
+            <div class="project-tech">
+
+                <span>Python</span>
+
+                <span>Machine Learning</span>
+
+                <span>NLP</span>
+
+                <span>Cybersecurity</span>
+
+            </div>
+
+            <a class="project-link"
+               href="https://github.com/Nandinivadla"
+               target="_blank">
+
+                View GitHub →
+
+            </a>
+
+        </article>
+
+
+        <!-- PROJECT 3 -->
 
         <article class="project">
 
@@ -1596,23 +1804,26 @@ footer span {
 
             <p>
 
-                Security operations project using Python-based
-                detection logic to analyse logs and identify
-                potentially suspicious activity.
+                A security operations project using Python-based
+                detection logic to analyse security logs and
+                identify potentially suspicious activity.
 
             </p>
 
             <div class="project-tech">
 
                 <span>Python</span>
+
                 <span>SOC</span>
-                <span>Logs</span>
+
+                <span>Log Analysis</span>
+
                 <span>Detection</span>
 
             </div>
 
             <a class="project-link"
-               href="https://github.com/Nandinivadla/AI-SOC-Analyst"
+               href="https://github.com/Nandinivadla"
                target="_blank">
 
                 View GitHub →
@@ -1622,7 +1833,7 @@ footer span {
         </article>
 
 
-        <!-- 4 -->
+        <!-- PROJECT 4 -->
 
         <article class="project">
 
@@ -1636,23 +1847,25 @@ footer span {
 
             <p>
 
-                Python automation project designed to monitor
-                security logs and identify events that require
-                attention.
+                A Python automation project for monitoring security
+                logs and identifying events that require attention.
 
             </p>
 
             <div class="project-tech">
 
                 <span>Python</span>
+
                 <span>Linux</span>
+
                 <span>Logs</span>
+
                 <span>Automation</span>
 
             </div>
 
             <a class="project-link"
-               href="https://github.com/Nandinivadla/Security-Log-Automation"
+               href="https://github.com/Nandinivadla"
                target="_blank">
 
                 View GitHub →
@@ -1662,7 +1875,7 @@ footer span {
         </article>
 
 
-        <!-- 5 -->
+        <!-- PROJECT 5 -->
 
         <article class="project">
 
@@ -1676,23 +1889,26 @@ footer span {
 
             <p>
 
-                Digital-forensics project analysing USB events
-                and file activity to understand evidence collection
-                and investigation workflows.
+                A digital forensics project analysing USB events
+                and file activity to understand investigation
+                and evidence-analysis workflows.
 
             </p>
 
             <div class="project-tech">
 
                 <span>Python</span>
-                <span>Forensics</span>
+
+                <span>Digital Forensics</span>
+
                 <span>USB</span>
+
                 <span>Logs</span>
 
             </div>
 
             <a class="project-link"
-               href="https://github.com/Nandinivadla/USB-Investigation-Lab"
+               href="https://github.com/Nandinivadla"
                target="_blank">
 
                 View GitHub →
@@ -1702,7 +1918,7 @@ footer span {
         </article>
 
 
-        <!-- 6 -->
+        <!-- PROJECT 6 -->
 
         <article class="project">
 
@@ -1711,22 +1927,25 @@ footer span {
             </div>
 
             <h3>
-                🧠 NANDU AI
+                🧠 Personal AI Assistant
             </h3>
 
             <p>
 
-                Personal AI assistant project using Python,
-                Ollama and Llama to experiment with local LLMs,
-                context and personalised AI interactions.
+                A personal AI learning project using Python,
+                Ollama and Llama to experiment with local
+                large language models and personalised context.
 
             </p>
 
             <div class="project-tech">
 
                 <span>Python</span>
+
                 <span>Ollama</span>
+
                 <span>Llama</span>
+
                 <span>LLM</span>
 
             </div>
@@ -1742,7 +1961,7 @@ footer span {
         </article>
 
 
-        <!-- 7 -->
+        <!-- PROJECT 7 -->
 
         <article class="project">
 
@@ -1756,16 +1975,19 @@ footer span {
 
             <p>
 
-                AI project exploring automated image analysis
-                using Python and AI API integration.
+                An AI learning project exploring automated image
+                analysis using Python and AI API integration.
 
             </p>
 
             <div class="project-tech">
 
                 <span>Python</span>
+
                 <span>AI</span>
+
                 <span>Computer Vision</span>
+
                 <span>API</span>
 
             </div>
@@ -1781,7 +2003,7 @@ footer span {
         </article>
 
 
-        <!-- 8 -->
+        <!-- PROJECT 8 -->
 
         <article class="project">
 
@@ -1790,22 +2012,25 @@ footer span {
             </div>
 
             <h3>
-                📈 Data Analytics Portfolio
+                📈 Data Science Projects
             </h3>
 
             <p>
 
-                Analytics work using Python, Pandas, NumPy and SQL
-                to clean data, explore patterns and communicate
-                useful business insights.
+                Practical data-science work using Python,
+                Pandas, NumPy and SQL for data cleaning,
+                exploration and analysis.
 
             </p>
 
             <div class="project-tech">
 
                 <span>Python</span>
+
                 <span>Pandas</span>
+
                 <span>NumPy</span>
+
                 <span>SQL</span>
 
             </div>
@@ -1828,148 +2053,16 @@ footer span {
 </section>
 
 
-<!-- ======================================================
-     BUSINESS ANALYST
-====================================================== -->
-
-<section id="business-analysis" class="ba-section">
-
-<div class="container">
-
-    <div class="section-label">
-        05 — BUSINESS ANALYSIS
-    </div>
-
-    <h2 class="section-title">
-        Business Analyst Toolkit
-    </h2>
-
-    <p class="section-description">
-
-        Combining technical knowledge with business-focused
-        analysis and decision making.
-
-    </p>
-
-
-    <div class="ba-grid">
-
-
-        <div class="ba-card">
-
-            <h3>
-                📊 Excel & Analytics
-            </h3>
-
-            <p>
-
-                Advanced Excel, PivotTables, formulas,
-                data cleaning, Power Query, KPI tracking
-                and business reporting.
-
-            </p>
-
-        </div>
-
-
-        <div class="ba-card">
-
-            <h3>
-                🗄️ SQL
-            </h3>
-
-            <p>
-
-                Querying databases, joins, aggregation,
-                filtering, CTEs and extracting information
-                to answer business questions.
-
-            </p>
-
-        </div>
-
-
-        <div class="ba-card">
-
-            <h3>
-                📈 Power BI
-            </h3>
-
-            <p>
-
-                Dashboard design, KPIs, data modelling,
-                visualisation and communicating insights.
-
-            </p>
-
-        </div>
-
-
-        <div class="ba-card">
-
-            <h3>
-                🔍 Requirements
-            </h3>
-
-            <p>
-
-                Requirements gathering, stakeholder analysis,
-                functional requirements and process understanding.
-
-            </p>
-
-        </div>
-
-
-        <div class="ba-card">
-
-            <h3>
-                🔄 Process Analysis
-            </h3>
-
-            <p>
-
-                Process mapping, gap analysis, root-cause analysis
-                and identifying opportunities for improvement.
-
-            </p>
-
-        </div>
-
-
-        <div class="ba-card">
-
-            <h3>
-                🎯 Business Insights
-            </h3>
-
-            <p>
-
-                Turning data into clear findings, recommendations
-                and actionable decisions.
-
-            </p>
-
-        </div>
-
-
-    </div>
-
-</div>
-
-</section>
-
-
-<!-- ======================================================
+<!-- =========================================================
      EXPERIENCE
-====================================================== -->
+========================================================= -->
 
 <section id="experience">
 
 <div class="container">
 
     <div class="section-label">
-        06 — EXPERIENCE
+        05 — EXPERIENCE
     </div>
 
     <h2 class="section-title">
@@ -1983,7 +2076,9 @@ footer span {
         <div class="experience-card">
 
             <div class="experience-date">
+
                 Jan 2022 — Dec 2023
+
             </div>
 
             <div>
@@ -1995,7 +2090,7 @@ footer span {
                 <p>
 
                     Developed professional communication,
-                    problem solving, coordination and
+                    coordination, problem-solving and
                     operational experience.
 
                 </p>
@@ -2008,7 +2103,9 @@ footer span {
         <div class="experience-card">
 
             <div class="experience-date">
+
                 Jan 2024 — Sep 2024
+
             </div>
 
             <div>
@@ -2019,8 +2116,8 @@ footer span {
 
                 <p>
 
-                    Delivered English tuition to children
-                    and adapted explanations to different
+                    Provided English tuition to children,
+                    adapting explanations to different
                     learning needs.
 
                 </p>
@@ -2033,7 +2130,9 @@ footer span {
         <div class="experience-card">
 
             <div class="experience-date">
+
                 Technical Experience
+
             </div>
 
             <div>
@@ -2062,9 +2161,9 @@ footer span {
 </section>
 
 
-<!-- ======================================================
+<!-- =========================================================
      CONTACT
-====================================================== -->
+========================================================= -->
 
 <section id="contact" class="contact">
 
@@ -2073,24 +2172,27 @@ footer span {
     <div class="contact-box">
 
         <div class="section-label">
-            07 — CONTACT
+            06 — CONTACT
         </div>
+
 
         <h2>
             Let's Connect
         </h2>
 
+
         <p>
 
-            Interested in cybersecurity, data analytics,
-            business analysis or AI?
+            Interested in cybersecurity, data science
+            or artificial intelligence?
 
         </p>
 
 
         <div class="contact-links">
 
-            <a class="btn green"
+
+            <a class="btn peach"
                href="mailto:nandinikrishnavv@gmail.com">
 
                 ✉ Email Me
@@ -2107,13 +2209,14 @@ footer span {
             </a>
 
 
-            <a class="btn"
+            <a class="btn green"
                href="https://github.com/Nandinivadla"
                target="_blank">
 
                 GitHub
 
             </a>
+
 
         </div>
 
@@ -2127,17 +2230,19 @@ footer span {
 </main>
 
 
-<!-- ======================================================
+<!-- =========================================================
      FOOTER
-====================================================== -->
+========================================================= -->
 
 <footer>
 
-    <span>NANDU AI</span>
+    <strong>
+        Nandini Vadla
+    </strong>
 
-    —
+    <br><br>
 
-    Cybersecurity • Data • AI • Business Analytics
+    Cybersecurity • Data Science • AI
 
     <br><br>
 
