@@ -1,860 +1,483 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>NANDU AI | Cybersecurity × Artificial Intelligence</title>
-
-<style>
-
-/* =========================================================
-   NANDU AI
-   RED × BLACK WEB THEME
-   ========================================================= */
-
-:root{
-    --red:#e50914;
-    --bright-red:#ff1722;
-    --dark-red:#690008;
-    --black:#030303;
-    --black2:#090909;
-    --card:#101010;
-    --white:#f5f5f5;
-    --grey:#a5a5a5;
-    --line:#2b0b0d;
-}
-
-*{
-    box-sizing:border-box;
-    margin:0;
-    padding:0;
-    scroll-behavior:smooth;
-}
-
-body{
-    font-family:Arial, Helvetica, sans-serif;
-    background:#030303;
-    color:white;
-    overflow-x:hidden;
-}
-
-/* =========================================================
-   WEB BACKGROUND
-   ========================================================= */
-
-body::before{
-    content:"";
-    position:fixed;
-    inset:0;
-    pointer-events:none;
-    z-index:-2;
-
-    background:
-        radial-gradient(circle at 10% 10%,
-        transparent 0 55px,
-        rgba(229,9,20,.12) 56px 58px,
-        transparent 59px),
-
-        radial-gradient(circle at 90% 20%,
-        transparent 0 70px,
-        rgba(229,9,20,.10) 71px 73px,
-        transparent 74px),
-
-        linear-gradient(
-        30deg,
-        transparent 48%,
-        rgba(229,9,20,.07) 49%,
-        transparent 50%
-        ),
-
-        linear-gradient(
-        -30deg,
-        transparent 48%,
-        rgba(229,9,20,.07) 49%,
-        transparent 50%
-        );
-
-    background-size:260px 260px;
-}
-
-body::after{
-    content:"";
-    position:fixed;
-    inset:0;
-    pointer-events:none;
-    z-index:-1;
-
-    background:
-        radial-gradient(
-        circle at center,
-        transparent 0%,
-        rgba(0,0,0,.25) 50%,
-        rgba(0,0,0,.8) 100%
-        );
-}
-
-/* =========================================================
-   NAVIGATION
-   ========================================================= */
-
-nav{
-    position:fixed;
-    top:0;
-    left:0;
-    width:100%;
-    z-index:1000;
-
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-
-    padding:20px 7%;
-
-    background:rgba(3,3,3,.88);
-    backdrop-filter:blur(15px);
-
-    border-bottom:1px solid rgba(229,9,20,.25);
-}
-
-.logo{
-    font-size:25px;
-    font-weight:900;
-    letter-spacing:2px;
-}
-
-.logo span{
-    color:var(--red);
-}
-
-.nav-links{
-    display:flex;
-    gap:28px;
-}
-
-.nav-links a{
-    color:#ddd;
-    text-decoration:none;
-    font-size:14px;
-    font-weight:bold;
-    transition:.3s;
-}
-
-.nav-links a:hover{
-    color:var(--red);
-}
-
-@media(max-width:800px){
-
-    .nav-links{
-        display:none;
-    }
-
-    nav{
-        justify-content:center;
-    }
-}
-
-/* =========================================================
-   GENERAL
-   ========================================================= */
-
-section{
-    padding:110px 7%;
-}
-
-.section-title{
-    text-align:center;
-    margin-bottom:60px;
-}
-
-.section-title .small{
-    color:var(--red);
-    letter-spacing:5px;
-    font-size:12px;
-    font-weight:bold;
-    margin-bottom:12px;
-}
-
-.section-title h2{
-    font-size:45px;
-}
-
-.section-title h2 span{
-    color:var(--red);
-}
-
-/* =========================================================
-   HERO
-   ========================================================= */
-
-.hero{
-    min-height:100vh;
-
-    display:flex;
-    align-items:center;
-    justify-content:center;
-
-    text-align:center;
-
-    padding:130px 20px 80px;
-}
-
-.hero-content{
-    max-width:1000px;
-}
-
-.tag{
-    color:var(--red);
-    letter-spacing:6px;
-    font-size:13px;
-    font-weight:bold;
-    margin-bottom:25px;
-}
-
-h1{
-    font-size:clamp(65px,12vw,155px);
-    font-weight:1000;
-    letter-spacing:-8px;
-    line-height:.85;
-
-    text-shadow:
-        0 0 20px rgba(229,9,20,.25),
-        6px 6px 0 #4d0005;
-}
-
-h1 span{
-    color:var(--red);
-}
-
-.hero-subtitle{
-    color:#aaa;
-    font-size:21px;
-    margin:40px auto;
-    max-width:760px;
-    line-height:1.6;
-}
-
-.buttons{
-    display:flex;
-    justify-content:center;
-    flex-wrap:wrap;
-}
-
-.btn{
-    display:inline-block;
-
-    padding:17px 32px;
-    margin:8px;
-
-    border:1px solid var(--red);
-
-    color:white;
-    text-decoration:none;
-
-    border-radius:4px;
-
-    background:#090909;
-
-    transition:.3s;
-
-    font-weight:bold;
-}
-
-.btn:hover{
-    background:var(--red);
-    box-shadow:0 0 35px rgba(229,9,20,.45);
-    transform:translateY(-3px);
-}
-
-.btn.red{
-    background:var(--red);
-}
-
-.btn.red:hover{
-    background:#ff1722;
-}
-
-/* =========================================================
-   ABOUT
-   ========================================================= */
-
-.about-grid{
-    max-width:1100px;
-    margin:auto;
-
-    display:grid;
-    grid-template-columns:1fr 1fr;
-
-    gap:30px;
-}
-
-.card{
-    background:linear-gradient(
-        145deg,
-        rgba(255,255,255,.04),
-        rgba(255,0,0,.015)
-    );
-
-    border:1px solid #291012;
-
-    padding:30px;
-
-    border-radius:10px;
-
-    transition:.3s;
-}
-
-.card:hover{
-    border-color:var(--red);
-    transform:translateY(-5px);
-    box-shadow:0 15px 40px rgba(229,9,20,.12);
-}
-
-.card h3{
-    color:var(--red);
-    margin-bottom:15px;
-    font-size:22px;
-}
-
-.card p{
-    color:#bbb;
-    line-height:1.7;
-}
-
-@media(max-width:800px){
-
-    .about-grid{
-        grid-template-columns:1fr;
-    }
-}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-/* =========================================================
-   EDUCATION
-   ========================================================= */
+    <title>Nandini Vadla | Cybersecurity & Data Science</title>
 
-.timeline{
-    max-width:900px;
-    margin:auto;
-}
+    <meta name="description"
+          content="Nandini Vadla — Cybersecurity and Data Science Master's student specializing in cybersecurity, data analytics, AI and business analysis.">
 
-.timeline-item{
-    position:relative;
+    <meta name="author" content="Nandini Vadla">
 
-    padding:25px 30px;
-    margin-bottom:25px;
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-    border-left:3px solid var(--red);
+        html {
+            scroll-behavior: smooth;
+        }
 
-    background:#090909;
-}
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background: #050505;
+            color: #f5f5f5;
+            line-height: 1.6;
+        }
 
-.timeline-item h3{
-    color:white;
-    margin-bottom:8px;
-}
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
 
-.timeline-item .date{
-    color:var(--red);
-    font-weight:bold;
-    font-size:13px;
-    margin-bottom:10px;
-}
+        /* NAVBAR */
 
-.timeline-item p{
-    color:#aaa;
-    line-height:1.6;
-}
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
 
-/* =========================================================
-   SKILLS
-   ========================================================= */
+            background: rgba(0,0,0,0.90);
+            backdrop-filter: blur(12px);
 
-.skills{
-    max-width:1100px;
-    margin:auto;
+            border-bottom: 1px solid #222;
 
-    display:grid;
-    grid-template-columns:
-        repeat(auto-fit,minmax(240px,1fr));
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
 
-    gap:20px;
-}
+            padding: 18px 7%;
+        }
 
-.skill-card{
-    background:#0b0b0b;
-    border:1px solid #291012;
+        .logo {
+            font-size: 22px;
+            font-weight: 900;
+            color: #e50914;
+            letter-spacing: 2px;
+        }
 
-    padding:25px;
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 25px;
+        }
 
-    border-radius:8px;
-}
+        nav a:hover {
+            color: #e50914;
+        }
 
-.skill-card h3{
-    color:var(--red);
-    margin-bottom:15px;
-}
+        /* HERO */
 
-.skill-card ul{
-    list-style:none;
-}
+        .hero {
+            min-height: 100vh;
 
-.skill-card li{
-    color:#bbb;
-    padding:7px 0;
-    border-bottom:1px solid #171717;
-}
+            display: flex;
+            align-items: center;
+            justify-content: center;
 
-/* =========================================================
-   PROJECTS
-   ========================================================= */
+            text-align: center;
 
-.projects{
-    max-width:1200px;
-    margin:auto;
+            padding: 120px 20px 80px;
 
-    display:grid;
-    grid-template-columns:
-        repeat(auto-fit,minmax(280px,1fr));
+            background:
+                radial-gradient(circle at center, rgba(229,9,20,0.16), transparent 45%),
+                #050505;
+        }
 
-    gap:22px;
-}
+        .spider {
+            font-size: 65px;
+            margin-bottom: 15px;
+        }
 
-.project{
-    background:#0b0b0b;
+        .hero h1 {
+            font-size: clamp(55px, 10vw, 110px);
+            font-weight: 900;
 
-    border:1px solid #2b0d0f;
+            color: #e50914;
 
-    border-radius:10px;
+            letter-spacing: -4px;
 
-    overflow:hidden;
+            text-shadow:
+                0 0 20px rgba(229,9,20,0.5);
+        }
 
-    transition:.3s;
-}
+        .hero h2 {
+            margin-top: 10px;
+            font-size: clamp(20px, 3vw, 32px);
+        }
 
-.project:hover{
-    transform:translateY(-7px);
+        .hero p {
+            max-width: 800px;
+            margin: 20px auto;
 
-    border-color:var(--red);
+            color: #bbb;
+            font-size: 18px;
+        }
 
-    box-shadow:
-        0 15px 40px rgba(229,9,20,.15);
-}
+        .buttons {
+            margin-top: 30px;
 
-.project-top{
-    height:8px;
-    background:var(--red);
-}
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
 
-.project-content{
-    padding:25px;
-}
+        .btn {
+            padding: 13px 24px;
 
-.project h3{
-    font-size:21px;
-    margin-bottom:12px;
-}
+            border: 1px solid #e50914;
 
-.project p{
-    color:#aaa;
-    line-height:1.6;
-    margin-bottom:15px;
-}
+            color: white;
 
-.tags{
-    display:flex;
-    flex-wrap:wrap;
-    gap:7px;
-}
+            border-radius: 6px;
 
-.tags span{
-    padding:5px 9px;
+            transition: 0.3s;
+        }
 
-    font-size:11px;
+        .btn.primary {
+            background: #e50914;
+        }
 
-    color:#ff7379;
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 0 20px rgba(229,9,20,0.4);
+        }
 
-    border:1px solid #5c161a;
+        /* GENERAL */
 
-    border-radius:20px;
-}
+        section {
+            padding: 90px 7%;
+            max-width: 1250px;
+            margin: auto;
+        }
 
-/* =========================================================
-   WHAT I LEARNED
-   ========================================================= */
+        .section-title {
+            font-size: 38px;
+            margin-bottom: 40px;
 
-.learning{
-    max-width:1000px;
-    margin:auto;
-}
+            border-left: 5px solid #e50914;
+            padding-left: 15px;
+        }
 
-.learning-list{
-    display:grid;
-    grid-template-columns:
-        repeat(auto-fit,minmax(250px,1fr));
+        .section-intro {
+            color: #aaa;
+            max-width: 800px;
+            margin-bottom: 40px;
+        }
 
-    gap:15px;
-}
+        /* ABOUT */
 
-.learning-item{
-    padding:20px;
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+        }
 
-    background:#090909;
+        .card {
+            background: #101010;
+            border: 1px solid #242424;
 
-    border-left:3px solid var(--red);
+            border-radius: 12px;
 
-    color:#bbb;
-    line-height:1.5;
-}
+            padding: 30px;
 
-.learning-item strong{
-    color:white;
-}
+            transition: 0.3s;
+        }
 
-/* =========================================================
-   ASK NANDU
-   ========================================================= */
+        .card:hover {
+            border-color: #e50914;
+            transform: translateY(-4px);
+        }
 
-.ask-section{
-    background:
-        linear-gradient(
-            rgba(229,9,20,.04),
-            rgba(0,0,0,.4)
-        );
-}
+        .card h3 {
+            color: #e50914;
+            margin-bottom: 12px;
+        }
 
-.ask-box{
-    max-width:850px;
-    margin:auto;
+        /* EDUCATION */
 
-    background:#080808;
+        .timeline {
+            border-left: 2px solid #e50914;
+            padding-left: 25px;
+        }
 
-    border:1px solid #4a1115;
+        .timeline-item {
+            margin-bottom: 35px;
+            position: relative;
+        }
 
-    border-radius:12px;
+        .timeline-item::before {
+            content: "";
+            position: absolute;
 
-    padding:35px;
+            left: -33px;
+            top: 5px;
 
-    box-shadow:0 0 50px rgba(229,9,20,.07);
-}
+            width: 12px;
+            height: 12px;
 
-.quick-buttons{
-    display:flex;
-    flex-wrap:wrap;
-    gap:10px;
+            background: #e50914;
+            border-radius: 50%;
+        }
 
-    margin-bottom:20px;
-}
+        .timeline-item h3 {
+            margin-bottom: 5px;
+        }
 
-.quick-buttons button{
-    background:#120606;
+        .date {
+            color: #e50914;
+            font-weight: bold;
+        }
 
-    color:#ddd;
+        .muted {
+            color: #aaa;
+        }
 
-    border:1px solid #4d1115;
+        /* SKILLS */
 
-    padding:10px 15px;
+        .skills {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 20px;
+        }
 
-    border-radius:20px;
+        .skill-box {
+            background: #101010;
+            border: 1px solid #252525;
 
-    cursor:pointer;
+            padding: 25px;
+            border-radius: 10px;
+        }
 
-    transition:.3s;
-}
+        .skill-box h3 {
+            color: #e50914;
+            margin-bottom: 12px;
+        }
 
-.quick-buttons button:hover{
-    background:var(--red);
-    color:white;
-}
+        .skill-box p {
+            color: #bbb;
+        }
 
-#question{
-    width:100%;
+        /* PROJECTS */
 
-    min-height:120px;
+        .projects {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
+            gap: 25px;
+        }
 
-    resize:vertical;
+        .project {
+            background: #0d0d0d;
 
-    background:#050505;
+            border: 1px solid #242424;
+            border-radius: 12px;
 
-    color:white;
+            padding: 25px;
 
-    border:1px solid #3b1013;
+            display: flex;
+            flex-direction: column;
 
-    border-radius:6px;
+            transition: 0.3s;
+        }
 
-    padding:15px;
+        .project:hover {
+            border-color: #e50914;
+            transform: translateY(-5px);
+        }
 
-    font-size:15px;
+        .project-number {
+            color: #e50914;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
 
-    outline:none;
-}
+        .project h3 {
+            margin-bottom: 12px;
+        }
 
-#question:focus{
-    border-color:var(--red);
-}
+        .project p {
+            color: #aaa;
+            font-size: 15px;
+            margin-bottom: 18px;
+        }
 
-.ask-button{
-    margin-top:15px;
+        .tech {
+            color: #ddd;
+            font-size: 13px;
+            margin-bottom: 20px;
+        }
 
-    width:100%;
+        .github {
+            margin-top: auto;
 
-    padding:15px;
+            display: inline-block;
 
-    border:none;
+            padding: 9px 15px;
 
-    background:var(--red);
+            border: 1px solid #555;
+            border-radius: 5px;
 
-    color:white;
+            width: fit-content;
+        }
 
-    font-weight:bold;
+        .github:hover {
+            border-color: #e50914;
+            color: #e50914;
+        }
 
-    cursor:pointer;
+        /* EXPERIENCE */
 
-    border-radius:5px;
-}
+        .experience {
+            display: grid;
+            gap: 20px;
+        }
 
-.answer{
-    margin-top:25px;
+        /* CONTACT */
 
-    padding:20px;
+        .contact {
+            text-align: center;
 
-    background:#0e0e0e;
+            background:
+                radial-gradient(circle at center,
+                rgba(229,9,20,0.12),
+                transparent 60%);
+        }
 
-    border-left:3px solid var(--red);
+        .contact p {
+            color: #aaa;
+            margin-bottom: 20px;
+        }
 
-    color:#bbb;
+        .contact-links {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
 
-    line-height:1.7;
+        /* FOOTER */
 
-    display:none;
-}
+        footer {
+            border-top: 1px solid #222;
 
-/* =========================================================
-   GOALS
-   ========================================================= */
+            text-align: center;
 
-.goals{
-    max-width:900px;
-    margin:auto;
+            padding: 30px;
 
-    text-align:center;
-}
+            color: #777;
+        }
 
-.goal-text{
-    color:#aaa;
+        footer span {
+            color: #e50914;
+        }
 
-    font-size:20px;
+        /* MOBILE */
 
-    line-height:1.8;
-}
+        @media(max-width: 700px) {
 
-.goal-highlight{
-    color:white;
-    font-weight:bold;
-}
+            nav {
+                padding: 15px 5%;
+            }
 
-.goal-highlight span{
-    color:var(--red);
-}
+            nav ul {
+                display: none;
+            }
 
-/* =========================================================
-   INTERESTS
-   ========================================================= */
+            .hero h1 {
+                letter-spacing: -2px;
+            }
 
-.interests{
-    max-width:1000px;
-    margin:auto;
+            .about-grid {
+                grid-template-columns: 1fr;
+            }
 
-    display:flex;
-
-    justify-content:center;
-
-    flex-wrap:wrap;
-
-    gap:12px;
-}
-
-.interest{
-    padding:13px 18px;
-
-    background:#0a0a0a;
-
-    border:1px solid #351013;
-
-    border-radius:30px;
-
-    color:#ccc;
-
-    transition:.3s;
-}
-
-.interest:hover{
-    color:white;
-    border-color:var(--red);
-    background:#160506;
-}
-
-/* =========================================================
-   CONTACT
-   ========================================================= */
-
-.contact{
-    text-align:center;
-
-    max-width:800px;
-
-    margin:auto;
-}
-
-.contact p{
-    color:#aaa;
-    line-height:1.7;
-    margin-bottom:25px;
-}
-
-.contact strong{
-    color:white;
-}
-
-/* =========================================================
-   FOOTER
-   ========================================================= */
-
-footer{
-    text-align:center;
-
-    padding:40px 20px;
-
-    border-top:1px solid #251012;
-
-    color:#777;
-
-    font-size:13px;
-}
-
-footer span{
-    color:var(--red);
-}
-
-/* =========================================================
-   ANIMATION
-   ========================================================= */
-
-@keyframes glow{
-
-    0%,100%{
-        text-shadow:
-        0 0 10px rgba(229,9,20,.15),
-        6px 6px 0 #4d0005;
-    }
-
-    50%{
-        text-shadow:
-        0 0 30px rgba(229,9,20,.4),
-        6px 6px 0 #4d0005;
-    }
-}
-
-h1{
-    animation:glow 4s infinite;
-}
-
-</style>
+            section {
+                padding: 70px 5%;
+            }
+        }
+    </style>
 </head>
-
 
 <body>
 
-<!-- =====================================================
-     NAVIGATION
-     ===================================================== -->
+<!-- NAVIGATION -->
 
 <nav>
 
     <div class="logo">
-        NANDU<span>AI</span>
+        🕷 NANDU AI
     </div>
 
-    <div class="nav-links">
-
-        <a href="#about">ABOUT</a>
-
-        <a href="#education">EDUCATION</a>
-
-        <a href="#skills">SKILLS</a>
-
-        <a href="#projects">PROJECTS</a>
-
-        <a href="#ask">ASK NANDU</a>
-
-    </div>
+    <ul>
+        <li><a href="#about">About</a></li>
+        <li><a href="#education">Education</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#experience">Experience</a></li>
+        <li><a href="#contact">Contact</a></li>
+    </ul>
 
 </nav>
 
 
-<!-- =====================================================
-     HERO
-     ===================================================== -->
+<!-- HERO -->
 
-<section class="hero" id="home">
+<header class="hero">
 
-    <div class="hero-content">
+    <div>
 
-        <div class="tag">
-            CYBERSECURITY × ARTIFICIAL INTELLIGENCE
-        </div>
+        <div class="spider">🕷️</div>
 
-        <h1>
-            NANDU<span>AI</span>
-        </h1>
+        <h1>NANDU</h1>
 
-        <p class="hero-subtitle">
+        <h2>
+            Cybersecurity • Data Science • AI • Business Analytics
+        </h2>
 
-            A personal AI and cybersecurity portfolio
-            documenting my journey, projects, skills,
-            interests and ambitions.
-
+        <p>
+            Master's student in Cybersecurity and Data Science,
+            building practical projects across cybersecurity,
+            artificial intelligence, data analytics and business intelligence.
         </p>
 
         <div class="buttons">
 
-            <a href="#about" class="btn red">
-                ABOUT NANDU
+            <a class="btn primary" href="#projects">
+                Explore My Projects
             </a>
 
-            <a href="#projects" class="btn">
-                VIEW PROJECTS
+            <a class="btn"
+               href="https://www.linkedin.com/in/nandini-vadla-9804b7389"
+               target="_blank">
+                LinkedIn
             </a>
 
-            <a href="#ask" class="btn">
-                ASK NANDU
+            <a class="btn"
+               href="https://github.com/nandinivadla"
+               target="_blank">
+                GitHub
             </a>
 
         </div>
 
     </div>
 
-</section>
+</header>
 
 
-<!-- =====================================================
-     ABOUT
-     ===================================================== -->
+<!-- ABOUT -->
 
 <section id="about">
 
-    <div class="section-title">
-
-        <div class="small">
-            GET TO KNOW ME
-        </div>
-
-        <h2>
-            ABOUT <span>NANDU</span>
-        </h2>
-
-    </div>
-
+    <h2 class="section-title">
+        About Me
+    </h2>
 
     <div class="about-grid">
 
@@ -863,10 +486,17 @@ h1{
             <h3>Who I Am</h3>
 
             <p>
-                I am Nandini Vadla, a cybersecurity student
-                interested in the intersection of
-                cybersecurity, artificial intelligence and
-                machine learning.
+                I am Nandini Vadla, a Cybersecurity and Data Science
+                Master's student with a background in Computer Science,
+                networking, data analytics and business-oriented problem solving.
+            </p>
+
+            <br>
+
+            <p>
+                My goal is to combine cybersecurity, AI and data analysis
+                to build practical solutions that help organisations
+                understand risks, improve processes and make better decisions.
             </p>
 
         </div>
@@ -874,41 +504,20 @@ h1{
 
         <div class="card">
 
-            <h3>What Drives Me</h3>
+            <h3>What I'm Looking For</h3>
 
             <p>
-                I want to build strong practical skills,
-                understand how systems work, identify
-                vulnerabilities and use AI to make
-                cybersecurity smarter and more effective.
+                I am interested in internship and junior opportunities
+                in Business Analysis, Data Analytics, Business Intelligence,
+                Cybersecurity and AI.
             </p>
 
-        </div>
-
-
-        <div class="card">
-
-            <h3>My Approach</h3>
+            <br>
 
             <p>
-                I learn by building. Instead of only studying
-                theory, I create projects, experiment with
-                tools, analyse results and document what I
-                learn.
-            </p>
-
-        </div>
-
-
-        <div class="card">
-
-            <h3>What I Am Looking For</h3>
-
-            <p>
-                I am looking for opportunities such as
-                cybersecurity internships, SOC roles,
-                cybersecurity engineering opportunities and
-                AI × cybersecurity projects.
+                I enjoy working with data, identifying patterns,
+                investigating problems and turning technical information
+                into clear business insights.
             </p>
 
         </div>
@@ -918,26 +527,36 @@ h1{
 </section>
 
 
-<!-- =====================================================
-     EDUCATION
-     ===================================================== -->
+<!-- EDUCATION -->
 
 <section id="education">
 
-    <div class="section-title">
-
-        <div class="small">
-            MY JOURNEY
-        </div>
-
-        <h2>
-            EDU<span>CATION</span>
-        </h2>
-
-    </div>
-
+    <h2 class="section-title">
+        Education
+    </h2>
 
     <div class="timeline">
+
+        <div class="timeline-item">
+
+            <div class="date">
+                September 2024 – December 2026
+            </div>
+
+            <h3>
+                MSc Cybersecurity & Data Science
+            </h3>
+
+            <p class="muted">
+                ESAIP École d'Ingénieurs — France
+            </p>
+
+            <p>
+                Cybersecurity, Data Science, Artificial Intelligence,
+                Machine Learning, Cloud, Big Data and related technologies.
+            </p>
+
+        </div>
 
 
         <div class="timeline-item">
@@ -950,10 +569,8 @@ h1{
                 Bachelor of Computer Science
             </h3>
 
-            <p>
-                Built a foundation in computer science,
-                programming, computing concepts, networking
-                and technology.
+            <p class="muted">
+                Computer Science
             </p>
 
         </div>
@@ -969,30 +586,8 @@ h1{
                 Human Resources & Marketing
             </h3>
 
-            <p>
-                Developed communication, organisation,
-                people-management and business-oriented
-                skills alongside my technical background.
-            </p>
-
-        </div>
-
-
-        <div class="timeline-item">
-
-            <div class="date">
-                2025 – 2027
-            </div>
-
-            <h3>
-                MSc Cybersecurity & Data Science
-            </h3>
-
-            <p>
-                ESAIP École d'Ingénieurs, France.
-                Developing advanced knowledge in cybersecurity,
-                data science, artificial intelligence,
-                networking, systems and security.
+            <p class="muted">
+                Business and management studies
             </p>
 
         </div>
@@ -1002,180 +597,115 @@ h1{
 </section>
 
 
-<!-- =====================================================
-     SKILLS
-     ===================================================== -->
+<!-- SKILLS -->
 
 <section id="skills">
 
-    <div class="section-title">
-
-        <div class="small">
-            TECHNICAL KNOWLEDGE
-        </div>
-
-        <h2>
-            MY <span>SKILLS</span>
-        </h2>
-
-    </div>
-
+    <h2 class="section-title">
+        Technical & Business Skills
+    </h2>
 
     <div class="skills">
 
+        <div class="skill-box">
 
-        <div class="skill-card">
+            <h3>Business Analysis</h3>
+
+            <p>
+                Requirements gathering, stakeholder analysis,
+                process mapping, gap analysis, KPI analysis,
+                root-cause analysis and business reporting.
+            </p>
+
+        </div>
+
+
+        <div class="skill-box">
+
+            <h3>Data Analytics</h3>
+
+            <p>
+                Excel, SQL, Python, Pandas, NumPy,
+                data cleaning, exploratory data analysis,
+                statistics and data visualisation.
+            </p>
+
+        </div>
+
+
+        <div class="skill-box">
+
+            <h3>Business Intelligence</h3>
+
+            <p>
+                Power BI, dashboards, KPIs, reporting,
+                data modelling, Power Query and
+                business performance analysis.
+            </p>
+
+        </div>
+
+
+        <div class="skill-box">
 
             <h3>Cybersecurity</h3>
 
-            <ul>
-
-                <li>SOC fundamentals</li>
-
-                <li>Security monitoring</li>
-
-                <li>Security analysis</li>
-
-                <li>Incident investigation</li>
-
-                <li>Digital forensics</li>
-
-                <li>Vulnerability awareness</li>
-
-                <li>Ethical hacking concepts</li>
-
-            </ul>
+            <p>
+                Networking, Linux, Wireshark, security monitoring,
+                log analysis, OSINT, vulnerability concepts,
+                cloud security and incident investigation.
+            </p>
 
         </div>
 
 
-        <div class="skill-card">
-
-            <h3>Networking</h3>
-
-            <ul>
-
-                <li>TCP/IP</li>
-
-                <li>OSI Model</li>
-
-                <li>IP addressing</li>
-
-                <li>Subnetting</li>
-
-                <li>TCP / UDP</li>
-
-                <li>DNS</li>
-
-                <li>DHCP</li>
-
-                <li>ARP</li>
-
-                <li>ICMP</li>
-
-                <li>HTTP / HTTPS</li>
-
-                <li>SSH</li>
-
-            </ul>
-
-        </div>
-
-
-        <div class="skill-card">
-
-            <h3>Linux & Scripting</h3>
-
-            <ul>
-
-                <li>Linux fundamentals</li>
-
-                <li>Terminal</li>
-
-                <li>Bash scripting</li>
-
-                <li>System monitoring</li>
-
-                <li>Logs</li>
-
-                <li>Processes</li>
-
-                <li>File permissions</li>
-
-            </ul>
-
-        </div>
-
-
-        <div class="skill-card">
+        <div class="skill-box">
 
             <h3>AI & Machine Learning</h3>
 
-            <ul>
-
-                <li>Artificial Intelligence</li>
-
-                <li>Machine Learning</li>
-
-                <li>Random Forest</li>
-
-                <li>AI assistants</li>
-
-                <li>LLM concepts</li>
-
-                <li>Python</li>
-
-                <li>Ollama</li>
-
-            </ul>
+            <p>
+                Python, Scikit-learn, machine learning,
+                AI applications, LLMs, Ollama,
+                Llama 3.2 and AI-assisted security analysis.
+            </p>
 
         </div>
 
 
-        <div class="skill-card">
+        <div class="skill-box">
 
-            <h3>Security Tools</h3>
+            <h3>Cloud & Big Data</h3>
 
-            <ul>
-
-                <li>Wireshark</li>
-
-                <li>Volatility 3</li>
-
-                <li>Docker</li>
-
-                <li>AWS CLI</li>
-
-                <li>Git / GitHub</li>
-
-                <li>ADB</li>
-
-            </ul>
+            <p>
+                Azure, Docker, Apache Spark,
+                Big Data concepts and cloud security.
+            </p>
 
         </div>
 
 
-        <div class="skill-card">
+        <div class="skill-box">
 
-            <h3>Programming</h3>
+            <h3>Project & Agile</h3>
 
-            <ul>
+            <p>
+                Agile fundamentals, Scrum, Kanban,
+                Jira, project documentation,
+                requirements and workflow management.
+            </p>
 
-                <li>Python</li>
+        </div>
 
-                <li>SQL</li>
 
-                <li>Bash</li>
+        <div class="skill-box">
 
-                <li>PowerShell concepts</li>
+            <h3>Communication</h3>
 
-                <li>HTML</li>
-
-                <li>CSS</li>
-
-                <li>Git</li>
-
-            </ul>
+            <p>
+                Technical documentation, presentations,
+                stakeholder communication and
+                translating technical findings into business language.
+            </p>
 
         </div>
 
@@ -1184,23 +714,20 @@ h1{
 </section>
 
 
-<!-- =====================================================
-     PROJECTS
-     ===================================================== -->
+<!-- PROJECTS -->
 
 <section id="projects">
 
-    <div class="section-title">
+    <h2 class="section-title">
+        Featured Projects
+    </h2>
 
-        <div class="small">
-            BUILDING & LEARNING
-        </div>
+    <p class="section-intro">
 
-        <h2>
-            MY <span>PROJECTS</span>
-        </h2>
+        Practical projects combining cybersecurity,
+        artificial intelligence, data analytics and automation.
 
-    </div>
+    </p>
 
 
     <div class="projects">
@@ -1210,31 +737,31 @@ h1{
 
         <div class="project">
 
-            <div class="project-top"></div>
-
-            <div class="project-content">
-
-                <h3>
-                    🕷️ NANDU AI
-                </h3>
-
-                <p>
-                    A personal AI assistant built with Python
-                    and Ollama, designed to understand context
-                    and use personal profile information.
-                </p>
-
-                <div class="tags">
-
-                    <span>Python</span>
-                    <span>Ollama</span>
-                    <span>LLM</span>
-                    <span>AI</span>
-                    <span>Memory</span>
-
-                </div>
-
+            <div class="project-number">
+                PROJECT 01
             </div>
+
+            <h3>
+                🛡️ CloudSentinel AI
+            </h3>
+
+            <p>
+                A Python-based cloud security scanner designed
+                to identify risky cloud configurations.
+                The project analyses structured cloud configuration
+                data and detects issues such as public storage,
+                unencrypted storage and publicly accessible databases.
+            </p>
+
+            <div class="tech">
+                Python • JSON • Cloud Security • Automation
+            </div>
+
+            <a class="github"
+               href="REPLACE_WITH_CLOUDSENTINEL_GITHUB_URL"
+               target="_blank">
+                View Code →
+            </a>
 
         </div>
 
@@ -1243,30 +770,30 @@ h1{
 
         <div class="project">
 
-            <div class="project-top"></div>
-
-            <div class="project-content">
-
-                <h3>
-                    AI Image Analyzer
-                </h3>
-
-                <p>
-                    An AI-based project experimenting with image
-                    analysis and OpenAI API integration using
-                    Python.
-                </p>
-
-                <div class="tags">
-
-                    <span>Python</span>
-                    <span>AI</span>
-                    <span>OpenAI</span>
-                    <span>Computer Vision</span>
-
-                </div>
-
+            <div class="project-number">
+                PROJECT 02
             </div>
+
+            <h3>
+                🎣 AI Phishing Detector
+            </h3>
+
+            <p>
+                A cybersecurity and AI project exploring automated
+                phishing detection using Python and machine learning.
+                The system analyses suspicious content and aims to
+                distinguish potentially malicious messages from legitimate ones.
+            </p>
+
+            <div class="tech">
+                Python • Machine Learning • Cybersecurity • NLP
+            </div>
+
+            <a class="github"
+               href="REPLACE_WITH_PHISHING_GITHUB_URL"
+               target="_blank">
+                View Code →
+            </a>
 
         </div>
 
@@ -1275,30 +802,29 @@ h1{
 
         <div class="project">
 
-            <div class="project-top"></div>
-
-            <div class="project-content">
-
-                <h3>
-                    AI Phishing Detector
-                </h3>
-
-                <p>
-                    A cybersecurity project exploring how AI and
-                    machine learning can assist in identifying
-                    suspicious and phishing-related content.
-                </p>
-
-                <div class="tags">
-
-                    <span>AI</span>
-                    <span>Cybersecurity</span>
-                    <span>Phishing</span>
-                    <span>ML</span>
-
-                </div>
-
+            <div class="project-number">
+                PROJECT 03
             </div>
+
+            <h3>
+                🤖 AI SOC Analyst
+            </h3>
+
+            <p>
+                A security operations project that uses Python-based
+                detection logic to analyse security logs and identify
+                potentially suspicious activity for faster investigation.
+            </p>
+
+            <div class="tech">
+                Python • SOC • Log Analysis • AI • Detection
+            </div>
+
+            <a class="github"
+               href="REPLACE_WITH_AI_SOC_GITHUB_URL"
+               target="_blank">
+                View Code →
+            </a>
 
         </div>
 
@@ -1307,31 +833,30 @@ h1{
 
         <div class="project">
 
-            <div class="project-top"></div>
-
-            <div class="project-content">
-
-                <h3>
-                    CloudSentinel AI
-                </h3>
-
-                <p>
-                    A cloud security scanner that analyses cloud
-                    configuration data and identifies security
-                    findings such as public storage, unencrypted
-                    storage and publicly accessible databases.
-                </p>
-
-                <div class="tags">
-
-                    <span>Python</span>
-                    <span>Cloud Security</span>
-                    <span>AWS</span>
-                    <span>AI</span>
-
-                </div>
-
+            <div class="project-number">
+                PROJECT 04
             </div>
+
+            <h3>
+                📊 Security Log Automation
+            </h3>
+
+            <p>
+                A Python automation project for monitoring security logs,
+                identifying events and generating alerts.
+                It demonstrates how repetitive SOC monitoring tasks
+                can be automated.
+            </p>
+
+            <div class="tech">
+                Python • Log Monitoring • Automation • SOC
+            </div>
+
+            <a class="github"
+               href="REPLACE_WITH_SECURITY_LOG_GITHUB_URL"
+               target="_blank">
+                View Code →
+            </a>
 
         </div>
 
@@ -1340,30 +865,29 @@ h1{
 
         <div class="project">
 
-            <div class="project-top"></div>
-
-            <div class="project-content">
-
-                <h3>
-                    AI SOC Analyst
-                </h3>
-
-                <p>
-                    A project exploring how AI can assist security
-                    operations by analysing logs and detecting
-                    suspicious activity.
-                </p>
-
-                <div class="tags">
-
-                    <span>SOC</span>
-                    <span>AI</span>
-                    <span>Logs</span>
-                    <span>Detection</span>
-
-                </div>
-
+            <div class="project-number">
+                PROJECT 05
             </div>
+
+            <h3>
+                🔎 USB Investigation Lab
+            </h3>
+
+            <p>
+                A digital forensics learning project analysing USB event
+                logs and file activity to reconstruct potentially
+                relevant user and device activity.
+            </p>
+
+            <div class="tech">
+                Python • Digital Forensics • Log Analysis
+            </div>
+
+            <a class="github"
+               href="REPLACE_WITH_USB_FORENSICS_GITHUB_URL"
+               target="_blank">
+                View Code →
+            </a>
 
         </div>
 
@@ -1372,30 +896,29 @@ h1{
 
         <div class="project">
 
-            <div class="project-top"></div>
-
-            <div class="project-content">
-
-                <h3>
-                    Security Log Automation
-                </h3>
-
-                <p>
-                    A security monitoring project using Python
-                    scripts to monitor logs and identify security
-                    events and alerts.
-                </p>
-
-                <div class="tags">
-
-                    <span>Python</span>
-                    <span>Linux</span>
-                    <span>Logs</span>
-                    <span>Automation</span>
-
-                </div>
-
+            <div class="project-number">
+                PROJECT 06
             </div>
+
+            <h3>
+                🧠 NANDU AI
+            </h3>
+
+            <p>
+                A personal AI assistant built as a learning project.
+                The system uses Python, Ollama and Llama 3.2 to experiment
+                with local LLMs, structured memory and personalised context.
+            </p>
+
+            <div class="tech">
+                Python • Ollama • Llama 3.2 • JSON • JavaScript
+            </div>
+
+            <a class="github"
+               href="https://github.com/nandinivadla"
+               target="_blank">
+                View GitHub →
+            </a>
 
         </div>
 
@@ -1404,30 +927,30 @@ h1{
 
         <div class="project">
 
-            <div class="project-top"></div>
-
-            <div class="project-content">
-
-                <h3>
-                    USB Investigation Lab
-                </h3>
-
-                <p>
-                    A digital-forensics practice project analysing
-                    USB events and file activity to understand
-                    evidence collection and investigation.
-                </p>
-
-                <div class="tags">
-
-                    <span>Forensics</span>
-                    <span>USB</span>
-                    <span>Logs</span>
-                    <span>Investigation</span>
-
-                </div>
-
+            <div class="project-number">
+                PROJECT 07
             </div>
+
+            <h3>
+                🖼️ AI Image Analyzer
+            </h3>
+
+            <p>
+                An AI learning project exploring automated image analysis.
+                The application uses Python and AI APIs to process
+                visual information and generate meaningful descriptions
+                from images.
+            </p>
+
+            <div class="tech">
+                Python • AI • Computer Vision • API Integration
+            </div>
+
+            <a class="github"
+               href="REPLACE_WITH_IMAGE_ANALYZER_GITHUB_URL"
+               target="_blank">
+                View Code →
+            </a>
 
         </div>
 
@@ -1436,444 +959,28 @@ h1{
 
         <div class="project">
 
-            <div class="project-top"></div>
-
-            <div class="project-content">
-
-                <h3>
-                    Cybersecurity Labs
-                </h3>
-
-                <p>
-                    Hands-on practice with networking, Linux,
-                    system commands, security analysis and
-                    cybersecurity fundamentals.
-                </p>
-
-                <div class="tags">
-
-                    <span>Linux</span>
-                    <span>Networking</span>
-                    <span>Cybersecurity</span>
-                    <span>CLI</span>
-
-                </div>
-
+            <div class="project-number">
+                PROJECT 08
             </div>
 
-        </div>
-
-    </div>
-
-</section>
-
-
-<!-- =====================================================
-     WHAT I LEARNED
-     ===================================================== -->
-
-<section>
-
-    <div class="section-title">
-
-        <div class="small">
-            PRACTICAL LEARNING
-        </div>
-
-        <h2>
-            WHAT I <span>LEARNED</span>
-        </h2>
-
-    </div>
-
-
-    <div class="learning">
-
-        <div class="learning-list">
-
-
-            <div class="learning-item">
-
-                <strong>Networking:</strong>
-                understanding how devices communicate,
-                protocols, ports, IP addresses and network
-                traffic work.
-
-            </div>
-
-
-            <div class="learning-item">
-
-                <strong>Linux:</strong>
-                using the terminal, navigating systems,
-                analysing files, processes and logs.
-
-            </div>
-
-
-            <div class="learning-item">
-
-                <strong>SOC:</strong>
-                understanding monitoring, alerts, logs,
-                detection and investigation.
-
-            </div>
-
-
-            <div class="learning-item">
-
-                <strong>Python:</strong>
-                building automation tools, security scripts
-                and AI projects.
-
-            </div>
-
-
-            <div class="learning-item">
-
-                <strong>Machine Learning:</strong>
-                understanding how models such as Random Forest
-                can be used for classification and prediction.
-
-            </div>
-
-
-            <div class="learning-item">
-
-                <strong>Cloud Security:</strong>
-                identifying insecure cloud configurations
-                and potential exposure.
-
-            </div>
-
-
-            <div class="learning-item">
-
-                <strong>Digital Forensics:</strong>
-                analysing logs and digital evidence to
-                understand what happened on a system.
-
-            </div>
-
-
-            <div class="learning-item">
-
-                <strong>AI × Cybersecurity:</strong>
-                exploring how artificial intelligence can
-                support detection, analysis and automation.
-
-            </div>
-
-
-        </div>
-
-    </div>
-
-</section>
-
-
-<!-- =====================================================
-     INTERESTS
-     ===================================================== -->
-
-<section>
-
-    <div class="section-title">
-
-        <<div class="small">
-    THE PERSON BEHIND THE TECH
-</div>
-
-        <h2>
-    BEYOND THE <span>CODE</span>
-</h2>
-
-    </div>
-
-
-    <div class="interests">
-
-    <div class="interest">Music & Bass</div>
-
-    <div class="interest">Cloudy Weather</div>
-
-    <div class="interest">Indian Food</div>
-
-    <div class="interest">Thriller & Horror</div>
-
-    <div class="interest">Plot Twists</div>
-
-    <div class="interest">Beaches & Water</div>
-
-    <div class="interest">Nature</div>
-
-    <div class="interest">Gym & Fitness</div>
-
-    <div class="interest">Boxing</div>
-
-    <div class="interest">Artificial Intelligence</div>
-
-    <div class="interest">Cybersecurity</div>
-
-</div>
-</section>
-
-
-<!-- =====================================================
-     STRENGTHS
-     ===================================================== -->
-
-<section>
-
-    <div class="section-title">
-
-        <div class="small">
-            WHAT I BRING
-        </div>
-
-        <h2>
-            MY <span>STRENGTHS</span>
-        </h2>
-
-    </div>
-
-
-    <div class="about-grid">
-
-
-        <div class="card">
-
-            <h3>Curious</h3>
+            <h3>
+                📈 Data Analytics Portfolio
+            </h3>
 
             <p>
-                I enjoy understanding how things work and
-                going deeper instead of stopping at the
-                surface.
+                A collection of analytics work using Python, Pandas,
+                NumPy, SQL and data visualisation to clean datasets,
+                identify patterns and communicate business insights.
             </p>
 
-        </div>
-
-
-        <div class="card">
-
-            <h3>Hands-on Learner</h3>
-
-            <p>
-                I learn by building projects, testing ideas,
-                troubleshooting problems and experimenting
-                with technology.
-            </p>
-
-        </div>
-
-
-        <div class="card">
-
-            <h3>Persistent</h3>
-
-            <p>
-                When something doesn't work, I keep
-                troubleshooting until I understand what went
-                wrong.
-            </p>
-
-        </div>
-
-
-        <div class="card">
-
-            <h3>Adaptable</h3>
-
-            <p>
-                My background combines computer science,
-                business, communication and cybersecurity,
-                giving me a broad perspective.
-            </p>
-
-        </div>
-
-
-    </div>
-
-</section>
-
-
-<!-- =====================================================
-     GOALS
-     ===================================================== -->
-
-<section>
-
-    <div class="section-title">
-
-        <div class="small">
-            WHERE I'M GOING
-        </div>
-
-        <h2>
-            MY <span>GOALS</span>
-        </h2>
-
-    </div>
-
-
-    <div class="goals">
-
-        <p class="goal-text">
-
-            My goal is to become a strong cybersecurity
-            professional with practical expertise in
-
-            <span class="goal-highlight">
-                <span>SOC operations</span>,
-                <span>network security</span>,
-                <span>Linux</span>,
-                <span>cloud security</span>,
-                <span>AI</span>
-                and
-                <span>machine learning</span>.
-            </span>
-
-            <br><br>
-
-            I am looking for opportunities where I can learn,
-            contribute, build real-world experience and
-            continue developing my technical skills.
-
-        </p>
-
-    </div>
-
-</section>
-
-
-<!-- =====================================================
-     ASK NANDU
-     ===================================================== -->
-
-<section id="ask" class="ask-section">
-
-    <div class="section-title">
-
-        <div class="small">
-            KNOW ME
-        </div>
-
-        <h2>
-            ASK <span>NANDU</span>
-        </h2>
-
-    </div>
-
-
-    <div class="ask-box">
-
-
-        <div class="quick-buttons">
-
-            <button onclick="quickQuestion('life')">
-                ASK NANDU LIFE
-            </button>
-
-            <button onclick="quickQuestion('vibe')">
-                ASK NANDU VIBE
-            </button>
-
-            <button onclick="quickQuestion('skills')">
-                ASK NANDU SKILLS
-            </button>
-
-            <button onclick="quickQuestion('projects')">
-                ASK NANDU PROJECTS
-            </button>
-
-            <button onclick="quickQuestion('education')">
-                ASK NANDU EDUCATION
-            </button>
-
-        </div>
-
-
-        <textarea
-            id="question"
-            placeholder="Ask something about Nandu...">
-        </textarea>
-
-
-        <button
-            class="ask-button"
-            onclick="askNandu()">
-
-            ASK NANDU
-
-        </button>
-
-
-        <div
-            id="answer"
-            class="answer">
-        </div>
-
-
-    </div>
-
-</section>
-
-
-<!-- =====================================================
-     CONTACT
-     ===================================================== -->
-
-<section>
-
-    <div class="section-title">
-
-        <div class="small">
-            LET'S CONNECT
-        </div>
-
-        <h2>
-            CONTACT <span>NANDU</span>
-        </h2>
-
-    </div>
-
-
-    <div class="contact">
-
-        <p>
-
-            Interested in cybersecurity, AI,
-            collaboration, internships or opportunities?
-
-            <br><br>
-
-            <strong>
-                Let's connect and build something useful.
-            </strong>
-
-        </p>
-
-
-        <div class="buttons">
-
-            <a
-                href="https://github.com/Nandinivadla"
-                target="_blank"
-                class="btn red">
-
-                GitHub
-
-            </a>
-
-
-            <a
-                href="https://www.linkedin.com/"
-                target="_blank"
-                class="btn">
-
-                LinkedIn
-
+            <div class="tech">
+                Python • Pandas • NumPy • SQL • Analytics
+            </div>
+
+            <a class="github"
+               href="REPLACE_WITH_ANALYTICS_GITHUB_URL"
+               target="_blank">
+                View Code →
             </a>
 
         </div>
@@ -1883,258 +990,127 @@ h1{
 </section>
 
 
-<!-- =====================================================
-     FOOTER
-     ===================================================== -->
+<!-- EXPERIENCE -->
+
+<section id="experience">
+
+    <h2 class="section-title">
+        Experience
+    </h2>
+
+    <div class="experience">
+
+
+        <div class="card">
+
+            <h3>
+                Senior Representative Officer
+            </h3>
+
+            <p class="date">
+                January 2022 – December 2023
+            </p>
+
+            <p>
+                Developed professional communication,
+                customer interaction, problem solving,
+                coordination and operational skills.
+            </p>
+
+        </div>
+
+
+        <div class="card">
+
+            <h3>
+                English Tutor
+            </h3>
+
+            <p class="date">
+                January 2024 – September 2024
+            </p>
+
+            <p>
+                Provided English tuition to children,
+                adapting explanations to different learning needs
+                and communicating complex concepts clearly.
+            </p>
+
+        </div>
+
+
+        <div class="card">
+
+            <h3>
+                Network Support Engineer
+            </h3>
+
+            <p>
+                Experience with TCP/IP, VLANs, system monitoring,
+                backup and disaster recovery concepts and
+                technical troubleshooting.
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- CONTACT -->
+
+<section id="contact" class="contact">
+
+    <h2 class="section-title">
+        Let's Connect
+    </h2>
+
+    <p>
+        Interested in cybersecurity, data analytics,
+        business analysis or AI projects?
+    </p>
+
+    <div class="contact-links">
+
+        <!-- CHANGE THIS EMAIL -->
+        <a class="btn primary"
+           href="mailto:REPLACE_WITH_YOUR_EMAIL">
+            ✉ Email Me
+        </a>
+
+        <a class="btn"
+           href="https://www.linkedin.com/in/nandini-vadla-9804b7389"
+           target="_blank">
+            LinkedIn
+        </a>
+
+        <a class="btn"
+           href="https://github.com/nandinivadla"
+           target="_blank">
+            GitHub
+        </a>
+
+    </div>
+
+</section>
+
+
+<!-- FOOTER -->
 
 <footer>
 
-    NANDU<span>AI</span>
+    <p>
+        🕷️ <span>NANDU AI</span> —
+        Cybersecurity • Data • AI
+    </p>
 
-    ·
-
-    Cybersecurity × Artificial Intelligence
-
-    <br><br>
-
-    Built by Nandu.
+    <p>
+        © 2026 Nandini Vadla
+    </p>
 
 </footer>
 
-
-<!-- =====================================================
-     ASK NANDU JAVASCRIPT
-     ===================================================== -->
-
-<script>
-
-const nanduKnowledge = {
-
-    life: `
-Nandu is a cybersecurity and AI student who enjoys
-learning through practical projects and experiments.
-
-She is interested in cybersecurity, artificial intelligence,
-machine learning and technology.
-
-Outside technology, she enjoys music, cloudy and dark weather,
-Indian food, thriller and horror movies, beaches, nature,
-gym and boxing.
-
-She tends to be more introverted at first, but becomes very
-talkative and expressive around people she feels comfortable
-with.
-`,
-
-    vibe: `
-Nandu's vibe is a mixture of technology, dark cloudy weather,
-music with strong bass, nature, water, beaches, thriller and
-horror movies, plot twists, gym, boxing and aesthetics.
-
-She likes things that feel atmospheric, interesting and
-different rather than ordinary.
-`,
-
-    skills: `
-Nandu is developing skills in cybersecurity, networking,
-Linux, Python, Bash, security monitoring, digital forensics,
-cloud security, artificial intelligence and machine learning.
-
-She has worked with tools and technologies including
-Wireshark, Volatility 3, Docker, AWS CLI, GitHub, Python
-and Ollama.
-`,
-
-    projects: `
-Nandu has worked on several practical projects including
-NANDU AI, AI Image Analyzer, AI Phishing Detector,
-CloudSentinel AI, AI SOC Analyst, Security Log Automation,
-USB Investigation Lab and cybersecurity/networking labs.
-
-These projects helped her practise Python, AI, security
-monitoring, log analysis, cloud security, automation and
-digital forensics.
-`,
-
-    education: `
-Nandu has a Bachelor background in Computer Science,
-followed by studies in Human Resources and Marketing.
-
-She is currently studying an MSc in Cybersecurity and
-Data Science at ESAIP École d'Ingénieurs in France.
-
-Her current direction combines cybersecurity, data science,
-AI and machine learning.
-`
-
-};
-
-
-/* =========================================================
-   QUICK QUESTIONS
-   ========================================================= */
-
-function quickQuestion(type){
-
-    const answer = document.getElementById("answer");
-
-    answer.style.display = "block";
-
-    answer.innerText = nanduKnowledge[type];
-
-    answer.scrollIntoView({
-        behavior:"smooth",
-        block:"center"
-    });
-}
-
-
-/* =========================================================
-   ASK NANDU
-   ========================================================= */
-
-function askNandu(){
-
-    const input =
-        document.getElementById("question");
-
-    const answer =
-        document.getElementById("answer");
-
-    const question =
-        input.value.toLowerCase().trim();
-
-
-    if(!question){
-
-        answer.style.display = "block";
-
-        answer.innerText =
-            "Ask me something about Nandu — her projects, skills, education, interests, vibe or goals.";
-
-        return;
-    }
-
-
-    let response = "";
-
-
-    if(
-        question.includes("project") ||
-        question.includes("built") ||
-        question.includes("made")
-    ){
-
-        response = nanduKnowledge.projects;
-
-    }
-
-    else if(
-        question.includes("skill") ||
-        question.includes("know") ||
-        question.includes("technology") ||
-        question.includes("cyber")
-    ){
-
-        response = nanduKnowledge.skills;
-
-    }
-
-    else if(
-        question.includes("education") ||
-        question.includes("study") ||
-        question.includes("degree") ||
-        question.includes("master") ||
-        question.includes("bachelor")
-    ){
-
-        response = nanduKnowledge.education;
-
-    }
-
-    else if(
-        question.includes("like") ||
-        question.includes("hobby") ||
-        question.includes("music") ||
-        question.includes("weather") ||
-        question.includes("movie") ||
-        question.includes("food")
-    ){
-
-        response = nanduKnowledge.vibe;
-
-    }
-
-    else if(
-        question.includes("personality") ||
-        question.includes("life") ||
-        question.includes("vibe") ||
-        question.includes("person")
-    ){
-
-        response = nanduKnowledge.life;
-
-    }
-
-    else if(
-        question.includes("goal") ||
-        question.includes("job") ||
-        question.includes("internship") ||
-        question.includes("career")
-    ){
-
-        response = `
-Nandu is looking for opportunities in cybersecurity,
-including internships, SOC-related roles and
-cybersecurity/AI opportunities.
-
-Her long-term goal is to become a strong cybersecurity
-professional while continuing to develop AI and machine
-learning skills.
-`;
-
-    }
-
-    else{
-
-        response = `
-I can tell you about Nandu's:
-
-• Education
-• Cybersecurity skills
-• AI & machine learning
-• Projects
-• Hobbies
-• Interests
-• Personality/vibe
-• Career goals
-
-Try asking something like:
-
-"What projects has Nandu built?"
-
-"What does Nandu like?"
-
-"What does Nandu study?"
-
-"What cybersecurity skills does Nandu have?"
-`;
-
-    }
-
-
-    answer.style.display = "block";
-
-    answer.innerText = response;
-
-    answer.scrollIntoView({
-        behavior:"smooth",
-        block:"center"
-    });
-
-}
-
-</script>
 
 </body>
 </html>
