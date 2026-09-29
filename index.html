@@ -1824,6 +1824,8 @@ footer .wrap{
           <span class="cert-arrow">↗</span>
         </div>
 
+        <div class="cert-icon">✦</div>
+
         <h3>Gen AI and AI Agents Course</h3>
 
         <p class="cert-provider">
@@ -1840,7 +1842,8 @@ footer .wrap{
         </div>
 
         <div class="cert-view">
-          View Certificate
+          <span>View Certificate</span>
+          <span class="view-arrow">→</span>
         </div>
       </a>
 
@@ -1848,7 +1851,7 @@ footer .wrap{
       <!-- PYTHON CERTIFICATE -->
       <a
         class="cert-card"
-        href="CynoHub_Certificate_python.pdf"
+        href="CynoHub_Certificate_programming_fundamentals_with_python.pdf"
         target="_blank"
         rel="noopener noreferrer"
       >
@@ -1856,6 +1859,8 @@ footer .wrap{
           <span class="cert-badge">CERTIFICATE</span>
           <span class="cert-arrow">↗</span>
         </div>
+
+        <div class="cert-icon">⌘</div>
 
         <h3>Programming Fundamentals with Python</h3>
 
@@ -1873,7 +1878,8 @@ footer .wrap{
         </div>
 
         <div class="cert-view">
-          View Certificate
+          <span>View Certificate</span>
+          <span class="view-arrow">→</span>
         </div>
       </a>
 
@@ -1896,37 +1902,83 @@ footer .wrap{
   }
 
   .cert-card {
+    position: relative;
+    overflow: hidden;
+
     display: flex;
     flex-direction: column;
-    min-height: 310px;
+
+    min-height: 330px;
     padding: 28px;
+
     border: 1px solid var(--line);
     border-radius: 20px;
+
     background: var(--card);
     color: inherit;
     text-decoration: none;
-    transition:
-      transform 0.25s ease,
-      border-color 0.25s ease,
-      box-shadow 0.25s ease;
+
     cursor: pointer;
+
+    transition:
+      transform 0.35s cubic-bezier(.2,.8,.2,1),
+      border-color 0.35s ease,
+      box-shadow 0.35s ease;
   }
 
+  /* Moving glow behind the card */
+  .cert-card::before {
+    content: "";
+    position: absolute;
+
+    width: 180px;
+    height: 180px;
+
+    top: -100px;
+    right: -100px;
+
+    border-radius: 50%;
+
+    background: rgba(255, 255, 255, 0.08);
+
+    filter: blur(10px);
+
+    transition:
+      width 0.5s ease,
+      height 0.5s ease,
+      transform 0.5s ease;
+  }
+
+  .cert-card:hover::before {
+    width: 300px;
+    height: 300px;
+    transform: translate(-40px, 40px);
+  }
+
+  /* Card hover */
   .cert-card:hover {
-    transform: translateY(-6px);
+    transform: translateY(-8px) scale(1.01);
+
     border-color: currentColor;
-    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.12);
+
+    box-shadow:
+      0 20px 45px rgba(0, 0, 0, 0.16),
+      0 0 0 1px rgba(255, 255, 255, 0.04);
   }
 
   .cert-card:active {
-    transform: translateY(-2px);
+    transform: translateY(-2px) scale(0.995);
   }
 
   .cert-card-top {
+    position: relative;
+    z-index: 2;
+
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 28px;
+
+    margin-bottom: 18px;
   }
 
   .cert-badge {
@@ -1938,35 +1990,89 @@ footer .wrap{
 
   .cert-arrow {
     font-size: 24px;
-    transition: transform 0.25s ease;
+
+    transition:
+      transform 0.35s ease,
+      opacity 0.35s ease;
   }
 
   .cert-card:hover .cert-arrow {
-    transform: translate(4px, -4px);
+    transform: translate(6px, -6px) rotate(5deg);
+  }
+
+  .cert-icon {
+    position: relative;
+    z-index: 2;
+
+    width: 48px;
+    height: 48px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    margin-bottom: 20px;
+
+    border: 1px solid var(--line);
+    border-radius: 14px;
+
+    font-size: 21px;
+
+    transition:
+      transform 0.4s ease,
+      border-color 0.4s ease,
+      box-shadow 0.4s ease;
+  }
+
+  .cert-card:hover .cert-icon {
+    transform: rotate(-5deg) scale(1.1);
+
+    border-color: currentColor;
+
+    box-shadow:
+      0 0 20px rgba(255, 255, 255, 0.08);
   }
 
   .cert-card h3 {
+    position: relative;
+    z-index: 2;
+
     margin: 0 0 12px;
+
     font-size: 24px;
     line-height: 1.2;
   }
 
   .cert-provider {
+    position: relative;
+    z-index: 2;
+
     margin: 0 0 8px;
+
     font-weight: 600;
   }
 
   .cert-date {
+    position: relative;
+    z-index: 2;
+
     margin: 0;
+
     opacity: 0.65;
   }
 
   .cert-bottom {
+    position: relative;
+    z-index: 2;
+
     display: flex;
     flex-direction: column;
+
     gap: 5px;
+
     margin-top: auto;
     padding-top: 25px;
+
     font-size: 13px;
   }
 
@@ -1979,23 +2085,100 @@ footer .wrap{
     word-break: break-word;
   }
 
+
+  /* VIEW CERTIFICATE BUTTON */
   .cert-view {
+    position: relative;
+    z-index: 2;
+
+    display: inline-flex;
+    align-items: center;
+    justify-content: space-between;
+
     margin-top: 20px;
+    padding: 12px 15px;
+
+    border: 1px solid var(--line);
+    border-radius: 12px;
+
     font-weight: 700;
+
+    overflow: hidden;
+
+    transition:
+      background 0.3s ease,
+      border-color 0.3s ease,
+      transform 0.3s ease;
   }
 
+  .cert-view::before {
+    content: "";
+
+    position: absolute;
+
+    left: -120%;
+    top: 0;
+
+    width: 100%;
+    height: 100%;
+
+    background: linear-gradient(
+      90deg,
+      transparent,
+      rgba(255,255,255,0.15),
+      transparent
+    );
+
+    transition: left 0.55s ease;
+  }
+
+  .cert-card:hover .cert-view::before {
+    left: 120%;
+  }
+
+  .cert-card:hover .cert-view {
+    border-color: currentColor;
+
+    transform: translateX(3px);
+  }
+
+  .view-arrow {
+    display: inline-block;
+
+    font-size: 20px;
+
+    transition:
+      transform 0.3s ease;
+  }
+
+  .cert-card:hover .view-arrow {
+    transform: translateX(6px);
+  }
+
+
+  /* MOBILE */
   @media (max-width: 700px) {
+
+    #certifications {
+      padding: 60px 0;
+    }
+
     .cert-grid {
       grid-template-columns: 1fr;
+      gap: 18px;
     }
 
     .cert-card {
-      min-height: 280px;
+      min-height: 300px;
       padding: 24px;
     }
 
     .cert-card h3 {
       font-size: 21px;
+    }
+
+    .cert-view {
+      padding: 11px 14px;
     }
   }
 </style>
