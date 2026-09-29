@@ -58,6 +58,23 @@ img,svg{max-width:100%}
 
 section{padding:96px 0}
 
+.section-head{
+  margin-bottom:8px;
+}
+
+.section-head .eyebrow{
+  color:var(--tan);
+  font-size:.78rem;
+  font-weight:700;
+  letter-spacing:.14em;
+  margin-bottom:8px;
+}
+
+.section-head > p:last-child{
+  color:var(--muted);
+  max-width:60ch;
+}
+
 h1,h2,h3{
   font-family:var(--display);
   font-weight:600;
@@ -177,8 +194,7 @@ header.solid{
 
 .lang button{
   position:relative;
-  touch-action:manipulation;
-  z-index:1;
+  z-index:3;
   border:0;
   background:none;
   color:var(--muted);
@@ -195,14 +211,14 @@ header.solid{
 
 .lang .thumb{
   position:absolute;
+  z-index:1;
   top:3px;
   left:3px;
   height:calc(100% - 6px);
   width:calc(50% - 3px);
   background:var(--sage);
   border-radius:999px;
-  transition:transform .35s var(--ease);
-  pointer-events:none;
+  transition:transform .35s var(--ease)
 }
 
 .lang[data-lang="fr"] .thumb{
@@ -285,6 +301,24 @@ header.solid{
   transform:translateY(-2px)
 }
 
+/* Special animated effect for the main View my projects button */
+#hero .btn.primary{
+  animation:projectGlow 2.8s ease-in-out infinite;
+}
+
+#hero .btn.primary:hover{
+  animation-play-state:paused;
+}
+
+@keyframes projectGlow{
+  0%,100%{
+    box-shadow:0 10px 30px -10px rgba(161,168,118,.55);
+  }
+  50%{
+    box-shadow:0 14px 42px -8px rgba(184,159,114,.9),0 0 0 5px rgba(161,168,118,.08);
+  }
+}
+
 .btn.primary::before{
   content:"";
   position:absolute;
@@ -308,6 +342,36 @@ header.solid{
   border-color:var(--tan);
   background:rgba(184,159,114,.1);
   transform:translateY(-2px)
+}
+
+/* Special effect for project buttons */
+#hero .btn.primary{
+  position:relative;
+  overflow:hidden;
+  isolation:isolate;
+}
+
+#hero .btn.primary::after{
+  content:"";
+  position:absolute;
+  top:0;
+  left:-130%;
+  width:70%;
+  height:100%;
+  transform:skewX(-22deg);
+  background:linear-gradient(90deg,transparent,rgba(255,255,255,.38),transparent);
+  transition:left .75s ease;
+  pointer-events:none;
+  z-index:0;
+}
+
+#hero .btn.primary:hover::after{
+  left:150%;
+}
+
+#hero .btn.primary > *{
+  position:relative;
+  z-index:1;
 }
 
 .btn.small{
@@ -777,14 +841,6 @@ h1{
   font-weight:700;
   margin-bottom:6px
 }
-
-/* ---------- Project action effect ---------- */
-.proj .btn.ghost{position:relative;overflow:hidden;isolation:isolate;}
-.proj .btn.ghost::before{content:"";position:absolute;inset:0;background:linear-gradient(105deg,transparent 25%,rgba(255,255,255,.18) 50%,transparent 75%);transform:translateX(-120%);transition:transform .7s var(--ease);pointer-events:none;}
-.proj .btn.ghost:hover::before{transform:translateX(120%);}
-.proj .btn.ghost:hover{border-color:var(--sage);box-shadow:0 8px 24px -14px rgba(161,168,118,.8);}
-.proj .btn.ghost svg{transition:transform .35s var(--ease);}
-.proj .btn.ghost:hover svg{transform:translateX(5px);}
 
 /* ---------- Timeline ---------- */
 
@@ -1493,6 +1549,10 @@ footer .wrap{
 }
 
 @media (prefers-reduced-motion:reduce){
+  #hero .btn.primary{
+    animation:none!important;
+  }
+
   *,*::before,*::after{
     animation-duration:.01ms!important;
     animation-iteration-count:1!important;
@@ -1809,6 +1869,21 @@ footer .wrap{
 
 
 <!-- EXPERIENCE + EDUCATION -->
+<section id="experience">
+  <div class="wrap">
+    <div class="two">
+      <div>
+        <h2 class="rv" data-i18n="exp_t"></h2>
+        <div class="timeline" id="expList"></div>
+      </div>
+
+      <div>
+        <h2 class="rv" data-i18n="edu_t"></h2>
+        <div class="timeline" id="eduList"></div>
+      </div>
+    </div>
+  </div>
+</section>
 
 <!-- CERTIFICATIONS -->
 <section id="certifications">
@@ -1823,19 +1898,30 @@ footer .wrap{
     <div class="cert-grid">
 
       <!-- GEN AI CERTIFICATE -->
-      <a class="cert-card" href="CynoHub_Certificate_gen_ai_and_ai_agents_course.pdf" target="_blank" rel="noopener noreferrer">
+      <a
+        class="cert-card"
+        href="CynoHub_Certificate_gen_ai_and_ai_agents_course.pdf"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
         <div class="cert-card-top">
           <span class="cert-badge" data-i18n="cert_badge"></span>
           <span class="cert-arrow">↗</span>
         </div>
+
         <div class="cert-icon">✦</div>
+
         <h3 data-i18n="cert_gen_title"></h3>
+
         <p class="cert-provider" data-i18n="cert_provider"></p>
+
         <p class="cert-date" data-i18n="cert_date"></p>
+
         <div class="cert-bottom">
           <span data-i18n="cert_credential"></span>
           <strong>CYNO-VLWYMR-ZOOL8</strong>
         </div>
+
         <div class="cert-view">
           <span data-i18n="cert_view"></span>
           <span class="view-arrow">→</span>
@@ -1843,19 +1929,30 @@ footer .wrap{
       </a>
 
       <!-- PYTHON CERTIFICATE -->
-      <a class="cert-card" href="CynoHub_Certificate_programming_fundamentals_with_python.pdf" target="_blank" rel="noopener noreferrer">
+      <a
+        class="cert-card"
+        href="CynoHub_Certificate_programming_fundamentals_with_python.pdf"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
         <div class="cert-card-top">
           <span class="cert-badge" data-i18n="cert_badge"></span>
           <span class="cert-arrow">↗</span>
         </div>
+
         <div class="cert-icon">⌘</div>
+
         <h3 data-i18n="cert_python_title"></h3>
+
         <p class="cert-provider" data-i18n="cert_provider"></p>
+
         <p class="cert-date" data-i18n="cert_date"></p>
+
         <div class="cert-bottom">
           <span data-i18n="cert_credential"></span>
           <strong>CYNO-1ELO0J-1SKJ5U</strong>
         </div>
+
         <div class="cert-view">
           <span data-i18n="cert_view"></span>
           <span class="view-arrow">→</span>
@@ -1863,45 +1960,303 @@ footer .wrap{
       </a>
 
     </div>
+
   </div>
 </section>
 
+
 <style>
-  #certifications { padding:80px 0; }
-  .cert-grid { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:24px; margin-top:35px; }
+  #certifications {
+    padding: 80px 0;
+  }
+
+  .cert-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 24px;
+    margin-top: 35px;
+  }
+
   .cert-card {
-    position:relative; overflow:hidden; display:flex; flex-direction:column; min-height:330px; padding:28px;
-    border:1px solid var(--line); border-radius:20px; background:var(--card); color:inherit; text-decoration:none; cursor:pointer;
-    transition:transform .35s cubic-bezier(.2,.8,.2,1),border-color .35s ease,box-shadow .35s ease;
+    position: relative;
+    overflow: hidden;
+
+    display: flex;
+    flex-direction: column;
+
+    min-height: 330px;
+    padding: 28px;
+
+    border: 1px solid var(--line);
+    border-radius: 20px;
+
+    background: var(--card);
+    color: inherit;
+    text-decoration: none;
+
+    cursor: pointer;
+
+    transition:
+      transform 0.35s cubic-bezier(.2,.8,.2,1),
+      border-color 0.35s ease,
+      box-shadow 0.35s ease;
   }
+
+  /* Moving glow behind the card */
   .cert-card::before {
-    content:""; position:absolute; width:180px; height:180px; top:-100px; right:-100px; border-radius:50%;
-    background:rgba(255,255,255,.08); filter:blur(10px); transition:width .5s ease,height .5s ease,transform .5s ease;
-    pointer-events:none;
+    content: "";
+    position: absolute;
+
+    width: 180px;
+    height: 180px;
+
+    top: -100px;
+    right: -100px;
+
+    border-radius: 50%;
+
+    background: rgba(255, 255, 255, 0.08);
+
+    filter: blur(10px);
+
+    transition:
+      width 0.5s ease,
+      height 0.5s ease,
+      transform 0.5s ease;
   }
-  .cert-card:hover::before { width:300px; height:300px; transform:translate(-40px,40px); }
-  .cert-card:hover { transform:translateY(-8px) scale(1.01); border-color:currentColor; box-shadow:0 20px 45px rgba(0,0,0,.16),0 0 0 1px rgba(255,255,255,.04); }
-  .cert-card:active { transform:translateY(-2px) scale(.995); }
-  .cert-card-top { position:relative; z-index:2; display:flex; justify-content:space-between; align-items:center; margin-bottom:18px; }
-  .cert-badge { font-size:11px; letter-spacing:1.5px; font-weight:700; opacity:.65; }
-  .cert-arrow { font-size:24px; transition:transform .35s ease,opacity .35s ease; }
-  .cert-card:hover .cert-arrow { transform:translate(6px,-6px) rotate(5deg); }
-  .cert-icon { position:relative; z-index:2; width:48px; height:48px; display:flex; align-items:center; justify-content:center; margin-bottom:20px; border:1px solid var(--line); border-radius:14px; font-size:21px; transition:transform .4s ease,border-color .4s ease,box-shadow .4s ease; }
-  .cert-card:hover .cert-icon { transform:rotate(-5deg) scale(1.1); border-color:currentColor; box-shadow:0 0 20px rgba(255,255,255,.08); }
-  .cert-card h3 { position:relative; z-index:2; margin:0 0 12px; font-size:24px; line-height:1.2; }
-  .cert-provider,.cert-date { position:relative; z-index:2; margin:0 0 8px; }
-  .cert-provider { font-weight:600; }
-  .cert-date { opacity:.65; }
-  .cert-bottom { position:relative; z-index:2; display:flex; flex-direction:column; gap:5px; margin-top:auto; padding-top:25px; font-size:13px; }
-  .cert-bottom span { opacity:.55; }
-  .cert-bottom strong { font-size:12px; word-break:break-word; }
-  .cert-view { position:relative; z-index:2; display:flex; align-items:center; justify-content:space-between; margin-top:20px; padding:12px 15px; border:1px solid var(--line); border-radius:12px; font-weight:700; overflow:hidden; transition:background .3s ease,border-color .3s ease,transform .3s ease; }
-  .cert-view::before { content:""; position:absolute; left:-120%; top:0; width:100%; height:100%; background:linear-gradient(90deg,transparent,rgba(255,255,255,.15),transparent); transition:left .55s ease; }
-  .cert-card:hover .cert-view::before { left:120%; }
-  .cert-card:hover .cert-view { background:rgba(161,168,118,.08); border-color:var(--sage); transform:translateY(-2px); }
-  .view-arrow { transition:transform .3s ease; }
-  .cert-card:hover .view-arrow { transform:translateX(5px); }
-  @media (max-width:700px) { .cert-grid { grid-template-columns:1fr; } .cert-card { min-height:290px; padding:24px; } .cert-card h3 { font-size:21px; } }
+
+  .cert-card:hover::before {
+    width: 300px;
+    height: 300px;
+    transform: translate(-40px, 40px);
+  }
+
+  /* Card hover */
+  .cert-card:hover {
+    transform: translateY(-8px) scale(1.01);
+
+    border-color: currentColor;
+
+    box-shadow:
+      0 20px 45px rgba(0, 0, 0, 0.16),
+      0 0 0 1px rgba(255, 255, 255, 0.04);
+  }
+
+  .cert-card:active {
+    transform: translateY(-2px) scale(0.995);
+  }
+
+  .cert-card-top {
+    position: relative;
+    z-index: 2;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    margin-bottom: 18px;
+  }
+
+  .cert-badge {
+    font-size: 11px;
+    letter-spacing: 1.5px;
+    font-weight: 700;
+    opacity: 0.65;
+  }
+
+  .cert-arrow {
+    font-size: 24px;
+
+    transition:
+      transform 0.35s ease,
+      opacity 0.35s ease;
+  }
+
+  .cert-card:hover .cert-arrow {
+    transform: translate(6px, -6px) rotate(5deg);
+  }
+
+  .cert-icon {
+    position: relative;
+    z-index: 2;
+
+    width: 48px;
+    height: 48px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    margin-bottom: 20px;
+
+    border: 1px solid var(--line);
+    border-radius: 14px;
+
+    font-size: 21px;
+
+    transition:
+      transform 0.4s ease,
+      border-color 0.4s ease,
+      box-shadow 0.4s ease;
+  }
+
+  .cert-card:hover .cert-icon {
+    transform: rotate(-5deg) scale(1.1);
+
+    border-color: currentColor;
+
+    box-shadow:
+      0 0 20px rgba(255, 255, 255, 0.08);
+  }
+
+  .cert-card h3 {
+    position: relative;
+    z-index: 2;
+
+    margin: 0 0 12px;
+
+    font-size: 24px;
+    line-height: 1.2;
+  }
+
+  .cert-provider {
+    position: relative;
+    z-index: 2;
+
+    margin: 0 0 8px;
+
+    font-weight: 600;
+  }
+
+  .cert-date {
+    position: relative;
+    z-index: 2;
+
+    margin: 0;
+
+    opacity: 0.65;
+  }
+
+  .cert-bottom {
+    position: relative;
+    z-index: 2;
+
+    display: flex;
+    flex-direction: column;
+
+    gap: 5px;
+
+    margin-top: auto;
+    padding-top: 25px;
+
+    font-size: 13px;
+  }
+
+  .cert-bottom span {
+    opacity: 0.55;
+  }
+
+  .cert-bottom strong {
+    font-size: 12px;
+    word-break: break-word;
+  }
+
+
+  /* VIEW CERTIFICATE BUTTON */
+  .cert-view {
+    position: relative;
+    z-index: 2;
+
+    display: inline-flex;
+    align-items: center;
+    justify-content: space-between;
+
+    margin-top: 20px;
+    padding: 12px 15px;
+
+    border: 1px solid var(--line);
+    border-radius: 12px;
+
+    font-weight: 700;
+
+    overflow: hidden;
+
+    transition:
+      background 0.3s ease,
+      border-color 0.3s ease,
+      transform 0.3s ease;
+  }
+
+  .cert-view::before {
+    content: "";
+
+    position: absolute;
+
+    left: -120%;
+    top: 0;
+
+    width: 100%;
+    height: 100%;
+
+    background: linear-gradient(
+      90deg,
+      transparent,
+      rgba(255,255,255,0.15),
+      transparent
+    );
+
+    transition: left 0.55s ease;
+  }
+
+  .cert-card:hover .cert-view::before {
+    left: 120%;
+  }
+
+  .cert-card:hover .cert-view {
+    border-color: currentColor;
+
+    transform: translateX(3px);
+  }
+
+  .view-arrow {
+    display: inline-block;
+
+    font-size: 20px;
+
+    transition:
+      transform 0.3s ease;
+  }
+
+  .cert-card:hover .view-arrow {
+    transform: translateX(6px);
+  }
+
+
+  /* MOBILE */
+  @media (max-width: 700px) {
+
+    #certifications {
+      padding: 60px 0;
+    }
+
+    .cert-grid {
+      grid-template-columns: 1fr;
+      gap: 18px;
+    }
+
+    .cert-card {
+      min-height: 300px;
+      padding: 24px;
+    }
+
+    .cert-card h3 {
+      font-size: 21px;
+    }
+
+    .cert-view {
+      padding: 11px 14px;
+    }
+  }
 </style>
 
 
@@ -2192,19 +2547,19 @@ const UI = {
     cv_dl:"Download PDF",
     cv_close:"Close",
 
+    code:"Code on GitHub",
+    noRepo:"Academic project",
+
     cert_t:"CERTIFICATIONS",
     cert_title:"My Certifications",
     cert_lead:"Courses and certifications I have completed.",
     cert_badge:"CERTIFICATE",
-    cert_gen_title:"Gen AI and AI Agents Course",
-    cert_python_title:"Programming Fundamentals with Python",
     cert_provider:"CynoHub Academy",
     cert_date:"September 29, 2026",
     cert_credential:"Credential ID",
     cert_view:"View Certificate",
-
-    code:"Code on GitHub",
-    noRepo:"Academic project"
+    cert_gen_title:"Gen AI and AI Agents Course",
+    cert_python_title:"Programming Fundamentals with Python"
 
   },
 
@@ -2281,19 +2636,19 @@ const UI = {
     cv_dl:"Télécharger en PDF",
     cv_close:"Fermer",
 
+    code:"Code sur GitHub",
+    noRepo:"Projet académique",
+
     cert_t:"CERTIFICATIONS",
     cert_title:"Mes certifications",
-    cert_lead:"Cours et certifications que j'ai obtenus.",
+    cert_lead:"Formations et certifications que j'ai obtenues.",
     cert_badge:"CERTIFICAT",
-    cert_gen_title:"Cours de Gen AI et d'agents IA",
-    cert_python_title:"Fondamentaux de la programmation avec Python",
     cert_provider:"CynoHub Academy",
     cert_date:"29 septembre 2026",
     cert_credential:"Identifiant du certificat",
     cert_view:"Voir le certificat",
-
-    code:"Code sur GitHub",
-    noRepo:"Projet académique"
+    cert_gen_title:"Formation en IA générative et agents IA",
+    cert_python_title:"Fondamentaux de la programmation avec Python"
 
   }
 
@@ -3399,11 +3754,14 @@ function renderAll(anim){
 
   renderProjects();
 
-  $('#expList').innerHTML =
-    timeline(EXP);
+  const expList = $('#expList');
+  const eduList = $('#eduList');
 
-  $('#eduList').innerHTML =
-    timeline(EDU);
+  if(expList)
+    expList.innerHTML = timeline(EXP);
+
+  if(eduList)
+    eduList.innerHTML = timeline(EDU);
 
   renderResume();
 
@@ -3436,19 +3794,49 @@ function renderAll(anim){
 
 
 /* ---- Language switch ---- */
-$$('#lang button[data-set]').forEach(button=>{
-  button.addEventListener('click',e=>{
-    e.preventDefault();
-    const next=button.dataset.set;
-    if(next!=='en' && next!=='fr') return;
-    if(next===lang){
-      renderAll(false);
-      return;
-    }
-    lang=next;
-    try{localStorage.setItem('lang',lang)}catch(_){ }
-    renderAll(true);
+function setLanguage(next){
+  if(next !== 'en' && next !== 'fr') return;
+
+  lang = next;
+
+  try{
+    localStorage.setItem('lang', lang);
+  }catch(_){ }
+
+  // Update all translated/static content first.
+  renderStatic();
+  renderSkills();
+  renderFilters();
+  renderProjects();
+
+  const expList = $('#expList');
+  const eduList = $('#eduList');
+
+  if(expList) expList.innerHTML = timeline(EXP);
+  if(eduList) eduList.innerHTML = timeline(EDU);
+
+  renderResume();
+
+  const langBox = $('#lang');
+  if(langBox) langBox.dataset.lang = lang;
+
+  $$('#lang button[data-set]').forEach(btn=>{
+    btn.setAttribute('aria-pressed', btn.dataset.set === lang ? 'true' : 'false');
   });
+
+  document.documentElement.lang = lang;
+
+  try{
+    typing.restart();
+  }catch(_){ }
+}
+
+$('#lang').addEventListener('click', e=>{
+  const button = e.target.closest('button[data-set]');
+  if(!button) return;
+  e.preventDefault();
+  e.stopPropagation();
+  setLanguage(button.dataset.set);
 });
 
 /* ---- Project filters ---- */
