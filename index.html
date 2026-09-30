@@ -3617,6 +3617,7 @@ function renderResume(){
 
       </ul>
 
+
       <h5>${h.edu}</h5>
 
       ${
@@ -3638,11 +3639,81 @@ function renderResume(){
         `).join('')
       }
 
+
+      <!-- CERTIFICATIONS -->
+
+      <h5>${h.cert}</h5>
+
+      <div class="job">
+
+        <b>
+          ${
+            lang === 'fr'
+              ? 'Gen AI et Agents IA'
+              : 'Gen AI and AI Agents Course'
+          }
+        </b>
+
+        <em>
+          CynoHub Academy —
+          ${
+            lang === 'fr'
+              ? '29 septembre 2026'
+              : 'September 29, 2026'
+          }
+        </em>
+
+        <div style="font-size:.78rem;margin-top:4px">
+
+          ${
+            lang === 'fr'
+              ? 'Identifiant : CYNO-VLWYMR-ZOOL8'
+              : 'Credential ID: CYNO-VLWYMR-ZOOL8'
+          }
+
+        </div>
+
+      </div>
+
+
+      <div class="job">
+
+        <b>
+          ${
+            lang === 'fr'
+              ? 'Fondamentaux de la programmation avec Python'
+              : 'Programming Fundamentals with Python'
+          }
+        </b>
+
+        <em>
+          CynoHub Academy —
+          ${
+            lang === 'fr'
+              ? '29 septembre 2026'
+              : 'September 29, 2026'
+          }
+        </em>
+
+        <div style="font-size:.78rem;margin-top:4px">
+
+          ${
+            lang === 'fr'
+              ? 'Identifiant : CYNO-1ELO0J-1SKJ5U'
+              : 'Credential ID: CYNO-1ELO0J-1SKJ5U'
+          }
+
+        </div>
+
+      </div>
+
+
       <h5>${h.skills}</h5>
 
       <ul>
         ${skill}
       </ul>
+
 
       <h5>${h.lang}</h5>
 
@@ -3660,11 +3731,13 @@ function renderResume(){
 
     </aside>
 
+
     <main>
 
       <div class="role2">
         ${h.goal}
       </div>
+
 
       <h5 style="margin-top:6px">
         ${h.profile}
@@ -3673,6 +3746,7 @@ function renderResume(){
       <p>
         ${esc(CV_PROFILE[lang])}
       </p>
+
 
       <h5>
         ${h.exp}
@@ -3708,6 +3782,7 @@ function renderResume(){
 
         `).join('')
       }
+
 
       <h5>
         ${h.proj}
